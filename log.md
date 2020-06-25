@@ -17,5 +17,11 @@
 
 **Link to work:** [Portfolio Website](https://github.com/serendatapy/fuzzy-net-works/tree/experiments)
 
+### Day 2: June 25, 2020
 
+**Today's Progress**: Today I taught english all day and after 12 hours, coming home from work really wanted to crash on the sofa, but the challenge made me do the hour of code
+
+**Thoughts: Got through my first challenge at hacker rank...really thought I wouldn't make it, it was nearly midnight after an hour of hacking at the code and getting errors on the console, everything suddenly worked!
+
+**Link to work:** [Tweeter Post ](<blockquote class="twitter-tweet"><p lang="en" dir="ltr">coming home after 12 hours of work,  <a  href="https://twitter.com/hashtag/100DaysOfCode?src=hash&ref_src=twsrc%5Etfw">#100DaysOfCode</a> got me to churn out an hour to do my first challenge on hacker rank!  After an hour, nearly midnight and getting only errors on console,  suddenly everything worked! still got a few minutes to submit my log 😅  <a  href="https://t.co/TILARwEtjA">pic.twitter.com/TILARwEtjA</a></p>— serendatapy (@serendatapy) <a  href="https://twitter.com/serendatapy/status/1276271938176983040?ref_src=twsrc%5Etfw">June 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js"  charset="utf-8"></script> )
 
