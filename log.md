@@ -25,3 +25,23 @@
 
 **Link to work:** [Tweeter Post ](<blockquote class="twitter-tweet"><p lang="en" dir="ltr">coming home after 12 hours of work,  <a  href="https://twitter.com/hashtag/100DaysOfCode?src=hash&ref_src=twsrc%5Etfw">#100DaysOfCode</a> got me to churn out an hour to do my first challenge on hacker rank!  After an hour, nearly midnight and getting only errors on console,  suddenly everything worked! still got a few minutes to submit my log 😅  <a  href="https://t.co/TILARwEtjA">pic.twitter.com/TILARwEtjA</a></p>— serendatapy (@serendatapy) <a  href="https://twitter.com/serendatapy/status/1276271938176983040?ref_src=twsrc%5Etfw">June 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js"  charset="utf-8"></script> )
 
+### Day 3: June 26, 2020
+
+**Today's Progress**: Worked through more lessons of Codecademy Web developer path (CSS) & Managed to finish the warm up problems at hacker rank.
+
+**Thoughts: I enjoy solving the problems and it helps me to think about the problems also from a term of efficiency, as timing is also tested. I like the idea that employers might be able to look at it one day and see that I've gone through it (hopefully!)
+
+**Link to work:** [HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia)
+
+### Day 4: June 27, 2020
+
+**Today's Progress**: Worked through more lessons of Codecademy Web developer path (CSS) & started solving the arrays section in hackerrank. Learned hot to give hover over effect using css to buttons, added it to unplugged project. 
+
+**Thoughts: Easy challenges take me about 30-40 minutes, I wonder how long the medium and hard challenges will take XD *fear*
+
+**Link to work:**[HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia)
+
+
+
+ 
+
