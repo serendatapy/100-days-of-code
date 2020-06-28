@@ -41,6 +41,14 @@
 
 **Link to work:**[HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia)
 
+### Day 5: June 28, 2020
+
+**Today's Progress**: Worked through more lessons of Codecademy Web developer path (CSS & Javascript) build a few projects that covered gaps in my knowledge & solved another problem in the arrays section in hacker rank. Learned how to give hover over effect using css to buttons adding media queries to avoid hover sticking on touch devices, added it to unplugged project.
+
+**Thoughts: I'm happy with today's progress. Again thanks to the coding challenge I'm avoiding spending all my time on tutorials, and doing more problem solving than I otherwise would! Next hacker rank problem is medium difficulty XD *fear*.  With current progress speed should be able to finish both hacker rank interview kit + codecademy web developer course before the bootcamp, as well of course, as the extra credits of codeworks. Fingers crossed!
+
+**Link to work:**[HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia), [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)
+
 
 
  
