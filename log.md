@@ -49,7 +49,11 @@
 
 **Link to work:**[HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia), [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)
 
+### Day 5: June 29, 2020
 
+**Today's Progress**: Spent all day trying a medium difficulty problem on hacker rank but no bananas!
+
+**Link to work:**[HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia)
 
  
 
