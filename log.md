@@ -49,11 +49,20 @@
 
 **Link to work:**[HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia), [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)
 
-### Day 5: June 29, 2020
+### Day 6: June 29, 2020
 
 **Today's Progress**: Spent all day trying a medium difficulty problem on hacker rank but no bananas!
 
 **Link to work:**[HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia)
+
+### Day 7: June 28, 2020
+
+**Today's Progress**: Continued work through Codecademy web developer track, with focus on JavaScript fundamentals. Did a lot of problem solving and mini projects. Tempted to do the Challenge projects but also want to make quick progress to the parts that interest me more, such as advanced JavaScript, react, nodejs. After lunch I also spend some time polishing up my portfolio projects. After watching many a video about portfolio I'm now certain that the magic 8 ball is not going to cut the mustard! 
+
+**Thoughts: I feel really gutted that because I spent so much time trying to solve  the medium difficulty problem on hack reactor, I didn't commit any time to any other of my courses :( on top of that I also watched a video today that talked about how spending time on these platforms as a junior dev, when the time can be spent learning to do actual things (and thus doing real problem solving and getting a job) is much more productive. I myself found that doing the tasks help me to practice JavaScript, however I can totally understand how the time spend on REAL projects would really get me closer to my goals. So from now on I'll try to spend more time building things. I know I have to sooner or later! 
+On the brighter side, sending messages of encouragement on twitter is really great :)
+
+**Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)
 
  
 
