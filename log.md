@@ -55,7 +55,7 @@
 
 **Link to work:**[HackerRank Profile Progress Check](https://www.hackerrank.com/arvaldivia)
 
-### Day 7: June 28, 2020
+### Day 7: June 30, 2020
 
 **Today's Progress**: Continued work through Codecademy web developer track, with focus on JavaScript fundamentals. Did a lot of problem solving and mini projects. Tempted to do the Challenge projects but also want to make quick progress to the parts that interest me more, such as advanced JavaScript, react, nodejs. After lunch I also spend some time polishing up my portfolio projects. After watching many a video about portfolio I'm now certain that the magic 8 ball is not going to cut the mustard! 
 
@@ -64,5 +64,12 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 
 **Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)
 
- 
 
+
+### Day 8: July 1st, 2020
+
+**Today's Progress**: Yesterday evening stared doing an advanced Css course, and even getting through the first lesson was SO informative. I immediately started applying concepts to my projects. This morning instead I did more JavaScript practice, on arrays specifically. 
+
+**Thoughts: I'm coming to the realisation of how important it is to have my own projects. Having my own projects actually allows me to put all the courses I'm doing into context. At the moment I'm currently only working on the unplugged website and my portfolio website, but I imagine that if I didn't even had those, it would be very difficult to put all I'm learning into practice, or into context. This is happening in terms of JavaScript, as I'm not sure where to put all this JavaScript I'm learning, so that definitely needs to be my next project. I'm almost ready to jump out into the wild! 
+
+**Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat) [Github Profile](https://github.com/serendatapy)
