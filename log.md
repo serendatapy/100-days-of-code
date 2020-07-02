@@ -73,3 +73,13 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: I'm coming to the realisation of how important it is to have my own projects. Having my own projects actually allows me to put all the courses I'm doing into context. At the moment I'm currently only working on the unplugged website and my portfolio website, but I imagine that if I didn't even had those, it would be very difficult to put all I'm learning into practice, or into context. This is happening in terms of JavaScript, as I'm not sure where to put all this JavaScript I'm learning, so that definitely needs to be my next project. I'm almost ready to jump out into the wild! 
 
 **Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat) [Github Profile](https://github.com/serendatapy)
+
+
+
+### Day 9: July 2nd, 2020
+
+**Today's Progress**: The CSS course is so cool! :D I'm learning so many little tricks, and finding it incredibly easy to apply to my existing projects, such as moving text and button animations. This morning I also continue with JavaScript practice, almost got to the part that interests me, intermediate/advanced JavaScript and back-end development!
+
+**Thoughts: Today I'm going to speak to my career counsellor after...so many months I can't even remember! In any case the question I asked her initially has already been answered, I don't have to go one way or the other, with so much time available, I can undoubtedly do both, and thanks to coding challenge, I HAVE to do at least an hour a day of personal projects, however I should see if I can increase that...an hour a day is a lot in any case! But is it enough?! I'm not sure whether to tell her about me signing up to another bootcamp or not :/ but I would really like to get it out of my chest. I would also really like to get on with doing my wordpress portfolio, seems like it's a waste to leave it altogether after the time invested. 
+
+**Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)  [Github Profile](https://github.com/serendatapy)
