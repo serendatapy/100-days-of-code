@@ -83,3 +83,21 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: Today I'm going to speak to my career counsellor after...so many months I can't even remember! In any case the question I asked her initially has already been answered, I don't have to go one way or the other, with so much time available, I can undoubtedly do both, and thanks to coding challenge, I HAVE to do at least an hour a day of personal projects, however I should see if I can increase that...an hour a day is a lot in any case! But is it enough?! I'm not sure whether to tell her about me signing up to another bootcamp or not :/ but I would really like to get it out of my chest. I would also really like to get on with doing my wordpress portfolio, seems like it's a waste to leave it altogether after the time invested. 
 
 **Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)  [Github Profile](https://github.com/serendatapy)
+
+### Day 10: July 3rd, 2020
+
+**Today's Progress**: Today I spent wayyy too much time working on object in javascript. I feel a lot more confident now. This evening I forced myself to work on my portfolio so that I could get in my hour of coding, after about 15 minutes couldn't get enough of it :)
+
+**Thoughts: It was a bit hard to study today, not because I'm not interested, but because it was hard to concentrate. I think my brain is fuming! I want to continue forever to code, but my body is giving signs of collapse
+
+**Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)  [Github Profile](https://github.com/serendatapy)
+
+
+
+### Day 11: July 4th, 2020
+
+**Today's Progress**: Today I worked on all 4 projects in 1 morning and I feel more satisfied than when I work on just 1 :) even if in fact I did very little for each one. Worked on Portfolio, udemy css, codeworks coursework and now codecademy objects.
+
+**Thoughts: It's definitely better for my well being to work on all the things I need to do rather than focus too much on one!
+
+**Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)  [Github Profile](https://github.com/serendatapy)
