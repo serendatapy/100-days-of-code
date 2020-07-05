@@ -101,3 +101,11 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: It's definitely better for my well being to work on all the things I need to do rather than focus too much on one!
 
 **Link to work:** [Portfolio Website](https://github.com/serendatapy/unplugged-retreat)  [Github Profile](https://github.com/serendatapy)
+
+### Day 12: July 5th, 2020
+
+**Today's Progress**: Today is Sunday but I had to do my coding challenge. I did some JavaScript challenges on code academy. Since they were not guided, they count as coding time! 
+
+**Thoughts: My body definitely needs a break, as it is breaking! Feel tensions on several parts that need loosening. Well I'm not gonna touch the computer for the rest of the day! :)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
