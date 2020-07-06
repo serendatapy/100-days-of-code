@@ -109,3 +109,11 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: My body definitely needs a break, as it is breaking! Feel tensions on several parts that need loosening. Well I'm not gonna touch the computer for the rest of the day! :)
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 13: July 6th, 2020
+
+**Today's Progress**: Today I spent most of the day on codecademy tutorials, regarding DOM
+
+**Thoughts: I found that doing pomodoro technique is definitely useful! I can do so much in those short breaks, that I would otherwise put off and feel bad about at the end of the day, send a message, do some tidying, do some exercise, get a cuppa. It's great. Yesterday my old friend from hastings offered me to collaborate with him in a project. I'm still trying to get my head around it, but the point is that the tech stack uses 4 technologies that I'm not familiar with. At my best calculations I guessed I could pick up a good notion of everything in a week which is not bad but I'm not sure yet what the timeframe for this project is, or how much he expects from me. I'm throwing myself willingly in the deepend, because from what I've understood about the carreer, it comes with the job, so I might as well start now! All my energies now on getting the tech stack under the belt. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

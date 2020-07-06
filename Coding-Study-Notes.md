@@ -89,9 +89,33 @@ __*WOW*__ This works great!
 
 
 
-## HTML FORMS
+## HTML 
 
-### Input tag  & Form Validation
+The old convention was to put scripts right before the `</body>` tag to prevent the script from blocking the rest of the HTML content. Now, the convention is to put the script tag in the `<head>` element and to use the `defer` and `async` attributes.
+
+### Defer & Async attribute
+
+The *defer attribute* specifies scripts should be executed after the HTML file is completely parsed.
+
+```html
+<script src="example.js" defer></script> 
+```
+
+Specially useful when the script needs to interact with the DOM, and thus shouldn't be loaded before full page render. 
+
+
+
+The *async attribute* specifies scripts should download in background as page continues to be rendered and execute as soon as it is ready to be loaded.
+
+```html
+<script src="example.js" async></script>
+```
+
+Useful when the script is independent of other scripts, and it doesn't matter when it loads. This is the OPTIMAL option for page load time.
+
+### Forms
+
+#### Input tag  & Form Validation
 
 **Client side validation** can make sure data is _decent_ before being sent to the server. 
 
@@ -225,7 +249,7 @@ let removed = myFish.splice(2)
 
 ### For Each
 
-When passing a function as an argument, pass the function directly, and where the function is defined, it can take the values of a usual for each function. 
+When passing a function as an argument, pass the function directly, and where the function is defined, it can take the values of a usual for each function. ForEach returns undefined by default.
 
 ```javascript
 const veggies = ['broccoli', 'spinach', 'cauliflower', 'broccoflower'];
@@ -242,7 +266,125 @@ function declineEverything(stringArr) {
 
 ### map
 
+Use map when you need a NEW array RETURNED, unlike forEach that is used when you want to DO something with existing values.
+
+```javascript
+// Write your code here:
+
+function shoutGreetings(stringArr) {
+  return stringArr.map(word => `${word}!`.toUpperCase());
+}
+
+// Feel free to uncomment out the code below to test your function!
+const greetings = ['hello', 'hi', 'heya', 'oi', 'hey', 'yo'];
+
+console.log(shoutGreetings(greetings))
+// Should print [ 'HELLO!', 'HI!', 'HEYA!', 'OI!', 'HEY!', 'YO!' ]
+```
+
 ### sort
+
+The order is created by the condition, in this case is descending
+
+```javascript
+// EXAMPLE 1
+
+function sortYears(yearsArr) {
+  return yearsArr.sort((a,b) => b - a); //compares numbers
+}
+
+// Feel free to uncomment the below code to test your function:
+const years = [1970, 1999, 1951, 1982, 1963, 2011, 2018, 1922]
+
+console.log(sortYears(years))
+// Should print [ 2018, 2011, 1999, 1982, 1970, 1963, 1951, 1922 ]
+
+// EXAMPLE 2
+const speciesArray = [ {speciesName:'shark', numTeeth:50}, {speciesName:'dog', numTeeth:42}, {speciesName:'alligator', numTeeth:80}, {speciesName:'human', numTeeth:32}];
+
+function sortSpeciesByTeeth(speciesArrOfObj) {
+  let sortedInAscend = speciesArrOfObj.sort((animalObjA,animalObjB) => {
+    return animalObjA.numTeeth - animalObjB.numTeeth;
+  })
+  return sortedInAscend;
+}
+
+// FUNCTION DESTRUCTURED
+function sortSpeciesByTeeth(speciesArrOfObj) {
+  return speciesArrOfObj.sort((animalObjA,animalObjB) => animalObjA.numTeeth - animalObjB.numTeeth)
+}
+
+
+console.log(sortSpeciesByTeeth(speciesArray))
+
+/* Should print [ { speciesName: 'human', numTeeth: 32 },
+  { speciesName: 'dog', numTeeth: 42 },
+  { speciesName: 'shark', numTeeth: 50 },
+  { speciesName: 'alligator', numTeeth: 80 } ]
+*/
+```
+
+### Filter
+
+All elements that pass a condition are RETURNED as a NEW array. If none pass the condition an EMPTY array is returned. 
+
+```javascript
+// Write your code here:
+function justCoolStuff(stringArr1,stringArr2) {
+  let inCommonArr = stringArr1.filter((word) => {
+    if(stringArr2.indexOf(word) > -1) return word; 
+  });
+  return inCommonArr;
+}
+
+// Feel free to uncomment the code below to test your function
+
+const coolStuff = ['gameboys', 'skateboards', 'backwards hats', 'fruit-by-the-foot', 'pogs', 'my room', 'temporary tattoos'];
+
+const myStuff = [ 'rules', 'fruit-by-the-foot', 'wedgies', 'sweaters', 'skateboards', 'family-night', 'my room', 'braces', 'the information superhighway']; 
+
+console.log(justCoolStuff(myStuff, coolStuff))
+// Should print [ 'fruit-by-the-foot', 'skateboards', 'my room' ]
+```
+
+### Every
+
+Returns boolean to indicate if all elements pass the test
+
+```javascript
+function isTheDinnerVegan(foodArrOfObj) {
+ return foodArrOfObj.every(foodObject => {
+   return foodObject.source === 'plant';
+ })
+}
+
+DESTRUCTURED
+function isTheDinnerVegan(foodArrOfObj) {
+ return foodArrOfObj.every(foodObject => foodObject.source === 'plant')
+}
+```
+
+### indexOf vs findIndex
+
+```javascript
+//indexOf is appropiate for finding simple primitive types
+function findMyKeys(stringArr) {
+  return stringArr.indexOf('keys');
+}
+
+
+//when conditions are more complex findIndex() gives more flexibility
+function findMyKeys(stringArr) {
+  return stringArr.findIndex(element => element === 'keys');
+}
+
+const randomStuff = ['credit card', 'screwdriver', 'receipt', 'gum', 'keys', 'used gum', 'plastic spoon'];
+
+console.log(findMyKeys(randomStuff))
+// Should print 4
+```
+
+
 
 
 
@@ -536,6 +678,52 @@ const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');
 ghost.scare(); // 'BOO!'
 const yeti = monsterFactory('White Big Foot', 100, 'rage', 'Arr!');
 yeti.scare(); // 'Arr!'
+
+
+//COMPLETE FACTORY FUNCTION
+unction dogFactory(name,breed,weight){
+  return {
+    _name:name,
+    _breed:breed,
+    _weight:weight,
+
+    set name (newName) {
+      this._name = newName;
+    },
+    set breed (newBreed) {
+      this._breed = newBreed;
+    },
+    set weight (newWeight) {
+      this._weight = newWeight;
+    },
+
+    get name () {
+      return this._name
+    },
+    get breed () {
+      return this._breed
+    },
+    get weight () {
+      return this._weight
+    },
+    bark () {
+      return 'ruff! ruff!'
+    },
+    eatTooManyTreats () {
+      this.weight++;
+    }
+  } //end obj
+}
+
+
+console.log(dogFactory('Joe', 'Pug', 27))
+// Should return { name: 'Joe', breed: 'Pug', weight: 27 }
+
+let snoopy = dogFactory('Snoopy','Cartoon',20);
+console.log(snoopy); // prints object
+console.log(snoopy.bark()); //prints noise
+snoopy.eatTooManyTreats(); // increments weight
+console.log(snoopy.weight); // 21
 ```
 
 #### Destructuring ES6
@@ -576,6 +764,258 @@ console.log(residence); // Prints 'Transylvania'
 const { residence } = vampire; 
 console.log(residence); // Prints 'Transylvania'
 ```
+
+
+
+### The DOM
+
+The DOM is a virtual object representation of the html document, that allows access to javascript for manipulation. 
+
+```javascript
+document.body.innerHTML = 'The cat loves the dog.';
+```
+
+#### innerHTML
+
+note: innerHTML replaces content, so in the example below, all other content present in body will dissapear and be replaced by the sole h2 tag
+
+```javascript
+//other than above, it can also be used to add more html
+document.body.innerHTML = '<h2>This is a heading</h2>';
+```
+
+#### querySelector - CSS
+
+You can also use other CSS selectors such as an element’s `.` class or its `#` ID.
+
+```javascript
+document.querySelector('p');
+```
+
+#### getElementById
+
+```javascript
+document.getElementById('bio').innerHTML = 'The description';
+```
+
+#### Access Styles CSS
+
+```javascript
+//When accessing styles through DOM, use CamelCase instead of : hyphens
+
+let blueElement = document.querySelector('.blue');
+blueElement.style.backgroundColor = 'blue';
+
+OR
+
+document.querySelector('.blue').style.fontFamily = 'Roboto';
+
+/*--------------------------------------*/
+let bodyStyle = document.querySelector('body');
+bodyStyle.style.backgroundColor = '#201F2E';
+
+document.querySelector('body').style.backgroundColor = '#201F2E';
+```
+
+#### createElement(tagName) & appendChild()
+
+```javascript
+let paragraph = document.createElement('p');
+
+paragraph.id = 'info'; 
+
+paragraph.innerHTML = 'The text inside the paragraph';
+
+document.body.appendChild(paragraph);
+
+/*----------------Example 2-------------*/
+let newDestination = document.createElement('li');
+newDestination.id = 'oaxaca';
+newDestination.innerHTML = 'Oaxaca, Mexico';
+document.body.querySelector('#more-destinations').appendChild(newDestination);
+
+/*How to implement above using getElementById instead of querySelector*/
+```
+
+#### RemoveChild()
+
+```javascript
+let v = document.body.querySelector('#oaxaca');
+document.body.querySelector('#more-destinations').removeChild(v);
+
+/*Alternatively Elements could also be hidden*/
+document.getElementById('#oaxaca').hidden = true;
+```
+
+#### onclick()
+
+```javascript
+let element = document.querySelector("button");
+
+element.onclick = turnButtonRed;
+
+function turnButtonRed (){
+  element.style.backgroundColor = 'red';
+  element.style.color = 'white';
+  element.innerHTML = 'Red Button'
+}
+```
+
+#### .parentNode & .children properties
+
+Returns a list of elements or null. 
+
+```javascript
+let first = document.body.firstChild;
+first.innerHTML = 'I am the child!'
+
+first.parentNode.innerHTML = 'I am the parent and my inner HTML has been replaced!'
+
+/*The first command could change a h1 for example, however we won't see it because the last command wipes out everything, leaving only the text we entered last*/
+```
+
+#### event handler registration
+
+When we add a function to the eventTarget, we create a property for it. 
+
+Note: this allows adding just one handler per object.
+
+```javascript
+let eventTarget = document.getElementById('targetElement');
+
+//create an event handler property (on-eventType)
+eventTarget.onclick = function() {
+    //This is the eventHandler function assigned to the property  
+    // this block of code will run
+}
+/*This can also be done inline to a html element, but it's bad practice*/
+
+/*----------Example 2---------------*/
+let readMore = document.getElementById('read-more');
+
+let moreInfo = document.getElementById('more-info');
+
+// Write your code here:
+readMore.onclick = function (){
+  moreInfo.style.display = 'block';
+}
+
+/*BEST PRACTICE TO NAME EVENT HANDLER FUNCTIONS*/
+```
+
+#### addEventListener()
+
+addEventListener(eventType, eventHandlerFunction)
+
+```javascript
+eventTarget.addEventListener('click', eventHandlerFunction);
+/*EXAMPLE*/
+
+// Add the code you want to test below:
+let view = document.getElementById('view-button');
+let close = document.getElementById('close-button');
+let codey = document.getElementById('codey');
+
+let open = function() {
+  codey.style.display = 'block';
+  close.style.display = 'block';
+};
+
+let hide = function() {
+  codey.style.display = 'none';
+  close.style.display = 'none';
+};
+
+let textChange = function () {
+  view.innerHTML = 'Hello World!';
+}
+let textReturn = function () {
+  view.innerHTML = 'View';
+}
+
+view.onclick = open; //OR view.addEventListener('click',open);
+view.addEventListener('click',textChange);
+close.addEventListener('click',textReturn);
+close.onclick = hide;
+```
+
+This allows you to add multiple event handlers to a single element without overwriting the others!
+
+#### removeEventListener()
+
+removeEventListener(eventType, eventHandlerFunction)
+
+```javascript
+/*This code operates a door opening with lock unlock mechanism*/
+let door = document.getElementById('door');
+let unlock = document.getElementById('unlock');
+let lock = document.getElementById('lock');
+let sign = document.getElementById('sign');
+let cafeImage = document.getElementById('image');
+
+cafeImage.hidden = true;
+
+let openDoor = function() {
+  door.hidden = true;
+  cafeImage.hidden = false;
+}
+
+let closeDoor = function(){
+  door.hidden = false;
+  cafeImage.hidden = true;
+}
+
+unlock.onclick = function() {
+  sign.innerHTML = 'OPEN';
+  unlock.style.backgroundColor = '#6400e4';
+  lock.style.backgroundColor = 'lightgray';
+}
+
+lock.onclick = function() {
+  sign.innerHTML = 'CLOSED';
+  lock.style.backgroundColor = '#6400e4';
+  unlock.style.backgroundColor = 'lightgray';
+}
+
+unlock.addEventListener('click', function(){
+  door.addEventListener('click', openDoor);
+  cafeImage.addEventListener('click', closeDoor);
+})
+
+// Write your code here
+lock.addEventListener('click',function(){
+  door.removeEventListener('click',openDoor);
+});
+```
+
+
+
+#### Event Object Properties ( e )
+
+JavaScript stores events as *event objects* with their related data and functionality as properties and methods. 
+
+- the `.target` property to access the element that triggered the event.
+- the `.type` property to access the name of the event.
+- the `.timeStamp` property to access the number of milliseconds that passed since the document loaded and the event was triggered.
+
+```javascript
+let social = document.getElementById('social-media');
+let share = document.getElementById('share-button');
+let text = document.getElementById('text');
+
+// Write your code below
+let sharePhoto = function(event) {
+  event.target.style.display = 'none';
+  let timeS = event.target.timeStamp;
+  text.innerHTML = `${timeS}`;
+}
+
+share.addEventListener('click',sharePhoto);
+```
+
+[MDN Events Reference](https://developer.mozilla.org/en-US/docs/Web/Events) 
+
+
 
 
 
