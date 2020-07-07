@@ -765,6 +765,155 @@ const { residence } = vampire;
 console.log(residence); // Prints 'Transylvania'
 ```
 
+### Classes
+
+There are a lot of similarities between Classes & Factory Functions and Objects. 
+
+```javascript
+/*An Important difference however is the CONSTRUCTOR METHOD called every time an object is instantiated*/
+
+Class Dog {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior ++;
+  }
+}
+/*Another Important difference, the NEW keyword*/
+const halley = new Dog('Halley');
+console.log(halley.name);
+console.log(halley.behaviour);
+halley.incrementBehavior();
+console.log(halley.name);
+console.log(halley.behavior);
+```
+
+#### Instance
+
+ An *instance* is an object that contains the property names and methods of a class, but with unique property values. 
+
+```javascript
+class Dog {
+  constructor(name) {
+    this.name = name;
+    this.behavior = 0;
+  } 
+}
+/*The new keyword calls the constructor which returns the new instance*/
+const halley = new Dog('Halley'); // Create new Dog instance
+console.log(halley.name); // Log the name value saved to halley
+// Output: 'Halley'
+```
+
+Class method and getter syntax is the same as it is for objects **except you can not include commas between methods**.
+
+#### Inheritance
+
+``` javascript
+/*The Cat class, shares some properties and methods with the dog class*/
+class Cat {
+  constructor(name, usesLitter) {
+    this._name = name;
+    this._usesLitter = usesLitter;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get usesLitter() {
+    return this._usesLitter;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }  
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+}
+
+/*When multiple classes share properties, they could be joined together into a super class*/
+
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior++;
+  }
+} 
+
+/*Once the super class is in place, the sub-classes will look like this*/
+//EXTENDS SUPERCLASS - makes methods from super available in sub
+class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name); 
+      /*called on the first like of constructor,
+      Super keyword runs super's constructor inside subclass
+      then further properties, like usesLitter can be added*/
+    this._usesLitter = usesLitter; //this is a new property
+  }
+   get usesLitter() {
+    return this._usesLitter;
+  }
+}
+
+clas Dog extends Animal {
+    constructor(name) {
+        super(name);
+    }
+}
+
+const bryceCat = new Cat('Bryce', false); 
+console.log(bryceCat.name); // output: Bryce using SUPER's GETTER
+```
+
+#### Static Methods
+
+Static methods can be called directly from the class but not from it's instances. 
+
+```javascript
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  static generateName() {
+    const names = ['Angel', 'Spike', 'Buffy', 'Willow', 'Tara'];
+    const randomNumber = Math.floor(Math.random()*5);
+    return names[randomNumber];
+  }
+} 
+
+console.log(Animal.generateName()); // returns a name
+
+
+```
+
 
 
 ### The DOM
@@ -1014,6 +1163,91 @@ share.addEventListener('click',sharePhoto);
 ```
 
 [MDN Events Reference](https://developer.mozilla.org/en-US/docs/Web/Events) 
+
+#### Other Event Types - Examples
+
+```javascript
+//Logic for 2 color picker buttons
+// This variable stores the "Pick a Color" button
+let button = document.getElementById('color-button');
+
+// This variable stores the "Mystery Color" button
+let mysteryButton = document.getElementById('next-button');
+
+// This random number function that will creates color codes for the randomColor variable
+function rgb(num) {
+  return Math.floor(Math.random() * num);
+}
+
+// Write your code below
+let colorChange = function (event) {
+  let randomColor = 'rgb(' + rgb(255) + ',' + rgb(255) + ',' + rgb(255) + ')';
+  event.target.style.backgroundColor = randomColor;  
+}
+
+button.onclick = colorChange;
+mysteryButton.onwheel = colorChange;
+```
+
+#### Mouse Events
+
+```javascript
+// These variables store the boxes on the side
+let itemOne = document.getElementById('list-item-one');
+let itemTwo = document.getElementById('list-item-two');
+let itemThree = document.getElementById('list-item-three');
+let itemFour = document.getElementById('list-item-four');
+let itemFive = document.getElementById('list-item-five');
+let resetButton = document.getElementById('reset-button');
+
+// This function programs the "Reset" button to return the boxes to their default styles
+let reset = function() {
+  itemOne.style.width = ''
+  itemTwo .style.backgroundColor = ''
+  itemThree.innerHTML = 'The mouse must leave the box to change the text'
+  itemFive.style.display = "none"
+};
+resetButton.onclick = reset;
+
+// Write code for the first list item
+itemOne.onmouseover = function(){
+  itemOne.style.width = '500px';
+};
+
+// Write code for the second list item
+itemTwo.onmouseup = function(){
+  itemTwo.style.backgroundColor = 'grey';
+}
+
+// Write code for the third list item
+itemThree.onmouseout = function(){
+  itemThree.innerHTML = 'The mouse has left the element.';
+}
+
+// Write code for the fourth list item
+itemFour.onmousedown = function(){
+  itemFive.style.display = 'block';
+}
+```
+
+#### Keyboard Events
+
+```javascript
+/*Simulate the dribbling of a ball*/
+let ball = document.getElementById('float-circle');
+
+// Write your code below
+function up() {
+  ball.style.bottom = '250px';
+}
+
+function down() {
+  ball.style.bottom = '50px';
+}
+
+document.onkeydown = up;
+document.onkeyup = down;
+```
 
 
 
