@@ -125,3 +125,11 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: Unfortunately the intermediate javascript is gonna be tough to finish in the little time I was hoping to do it in. The fact of the matter is that if I want to learn, I have to do projects which give me practice, it's useless running through material without learning. Tonight I'm going to have a quick look at the project I'll be doing, get more javascript done, and from tomorrow I'll have to spit my studies so that I manage to do something everyday. React must begin tomorrow!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 15: July 8th, 2020
+
+**Today's Progress**: Today I spent most of the day on codecademy tutorials, regarding javascript Modules.
+
+**Thoughts: I begin to feel that I'm really getting a good grip on things which I thought were complicated, and at the same time I still have a lot to learn! I grossly underestimated the entry level javascript requirements to react and now I'm realizing that before I get there I might still need to spend another week on javascript :( in the end I'm afraid I might not be able to participare the project of my friend. Have nothing to do but to push on!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

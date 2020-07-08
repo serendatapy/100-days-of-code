@@ -1,5 +1,3 @@
-
-
 # # This is a markdown Tutorial
 
 ### Insert as many hash as you need the headings
@@ -767,12 +765,28 @@ console.log(residence); // Prints 'Transylvania'
 
 ### Classes
 
-There are a lot of similarities between Classes & Factory Functions and Objects. 
+There are a lot of *similarities* between Classes & Factory Functions and Objects, but also some **important Differences** 
+
+* Classes are created with the keyword **'class'** and are not variables!
+
+* Classes have a **constructor** and need the keyword **'new'** to instantiate!
+
+* Inside the constructor we use **'='** RATHER than **':'** as you would in objects, and also the keyword **this**
+
+* Classes can use the keyword **super** to inherit constructor from a parent class it **extends**
+
+* When the class **extends** another, it inherits all it's properties and methods
+
+* Properties and Methods inside the Class have **';'** instead of a **','** or often nothing at all!
+
+* Classes can have **Static** Methods, that can only be called from the class and not from the instance
+
+  
 
 ```javascript
 /*An Important difference however is the CONSTRUCTOR METHOD called every time an object is instantiated*/
 
-Class Dog {
+class Dog {
   constructor(name) {
     this._name = name;
     this._behavior = 0;
@@ -914,9 +928,7 @@ console.log(Animal.generateName()); // returns a name
 
 ```
 
-
-
-### The DOM
+## The DOM
 
 The DOM is a virtual object representation of the html document, that allows access to javascript for manipulation. 
 
@@ -1251,7 +1263,238 @@ document.onkeyup = down;
 
 
 
+## Modules (node.js & ES6)
 
+Generally speaking ES6 syntax is used for frontend development and node for backend.
+
+### Export
+
+```javascript
+//in menu.js
+//Module Definition
+let Menu = {};
+Menu.specialty = "Roasted Beet Burger with Mint Sauce";
+
+//exports module
+module.exports = Menu; 
+
+/*Here 'module' is a variable and 'exports' exposes the object
+You could also do a direct assignment */
+
+module.exports.Menu = {
+     speciality : "Roasted Beet Burger with Mint Sauce"
+}
+/*-----------------------------EXPORT B----------------------*/
+module.exports = {
+  specialty: "Roasted Beet Burger with Mint Sauce",
+  getSpecialty: function() {
+    return this.specialty;
+  } 
+};
+
+
+//you can assign module.exports Multiple Objects to be exported
+
+let MainObject = {};
+
+MainObject.objToExport = {
+  propOne: 1,
+  propTwo: 2
+};
+
+MainObject.anotherObjToExport = {
+  anotherProp: 3,
+  andAnother: 4
+};
+
+module.exports = MainObject;
+
+//OR
+
+module.exports.objToExport = {
+  propOne: 1,
+  propTwo: 2
+};
+
+module.exports.anotherObjToExport = {
+  anotherProp: 3,
+  andAnother: 4
+};
+
+//OR
+
+module.exports = {
+  objToExport: {
+    propOne: 1,
+    propTwo: 2
+  },
+  anotherObjToExport: {
+    anotherProp: 3,
+    andAnother: 4
+  }
+};
+
+```
+
+This is for NODE.JS
+
+1. Create an object to represent the module. 
+2. Add properties or methods to the module object.
+3. Export the module with `module.exports`.
+
+Instead for ES6 (not supported in Node environment)
+
+METHOD 1
+
+```javascript
+let Menu = {};
+
+export default Menu;
+/*export can export Objects, Functions and Primitive Data*/
+```
+
+METHOD 2 (named)
+
+```javascript
+let specialty = '';
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+
+export { specialty, isVegetarian };
+
+/*Alternatively they can be exported directly*/
+
+export let specialty = '';
+export function isVegetarian() {
+}; 
+function isLowSodium() {
+};  
+//this would eliminate the need of the final statement
+//THIS DOES NOT IMPACT HOW WE IMPORT
+
+//Extention - we can also change variable name with the AS keyword
+let specialty = '';
+let isVegetarian = function() {}; 
+let isLowSodium = function() {}; 
+
+export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
+/*In this case when we import, we need to import the alias, however for isLowSodium, which wasn't aliased, we can do the alias when we import*/
+```
+
+
+
+Notice that, when we use named  exports, we are not setting the properties on an object. Each export is  stored in its own variable.
+
+`specialty` is a string object, while `isVegetarian` and `isLowSodium` are objects in the form of functions. Recall that in JavaScript, every function is in fact a function object. 
+
+`export { specialty, isVegetarian };` exports objects by their variable names. Notice the keyword `export` is the prefix. 
+
+`specialty` and `isVegetarian` are exported, while `isLowSodium` is not exported, since it is not specified in the export syntax
+
+### Import
+
+Using **require(filePath)** we can import a module. This function loads a module. The .js extension is optional, it will be assumed if not included.
+
+``` javascript
+// in order.js
+const Menu = require('./menu.js');
+/*This makes the entire behaviour of Menu available here.
+Note: we could give a different name to the variable if we wanted
+such as menuItems*/
+
+function placeOrder() {
+  console.log('My order is: ' + Menu.specialty); //access module
+}
+
+placeOrder();
+/*---------------------IMPORT B-----------------------*/
+
+const Menu = require('./menu.js');
+console.log(Menu.getSpecialty());
+```
+
+This is for NODE.JS
+
+1. Import the module with `require()` and assign it to a local variable.
+2. Use the module and its properties within a program. 
+
+Instead for ES6
+
+METHOD 1
+
+1. The `import` keyword begins the statement.
+2. The keyword `Menu` here specifies the name of the variable to store the default export in.
+3. `from` specifies where to load the module from. 
+4. `'./menu'` is the name of the module to load. When dealing with local files, it  specifically refers to the name of the file without the extension of the file.
+
+```javascript
+import Menu from './menu';
+```
+
+METHOD 2 (named)
+
+```javascript
+import { specialty, isVegetarian } from './menu';
+
+console.log(specialty);
+
+/*---------------------with alias-------------*/
+import { chefsSpecial, isVeg, isLowSodium as saltFree } from './menu';
+
+/*we must use the alias when it was set on export, unless it isn't set so it can be applied here at import*/
+
+/*-------------import entire module as alias--------------*/
+import * as Carte from './menu';
+
+Carte.chefsSpecial;
+Carte.isVeg();
+Carte.isLowSodium();
+```
+
+
+
+1. Here `specialty` and `isVegetarian` are imported.
+2. If we did not want to import either of these variables, we could omit them from the `import` statement.
+3. We can then use these objects as in within our code. For example, we would use `specialty` instead of `Menu.specialty`. 
+
+### Combining different exports
+
+Note: Although what isn't exported won't be available directly/explicitly, it could be available indirectly as in the example below.
+
+``` javascript
+// moduleToExport.js
+const uppercaseName = function (name) {
+  return name.toUpperCase();
+}
+
+const myDefaultExport = {
+  //...
+}
+
+
+class Animal {
+  constructor(name){
+    this._name = name;
+  }
+  get name () {
+    return uppercaseName(this._name);
+  }
+}
+
+
+export default myDefaultExport; //default export is the `myDefaultExport` object
+export {Animal}; //named export `Animal` class, not exporting the `uppercaseName` function
+
+
+//main.js
+import myDefaultExport from './moduleToExport.js'; //importing default module `myDefaultExport`
+import {Animal} from './moduleToExport.js'; //importing a named module, `Animal`
+
+const animal = new Animal('test');
+console.log(animal.name); //logs `TEST` to the console, uses the private `uppercaseName` function even though we don't have access to `uppercaseName` through our imported `Animal` module and cannot call it explicitly
+```
 
 
 
