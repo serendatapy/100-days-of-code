@@ -133,3 +133,11 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: I begin to feel that I'm really getting a good grip on things which I thought were complicated, and at the same time I still have a lot to learn! I grossly underestimated the entry level javascript requirements to react and now I'm realizing that before I get there I might still need to spend another week on javascript :( in the end I'm afraid I might not be able to participare the project of my friend. Have nothing to do but to push on!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 16: July 9th, 2020
+
+**Today's Progress**: Today I learned about error handling, promises and async await... I really hit a wall with promises and async await(not finished yet)
+
+**Thoughts: It's quite tough this intermediate JavaScript, but I'm really learning about things I knew nothing about! I wonder how much is sticking! I'm happy to hear my friend is in no rush to do the project, and that I can learn with a bit more time, which I really need. I'm pushing ahead with all my resources on the web developer course in code academy. On the positive aspect I quite enjoy mingling with the people on tweeter! :) There are people at all levels, from beginners to experts, so sometimes I feel a bit crap, other times I'm actually able to help someone further behind :)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

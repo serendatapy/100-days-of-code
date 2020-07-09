@@ -1496,6 +1496,464 @@ const animal = new Animal('test');
 console.log(animal.name); //logs `TEST` to the console, uses the private `uppercaseName` function even though we don't have access to `uppercaseName` through our imported `Animal` module and cannot call it explicitly
 ```
 
+## Error Handling
+
+By catching errors you can prevent the program from stopping, and send a useful message to the user to understand what's happened.
+
+Useful when using 3rd party code, for example you expect to receive an array but you might get a string!
+
+```javascript
+/*insert code that might cause an error in try...catch*/
+try {
+  throw Error('This error will get caught');//here goes error prone code
+} catch (e) {
+  console.log(e); // code that handles error goes here
+}
+// Prints: This error will get caught
+
+console.log('The thrown error that was caught in the try...catch statement!');
+// Prints: 'The thrown error that was caught in the try...catch statement!'
+/*-------------------------------------------*/
+
+const someVar = 'Cannot be reassigned';
+try {
+  someVar = 'Still going to try';
+} catch(e) {
+  console.log(e);
+}
+// Prints: TypeError: Assignment to constant variable.
+```
+
+You can make an error by using the error object **Error** , but this won't stop the program running. **throw**ing an error will. You can handle thrown errors with a **try..catch** statement. 
+
+## Promises
+
+Promises are JavaScript objects that represent the eventual result of an asynchronous operation.
+
+```javascript
+/*Javascript passes its OWN resolve and reject functions*/
+const executorFunction = (resolve, reject) => {
+  if (someCondition) {
+      resolve('I resolved!');
+  } else {
+      reject('I rejected!'); 
+  }
+}
+
+/*a promise takes an executor function which runs automatically when the
+constructor is called. This starts an asynchronous operation and determines how it should be settled*/
+
+const myFirstPromise = new Promise(executorFunction);
+```
+
+`resolve` is a function with one argument. Under the hood, if invoked, `resolve()` will change the promise’s status from `pending` to `fulfilled`, and the promise’s **resolved value will be set to the argument passed into `resolve()`**.
+
+`reject` is a function that takes a reason or error as an argument. Under the hood, if invoked, `reject()` will change the promise’s status from `pending` to `rejected`, and the promise’s **rejection reason will be set to the argument passed into `reject()`**.
+
+### fulfilled or rejected promises THEN
+
+```javascript
+/*this function randomly resolves or gets rejected*/
+let prom = new Promise((resolve, reject) => {
+  let num = Math.random();
+  if (num < .5 ){
+    resolve('Yay!'); //this is the resolved value
+  } else {
+    reject('Ohhh noooo!');
+  }
+});
+
+const handleSuccess = (resolvedValue) => {//handler function
+  console.log(resolvedValue);
+};
+
+const handleFailure = (rejectionReason) => {
+  console.log(rejectionReason);
+};
+
+prom.then(handleSuccess, handleFailure);
+/*THEN function is invoked FROM the promise, and we pass a success handler.*/
+
+
+
+/*----------------A Real Example!------------------------*/
+
+//app.js
+const {checkInventory} = require('./library.js'); //import library
+
+const order = [['sunglasses', 1], ['bags', 2]];
+
+// handler functions
+function handleSuccess(resolvedValue){
+  console.log(resolvedValue);
+}
+function handleFailure(rejectionReason) {
+  console.log(rejectionReason);
+}
+//attach handlers to promise returned by checkInventory
+checkInventory(order).then(handleSuccess,handleFailure);
+//Later see -> checkInventory(order).then(handleSuccess).catch(handleFailure);
+
+/*------------------library.js---------------*/
+//library.js
+const inventory = {
+    sunglasses: 1900,
+    pants: 1088,
+    bags: 1344
+};
+
+const checkInventory = (order) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => { //this is to make sure it is done asyncronously
+            let inStock = order.every(item => inventory[item[0]] >= item[1]);
+            if (inStock) {
+                resolve(`Thank you. Your order was successful.`);
+            } else {
+                reject(`We're sorry. Your order could not be completed because some items are sold out.`);
+            }
+        }, 1000); //end setTimeout
+    })//end promise
+};
+
+module.exports = { checkInventory };
+```
+
+`setTimeout()` is a Node function which delays the execution of a callback function using the event-loop. This is important to ensure asynchronicity.
+
+`.then()` called without handler, will return a promise with the same settled value as the promise it was called on if no appropriate handler was provided. This means we can also do this
+
+```javascript
+/*use one THEN for the success, then another THEN for the failure*/
+prom
+  .then((resolvedValue) => {
+    console.log(resolvedValue);
+  })
+  .then(null, (rejectionReason) => {
+    console.log(rejectionReason);
+  });
+
+/*we can instead use another word CATCH which does the same as then, but with only a failure handler*/
+prom
+  .then((resolvedValue) => {
+    console.log(resolvedValue);
+  })
+  .catch((rejectionReason) => { //this will be invoked if then fails
+    console.log(rejectionReason);
+  });
+```
+
+### Chaining and Composition
+
+Promise composition enables us to write complex, asynchronous code that’s still readable. We do this by chaining multiple `.then()`‘s and `.catch()`‘s.
+
+To use promise composition correctly, we have to remember to `return` promises constructed within a `.then()`.
+
+```javascript
+/*this allows the combination of multiple promises to that events can be done in the correct order*/
+
+firstPromiseFunction()   //this returns a promise
+.then((firstResolveVal) => { //successhandler
+  return secondPromiseFunction(firstResolveVal);
+    //return new 2nd promise with resolved value of 1st promise
+})
+.then((secondResolveVal) => {//handle second promise
+  console.log(secondResolveVal);//success handler
+});
+
+/*----------------REAL Example------------------------*/
+//app.js 
+
+const {checkInventory, processPayment, shipOrder} = require('./library.js');
+
+const order = {
+  items: [['sunglasses', 1], ['bags', 2]],
+  giftcardBalance: 79.82
+};
+
+/*Composition CHAINING, functions must return other promises!*/
+checkInventory(order)
+.then((resolvedValueArray) => {
+  // Write the correct return statement here:
+  return processPayment(resolvedValueArray);
+})
+.then((resolvedValueArray) => {
+  // Write the correct return statement here:
+  return shipOrder(resolvedValueArray);
+})
+.then((successMessage) => {
+  console.log(successMessage);
+})
+.catch((errorMessage) => {
+  console.log(errorMessage);
+});
+
+/*----------------------------library.js------------------------*/
+const store = {
+  sunglasses: {
+    inventory: 817, 
+    cost: 9.99
+  },
+  pants: {
+    inventory: 236, 
+    cost: 7.99
+  },
+  bags: {
+    inventory: 17, 
+    cost: 12.99
+  }
+};
+
+const checkInventory = (order) => {
+  return new Promise ((resolve, reject) => {
+   setTimeout(()=> {  
+   const itemsArr = order.items;  
+   let inStock = itemsArr.every(item => store[item[0]].inventory >= item[1]);
+   
+   if (inStock){
+     let total = 0;   
+     itemsArr.forEach(item => {
+       total += item[1] * store[item[0]].cost
+     });
+     console.log(`All of the items are in stock. The total cost of the order is ${total}.`);
+     resolve([order, total]);
+   } else {
+     reject(`The order could not be completed because some items are sold out.`);
+   }     
+}, generateRandomDelay());
+ });
+};
+
+const processPayment = (responseArray) => {
+  const order = responseArray[0];
+  const total = responseArray[1];
+  return new Promise ((resolve, reject) => {
+   setTimeout(()=> {  
+   let hasEnoughMoney = order.giftcardBalance >= total;
+   // For simplicity we've omited a lot of functionality
+   // If we were making more realistic code, we would want to update the giftcardBalance and the inventory
+   if (hasEnoughMoney) {
+     console.log(`Payment processed with giftcard. Generating shipping label.`);
+     let trackingNum = generateTrackingNumber();
+     resolve([order, trackingNum]);
+   } else {
+     reject(`Cannot process order: giftcard balance was insufficient.`);
+   }
+   
+}, generateRandomDelay());
+ });
+};
+
+
+const shipOrder = (responseArray) => {
+  const order = responseArray[0];
+  const trackingNum = responseArray[1];
+  return new Promise ((resolve, reject) => {
+   setTimeout(()=> {  
+     resolve(`The order has been shipped. The tracking number is: ${trackingNum}.`);
+}, generateRandomDelay());
+ });
+};
+
+
+// This function generates a random number to serve as a "tracking number" on the shipping label. In real life this wouldn't be a random number
+function generateTrackingNumber() {
+  return Math.floor(Math.random() * 1000000);
+}
+
+// This function generates a random number to serve as delay in a setTimeout() since real asynchrnous operations take variable amounts of time
+function generateRandomDelay() {
+  return Math.floor(Math.random() * 2000);
+}
+
+module.exports = {checkInventory, processPayment, shipOrder};
+```
+
+#### Avoiding Common Mistakes with Promises
+
+* nesting promises instead of chaining them
+* forgetting to return a promise (won't throw error, tricky to debug)
+
+#### promise.all()
+
+To take advantage of concurrency, we can use `Promise.all()`.
+
+```javascript
+let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
+
+myPromises
+  .then((arrayOfValues) => {
+    console.log(arrayOfValues);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+```
+
+- We declare `myPromises` assigned to invoking `Promise.all()`.
+- We invoke `Promise.all()` with an array of three promises— the returned values from functions.
+- We invoke `.then()` with a success handler which will print the array of resolved values if each promise resolves successfully. 
+- We invoke `.catch()` with a failure handler which will print the first rejection message if any promise rejects. 
+
+```javascript
+//Example app.js
+const {checkAvailability} = require('./library.js');
+
+/*-------------Handlers---------------------------------*/
+const onFulfill = (itemsArray) => {
+  console.log(`Items checked: ${itemsArray}`);
+  console.log(`Every item was available from the distributor. Placing order now.`);
+};
+
+const onReject = (rejectionReason) => {
+	console.log(rejectionReason);
+};
+
+//----------------Collect promises------------------
+
+let checkSunglasses = checkAvailability('sunglasses','Favorite Supply Co.');
+let checkPants = checkAvailability('pants','Favorite Supply Co.');
+let checkBags = checkAvailability('bags','Favorite Supply Co.');
+
+//--------------composition/chaining of promises---------------------
+const promiseArray = [checkSunglasses, checkPants, checkBags];
+Promise.all(promiseArray).then(onFulfill).catch(onReject);
+
+
+
+
+
+
+/*-----------library.js-------------------------*/
+
+//this randomly decides if an item is available or not
+const checkAvailability = (itemName, distributorName) => {
+    console.log(`Checking availability of ${itemName} at ${distributorName}...`);
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (restockSuccess()) {
+                console.log(`${itemName} are in stock at ${distributorName}`)
+                resolve(itemName);
+            } else {
+                reject(`Error: ${itemName} is unavailable from ${distributorName} at this time.`);
+            }
+        }, 1000);
+    });
+};
+
+module.exports = { checkAvailability };
+
+
+// This is a function that returns true 80% of the time
+// We're using it to simulate a request to the distributor being successful this often
+function restockSuccess() {
+    return (Math.random() > .2);
+}
+
+```
+
+## Async Await (ES8)
+
+Though async can use promise syntax then catch, there is no need to declare a new Promise object.
+
+ ```javascript
+/*Syntax */
+async function myFunc() { // function declaration
+  // Function body here
+};
+myFunc();
+
+const myFunc = async () => { // function expression
+  // Function body here
+};
+myFunc();
+/*----------------------------------------------*/
+async function fivePromise() { 
+  return 5;
+}
+
+fivePromise()
+.then(resolvedValue => {
+    console.log(resolvedValue);
+  })  // Prints 5
+
+/*In the example above, even though we return 5 inside the function body, what’s actually returned when we invoke fivePromise() is a promise with a resolved value of 5. */
+ ```
+
+`async` functions always return a promise. This means we can use traditional promise syntax, like `.then()` and `.catch` with our `async` functions. An `async` function will return in one of three ways:
+
+- If **nothing returned** from function, it will **return a promise with resolved value of `undefined`**.  nothing --> promise resolved to undefined
+- If **non-promise value returned** from function, it will return **promise resolved to that value**. value --> promise resolved to value
+- If a **promise is returned** from the function, it will simply **return that promise** promise --> promise
+
+#### differences between promise and async
+
+```javascript
+//----------------DIFFERENCES BETWEEN METHODS------------------------------
+const fs = require('fs');
+const promisifiedReadfile = require('./promisifiedReadfile');
+      
+// -------Here we use fs.readfile() and callback functions:-------
+fs.readFile('./file.txt', 'utf-8', (err, data) => {
+  if (err) throw err;
+  let firstSentence = data;
+  fs.readFile('./file2.txt',  'utf-8', (err, data) => {
+    if (err) throw err;
+    let secondSentence = data;
+    console.log(firstSentence, secondSentence)
+  });
+});
+
+// Here we use native promises with our "promisified" version of readfile:
+let firstSentence promisifiedReadfile('./file.txt', 'utf-8')
+  .then((data) => {
+    firstSentence = data;
+    return promisifiedReadfile('./file2.txt', 'utf-8')
+  })
+  .then((data) => {
+    let secondSentence = data;
+    console.log(firstSentence, secondSentence)
+  })
+  .catch((err) => {console.log(err)});
+
+// Here we use promisifiedReadfile() again but instead of using the native promise .then() syntax, we declare and invoke an async/await function:
+async function readFiles() {
+  let firstSentence = await promisifiedReadfile('./file.txt', 'utf-8')
+  let secondSentence = await promisifiedReadfile('./file2.txt', 'utf-8')
+  console.log(firstSentence, secondSentence)
+}
+readFiles()
+/*----------------------------------EXAMPLE 2-------------------------------------------*/
+    
+function withConstructor(num){
+  return new Promise(
+    (resolve, reject) => { //executor function 
+      if (num === 0) {resolve('zero');} //resolve
+      else {resolve('not zero');} //resolve
+      }
+    )
+}
+
+withConstructor(0) //passes 0 to new promise
+  .then((resolveValue) => { //resolves to string 'zero'
+  console.log(` withConstructor(0) returned a promise which resolved to: ${resolveValue}.`);
+})
+
+// SAME CODE AS ASYNC
+
+async function withAsync(num) {
+  return num == 0 ? 'zero' : 'not zero'; // return promise with resolved value
+}
+/*This is possible because whatever is returned from async is a promise, so the promise declaration is not necessary*/
+
+withAsync(100)
+  .then((resolveValue) => {
+  console.log(` withAsync(100) returned a promise which resolved to: ${resolveValue}.`);
+})
+
+
+
+```
+
 
 
 # Advanced CSS
