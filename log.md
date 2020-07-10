@@ -141,3 +141,13 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: It's quite tough this intermediate JavaScript, but I'm really learning about things I knew nothing about! I wonder how much is sticking! I'm happy to hear my friend is in no rush to do the project, and that I can learn with a bit more time, which I really need. I'm pushing ahead with all my resources on the web developer course in code academy. On the positive aspect I quite enjoy mingling with the people on tweeter! :) There are people at all levels, from beginners to experts, so sometimes I feel a bit crap, other times I'm actually able to help someone further behind :)
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+### Day 17: July 10th, 2020
+
+**Today's Progress**: Today I continued to learned about error handling, promises and async await... I think I got it!
+
+**Thoughts: For the last 2 days I just felt I kept hitting my head against a wall, doubting whether I'd ever be able to become a developer, it makes me laugh now after I think I've understood anything how I could think such a thing!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
