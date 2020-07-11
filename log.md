@@ -151,3 +151,14 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: For the last 2 days I just felt I kept hitting my head against a wall, doubting whether I'd ever be able to become a developer, it makes me laugh now after I think I've understood anything how I could think such a thing!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+### Day 20: July 11th, 2020
+
+**Today's Progress**: Today I continued to learned HTTP requests using XHR objects! Didn't imagine this chapter would be difficult, but manageable. 
+
+**Thoughts: I'm very excited that I'm starting to use APIs in codeacademy, and so understanding how it all links together, can't way to go on!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+

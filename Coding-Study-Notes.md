@@ -2120,6 +2120,253 @@ Promise all is good when we have multiple promises that don't depend on each oth
 
 
 
+## HTTP TCP AJAX
+
+HTTP is a language. TCP is the transport. 
+
+Asynchronous JavaScript and XML (AJAX), enables requests to be made after the initial page load.
+
+Writing GET and POST requests with XHR objects and vanilla JavaScript requires constructing the XHR object using `new`, setting the `responseType`, creating a function that will handle the response object, and opening and sending the request.
+
+To add a query string to a URL endpoint you can use `?` and include a parameter.
+
+To provide additional parameters, use `&` and then include a key-value pair, joined by `=`. 
+
+Determining how to correctly write the requests and how to properly implement them  requires carefully reading the documentation of the API with which  you’re working.
+
+### XHR GET Requests
+
+Similarly, the XMLHttpRequest (XHR) API, named for XML, can be used to  make many kinds of requests and supports other forms of data. 
+
+GET requests only request information from other sources. GET requests can be written using an XMLHttpRequest object and vanilla JavaScript.
+
+```javascript
+/// XMLHttpRequest GET
+
+const xhr = new XMLHttpRequest(); // create a new XMLHttpReques object
+const url = 'http://api-to-call.com/endpoint';
+
+//Code that handles response
+xhr.responseType = 'JSON'; //javascript object notation
+xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE){//if request finished
+        //code to execute with response
+        return xhr.response; 
+        // this will contain data we're getting back from request
+    }
+};
+
+xhr.open('GET',url); //opens request
+xhr.send(); //send the xhr object to specified url
+
+```
+
+`.open()` creates a new request and the arguments passed in determine the type and URL of the request. 
+
+#### XHR API call
+
+```javascript
+// Information to reach API
+const url = 'https://api.datamuse.com/words?';
+const queryParams = 'rel_jjb=';
+const additionalParams = '&topics=';
+
+// Selecting page elements
+const inputField = document.querySelector('#input');
+const topicField = document.querySelector('#topic');
+const submit = document.querySelector('#submit');
+const responseField = document.querySelector('#responseField');
+
+// AJAX function
+const getSuggestions = () => {
+  //compose query to API
+  const wordQuery = inputField.value;
+  const topicQuery = topicField.value;
+  const endpoint = `${url}${queryParams}${wordQuery}${additionalParams}${topicQuery}`;
+  
+  //compose / pack the object to send to the server / API
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      renderResponse(xhr.response);
+    }
+  }
+  
+  xhr.open('GET', endpoint);
+  xhr.send(); // send the object
+}
+
+// Clear previous results and display results to webpage
+const displaySuggestions = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  }
+  getSuggestions();
+}
+
+submit.addEventListener('click', displaySuggestions);
+
+
+//-------------helperFunction.js
+
+/ Formats response to look presentable on webpage
+const renderResponse = (res) => {
+  // handles if res is falsey
+  if(!res){
+    console.log(res.status)
+  }
+  // in case res comes back as a blank array
+  if(!res.length){
+    responseField.innerHTML = "<p>Try again!</p><p>There were no suggestions found!</p>"
+    return
+  }
+
+  // creating an array to contain the HTML strings
+  let wordList = []
+  // looping through the response and maxxing out at 10
+  for(let i = 0; i < Math.min(res.length, 10); i++){
+    // creating a list of words
+    wordList.push(`<li>${res[i].word}</li>`)
+  }
+  // joins the array of HTML strings into one string
+  wordList = wordList.join("")
+
+  // manipulates responseField to render the modified response
+  responseField.innerHTML = `<p>You might be interested in:</p><ol>${wordList}</ol>`
+  return
+}
+
+// Renders response before it is modified
+const renderRawResponse = (res) => {
+  // taking the first 10 words from res
+  let trimmedResponse = res.slice(0, 10)
+  //manipulates responseField to render the unformatted response
+  responseField.innerHTML = `<text>${JSON.stringify(trimmedResponse)}</text>`
+}
+
+// Renders the JSON that was returned when the Promise from fetch resolves.
+const renderJsonResponse = (res) => {
+  // creating an empty object to store the JSON in key-value pairs
+  let rawJson = {}
+  for(let key in response){
+    rawJson[key] = response[key]
+  }
+  // converting JSON into a string and adding line breaks to make it easier to read
+  rawJson = JSON.stringify(rawJson).replace(/,/g, ", \n")
+  // manipulates responseField to show the returned JSON.
+  responseField.innerHTML = `<pre>${rawJson}</pre>`
+}
+```
+
+
+
+### XHR POST Requests
+
+POST methods can introduce new information to other sources in addition to requesting it.
+
+````javascript
+
+const xhr = new XMLHttpRequest(); // creates a new XHR object
+const url = 'http://api-to-call.com/endpoint';
+const data = JSON.stringify({id: '200'}); //converts data to string
+
+//response handling
+xhr.responseType = 'json';
+xhr.onreadystatechange = () => {
+    if(xhr.readyState === XMLHttpRequest.DONE){
+        //code to execute with response
+    }
+};
+//transmitting request
+xhr.open('POST',url); //opens the request
+xhr.send(data); // sends object
+````
+
+
+
+#### XHR API call POST
+
+```javascript
+// Information to reach API
+const apiKey = '4fdeb0b541614931ac0d38bd0b490d28'; //API key
+const url = 'https://api.rebrandly.com/v1/links';
+
+// Some page elements
+const inputField = document.querySelector('#input');
+const shortenButton = document.querySelector('#shorten');
+const responseField = document.querySelector('#responseField');
+
+// AJAX functions
+const shortenUrl = () => {
+  //obtain and compose data in API readable format
+  const urlToShorten = inputField.value;
+  const data = JSON.stringify({destination: urlToShorten});
+  
+  //package data for sending in XHR format
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
+
+  xhr.onreadystatechange = () => {
+    if(xhr.readyState === XMLHttpRequest.DONE) {
+      renderResponse(xhr.response); // action when object is ready
+    }
+  }
+
+ // final setup
+  xhr.open('POST',url);
+  //necessary for rebrandly API
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.setRequestHeader('apikey',apiKey);
+  xhr.send(data); // send everything
+}
+
+
+// Clear page and call AJAX functions
+const displayShortUrl = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  }
+  shortenUrl();
+}
+
+shortenButton.addEventListener('click', displayShortUrl);
+
+//-------------------helperFunction.js
+
+// Manipulates responseField to render a formatted and appropriate message
+const renderResponse = (res) => {
+  // Displays either message depending on results
+  if(res.errors){
+    responseField.innerHTML = "<p>Sorry, couldn't format your URL.</p><p>Try again.</p>";
+  } else {  
+    responseField.innerHTML = `<p>Your shortened url is: </p><p> ${res.shortUrl} </p>`;
+  }
+}
+
+// Manipulates responseField to render an unformatted response
+const renderRawResponse = (res) => {
+  // Displays either message depending on results
+  if(res.errors){  
+    responseField.innerHTML = "<p>Sorry, couldn't format your URL.</p><p>Try again.</p>";
+  } else {
+    // Adds line breaks for JSON
+    let structuredRes = JSON.stringify(res).replace(/,/g, ", \n");
+    structuredRes = `<pre>${structuredRes}</pre>`;
+    responseField.innerHTML = `${structuredRes}`;
+  }
+}
+
+```
+
+
+
+
+
+
+
 
 
 # Advanced CSS
