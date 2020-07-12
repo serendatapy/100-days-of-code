@@ -2260,6 +2260,101 @@ const renderJsonResponse = (res) => {
 }
 ```
 
+### fetch() GET Requests - Alternative to XHR
+
+The `fetch()` function:
+
+- Creates a request object that contains relevant information that an API needs.
+- Sends that request object to the API endpoint provided.
+- Returns a promise that ultimately resolves to a response object, which contains the status of the promise with information the API sent back.
+
+```javascript
+//Fetch GET boilerplate
+
+fetch('http://api-to-call.com/endpoint').then( // success handler
+	response => {
+        if (response.ok){//convert response to JSON object
+            return response.json();
+        }
+         //handle errors - if response is falsy
+        throw new Error('request failed!');
+        //error handler - if we cannot reach endpoint at all-network error
+    }, networkError => console.log(networkError.message)
+).then(jsonResponse => { //with returned promise success handler
+    // code to execute with jsonResponse
+    return jsonResponse;
+});
+
+
+```
+
+#### fetch() API request
+
+```javascript
+// Information to reach API
+const url = 'https://api.datamuse.com/words';
+const queryParams = '?sl=';
+
+// Selects page elements
+const inputField = document.querySelector('#input');
+const submit = document.querySelector('#submit');
+const responseField = document.querySelector('#responseField');
+
+// AJAX function
+const getSuggestions = () => {
+//compose query to API  
+  const wordQuery = inputField.value;
+  const endpoint = `${url}${queryParams}${wordQuery}`;
+
+//compose / pack the object to send to the server / API  
+  fetch(endpoint, {cache: 'no-cache'}).then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Request failed!');
+  }, networkError => {
+    console.log(networkError.message)
+  }).then(jsonResponse =>{
+    renderResponse(jsonResponse);
+  })
+}
+
+/*OLD AJAX FUNCTION WITH XHR*/
+const getSuggestions = () => {
+  //compose query to API
+  const wordQuery = inputField.value;
+  const endpoint = `${url}${queryParams}${topicQuery}`;
+  
+  //compose / pack the object to send to the server / API
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = 'json';
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      renderResponse(xhr.response);
+    }
+  }
+  
+  xhr.open('GET', endpoint);
+  xhr.send(); // send the object
+}
+/*END -----OLD AJAX FUNCTION WITH XHR*/
+
+
+
+
+// Clears previous results and display results to webpage
+const displaySuggestions = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  }
+  getSuggestions();
+};
+
+submit.addEventListener('click', displaySuggestions);
+
+```
+
 
 
 ### XHR POST Requests
@@ -2283,6 +2378,8 @@ xhr.onreadystatechange = () => {
 xhr.open('POST',url); //opens the request
 xhr.send(data); // sends object
 ````
+
+
 
 
 
@@ -2360,6 +2457,30 @@ const renderRawResponse = (res) => {
 }
 
 ```
+
+### fetch() POST Requests - Alternative to XHR
+
+```javascript
+//fetch POST boiler plate
+fetch('http://api-to-call.com/endpoint', {
+    method: 'POST', //this is a POST request
+    body: JSON.stringify({id:'200'})}).then( //what type of info in POST
+    response => {
+        if(response.ok){
+            return response.json();
+        }
+        throw new Error('Request failed!');//case status error
+    },networkError => { //case error with network (down,unreachable)
+        console.log(networkError.message);
+    }).then(jsonResponse => {
+    //code to execute with jsonResponse
+    console.log(jsonResponse); // view json returned previously
+});
+```
+
+#### fetch() POST Requests API
+
+
 
 
 
