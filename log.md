@@ -170,3 +170,11 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+### Day 20: July 13th, 2020
+
+**Today's Progress**: Finally finished HTTP requests. Now I'm finally ready to start looking at react :D 
+
+**Thoughts: Never imagined HTTP requests would take so long, but it has been such an important lesson. Definitely need to spend more time on it, as I managed to connect code to API and look through API documentation, it was all very exciting to have lots of information from external databases readily available in such a way. Amazing indeed! And I know I've just touched the surface, and haven't quite got my head around them yet, but truly very interesting :D also understood that making good APIs is a definite way of making money online. You need to have the idea though!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+

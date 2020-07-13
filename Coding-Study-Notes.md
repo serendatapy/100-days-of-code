@@ -2355,6 +2355,77 @@ submit.addEventListener('click', displaySuggestions);
 
 ```
 
+### async fetch GET Request
+
+```javascript
+//async await GET boilerplate
+//const getData = async () => {
+async function getData() {
+    try {
+        //send request
+        const response = await fetch('https://api-to-call.com/endpoint');
+        //handle successful response
+        if(response.ok) {
+            //Code to execute with jsonResponse
+            const jsonResponse = await response.json();
+        }
+        //handle unsuccessful response 
+        throw new Error('Request failed!');
+    } catch (error){
+        console.log(error);
+    }
+}
+```
+
+
+
+#### async fetch API GET Request
+
+
+
+```javascript
+// Information to reach API
+const url = 'https://api.datamuse.com/words?';
+const queryParams = 'rel_jja=';
+
+// Selecting page elements
+const inputField = document.querySelector('#input');
+const submit = document.querySelector('#submit');
+const responseField = document.querySelector('#responseField');
+
+// AJAX function
+// Code goes here
+const getSuggestions = async () => {
+  const wordQuery = inputField.value;
+  const endpoint = `${url}${queryParams}${wordQuery}`;
+  try{
+    const response = await fetch(endpoint,{cache: 'no-cache'});
+    if(response.ok){
+      const jsonResponse = await response.json();
+      renderResponse(jsonResponse);
+    }
+
+  }catch(error){
+    console.log(error);
+  }
+}
+
+
+// Clear previous results and display results to webpage
+const displaySuggestions = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild)
+  }
+  getSuggestions();
+}
+
+submit.addEventListener('click', displaySuggestions);
+
+```
+
+
+
 
 
 ### XHR POST Requests
@@ -2480,11 +2551,165 @@ fetch('http://api-to-call.com/endpoint', {
 
 #### fetch() POST Requests API
 
+```javascript
+// Information to reach API
+const apiKey = '4fdeb0b541614931ac0d38bd0b490d28';
+const url = 'https://api.rebrandly.com/v1/links';
+
+// Some page elements
+const inputField = document.querySelector('#input');
+const shortenButton = document.querySelector('#shorten');
+const responseField = document.querySelector('#responseField');
+
+// AJAX functions
+const shortenUrl = () => {
+  const urlToShorten = inputField.value;
+  const data = JSON.stringify({destination: urlToShorten});
+  
+  fetch(url, {method: 'POST',
+  headers: {
+    'Content-type': 'application/json',
+    'apikey': apiKey
+  }, 
+  body: data // what is transfered to server
+  }).then(
+    response => {
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error('Request failed!');
+  }, networkError => {
+    console.log(networkError.message)
+  }).then(jsonResponse => {
+    renderResponse(jsonResponse);
+  })
+
+}
+
+// Clear page and call AJAX functions
+const displayShortUrl = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild)
+  }
+  shortenUrl();
+}
+
+shortenButton.addEventListener('click', displayShortUrl);
+
+/*-----------------helperFunction.js----------------*/
+
+// Manipulates responseField to render a formatted and appropriate message
+const renderResponse = (res) => {
+  // Displays either message depending on results
+  if(res.errors){
+    responseField.innerHTML = "<p>Sorry, couldn't format your URL.</p><p>Try again.</p>";
+  } else {  
+    responseField.innerHTML = `<p>Your shortened url is: </p><p> ${res.shortUrl} </p>`;
+  }
+}
+
+// Manipulates responseField to render an unformatted response
+const renderRawResponse = (res) => {
+  // Displays either message depending on results
+  if(res.errors){  
+    responseField.innerHTML = "<p>Sorry, couldn't format your URL.</p><p>Try again.</p>";
+  } else {
+    // Adds line breaks for JSON
+    let structuredRes = JSON.stringify(res).replace(/,/g, ", \n");
+    structuredRes = `<pre>${structuredRes}</pre>`;
+    responseField.innerHTML = `${structuredRes}`;
+  }
+}
+
+// Renders the JSON that was returned when the Promise from fetch resolves.
+const renderJsonResponse = (response) => {
+  // Creates an empty object to store the JSON in key-value pairs
+  let rawJson = {}
+  for(let key in response){
+    rawJson[key] = response[key]
+  }
+  // Converts JSON into a string and adding line breaks to make it easier to read
+  rawJson = JSON.stringify(rawJson).replace(/,/g, ", \n")
+  // Manipulates responseField to show the returned JSON.
+  responseField.innerHTML = `<pre>${rawJson}</pre>`
+}
+
+```
 
 
 
+### async fetch POST Requests
 
+```javascript
+//async function getData()
+const getData = async () => {
+  try{
+    const response = await fetch('https://api-to-call.com/endpoint',{
+      method: 'POST',
+      body: JSON.stringify({id: 200})
+    });
+    if(response.ok){
+      const jsonResponse = await response.json();
+      return jsonResponse;
+    }
+    throw new Error('Request failed!');
 
+  } catch(error) {
+    console.log(error);
+  }
+}
+```
+
+#### async fetch POST API Requests
+
+```javascript
+// information to reach API
+const apiKey = '4fdeb0b541614931ac0d38bd0b490d28';
+const url = 'https://api.rebrandly.com/v1/links';
+
+// Some page elements
+const inputField = document.querySelector('#input');
+const shortenButton = document.querySelector('#shorten');
+const responseField = document.querySelector('#responseField');
+
+// AJAX functions
+// Code goes here
+const shortenUrl = async () => {
+  //prepare data for api call
+  const urlToShorten = inputField.value;
+  const data = JSON.stringify({destination: urlToShorten});
+  try{
+    const response = await fetch(url,{
+      method: 'POST',
+      body: data,
+      headers:{
+        'Content-type': 'application/json',
+        'apikey': apiKey
+      }
+    });
+    if(response.ok){
+     const jsonResponse = await response.json();
+     renderResponse(jsonResponse);
+
+    }
+
+  } catch(error){
+    console.log(error);
+  }
+}
+
+// Clear page and call AJAX functions
+const displayShortUrl = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  }
+  shortenUrl();
+}
+
+shortenButton.addEventListener('click', displayShortUrl);
+```
 
 
 
@@ -2745,15 +2970,22 @@ No- The value becomes the initial value(for example padding becomes 0px)
 
 JavaScript concepts that helps to know when starting with React: 
 
-- [ ] ES6 classes
+- [x] ES6 classes
 - [x]  Arrow functions
-- [ ] Let/const 
+- [x] Let/const 
 - [ ] Spread/Rest operators 
 - [ ] Destructuring 
 - [x] Map
-- [ ] Reduce
+- [x] Reduce
 - [x] Filter 
 - [x] Ternary operator 
-- [ ] Import and Export statements 
+- [x] Import and Export statements 
+- [x] AJAX
 - [x] Functions 
 - [ ] High order functions
+
+-----------------------------------------------------------------------------------------
+
+## Further Resouces
+
+https://github.com/gyazo/Gyazo-for-Linux
