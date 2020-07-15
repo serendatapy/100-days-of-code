@@ -724,9 +724,115 @@ snoopy.eatTooManyTreats(); // increments weight
 console.log(snoopy.weight); // 21
 ```
 
-#### Destructuring ES6
+## Destructuring ES6
 
-##### Property Value Shorthand ES6 
+### Destructuring Objects
+
+#### Obtaining values from objects
+
+Note: **variable names** must be the **same** as **key names** to work
+
+```javascript
+let personOne = {
+    name: 'kyle',
+    age: 24,
+    address: {
+        city: 'Somewhere',
+        state: 'One of them'
+    }
+}
+
+let personTwo = {
+    name: 'Sally',
+    age: 32,
+    address: {
+        city: 'Nowhere',
+        state: 'None of them'
+    }
+}
+
+let {name,age} = PersonOne;
+/* is equivalent to
+let name = PersonOne.name
+let age = PersonOne.age
+*/
+let {name: firstName = 'Unnamed', age: oldAge, ...rest} = PersonTwo;
+/* is equivalent to
+let firstName = PersonTwo.name  (will give 'Unnamed' default value if key not present)
+let oldAge = PersonTwo.age
+let rest = //everything else inside object as an object
+*/
+let {name: myName, age: myAge, address: { city } } = PersonTwo;
+/* is equivalent to
+let myName = PersonTwo.name 
+let myAge = PersonTwo.age
+let address = PersonTwo.address.city
+*/
+
+
+```
+
+#### Combine Objects
+
+```javascript
+let personOne = {
+    age: 24,
+    address: {
+        city: 'Somewhere',
+    }
+}
+
+let personTwo = {
+    name: 'Sally',
+    age: 32,
+    address: {
+        state: 'None of them'
+    }
+}
+
+let personThree = {...personOne, ...personTwo}
+/*This is equivalent to
+getting all the information from personOne into personThree
+getting all the information from personTwo into personThree
+where there were already existing keys, overwrite.
+
+personThree = {
+let personOne = {
+    name: 'Sally',
+    age: 32,
+    address: {
+        city: 'Somewhere',
+        state: 'None of them'
+    }
+}
+*/
+```
+
+#### Using objects destructured as arguments
+
+```javascript
+let personOne = {
+    name: 'kyle',
+    age: 24,
+    address: {
+        city: 'Somewhere',
+        state: 'One of them'
+    }
+}
+
+function printUser({name,age,favoriteFood = 'Watermelon'}){
+    console.log(`Name is: ${name}. Age is ${age}. Food is ${favoriteFood}`)
+}
+
+/* is equivalent and better than:
+function printUser(user){
+    console.log(`Name is: ${user.name}. Age is ${user.age}. Food is user.favoriteFood`)
+}
+*/
+printUser(personOne)
+```
+
+#### Property Value Shorthand ES6 
 
 ```javascript
 /*When the property name is the same as the value, we can...*/
@@ -742,7 +848,7 @@ const monsterFactory = (name, age, energySource, catchPhrase) => {
 };
 ```
 
-##### destructured assignment
+#### destructured assignment
 
 ```javascript
 const vampire = {
@@ -762,6 +868,44 @@ console.log(residence); // Prints 'Transylvania'
 const { residence } = vampire; 
 console.log(residence); // Prints 'Transylvania'
 ```
+
+### Destructuring Arrays
+
+#### obtaining values from arrays
+
+```java
+const alphabet = ['A','B','C','D','E','F'];
+const numbers = ['1','2','3','4','5','6'];
+
+let [x,y] = alphabet;
+/*
+let x = alphabet[0]; // 'A'
+let y = alphabet[1]; // 'B'
+*/
+let [x,,,z,...rest] = alphabet;
+/*
+let x = alphabet[0]; // 'A'
+let z = alphabet[3]; // 'D'
+let rest = [alphabet[4],alphabet[5]] // [ 'E' , 'F' ]
+*/
+```
+
+#### Destructured arrays and functions
+
+```javascript
+function sumAndMultiply(a, b){ 
+return [a+b,a*b]
+}
+
+let [sum, multiply, division = 'No Division'] = sumAndMultiply(2,3)
+/*
+the return value is an array with 2 numbers, these are divided into
+SUM and MULTIPLY let variables. 
+DIVISION uses a default value, if third argument is not returned.
+*/
+```
+
+
 
 ### Classes
 
@@ -2711,7 +2855,86 @@ const displayShortUrl = (event) => {
 shortenButton.addEventListener('click', displayShortUrl);
 ```
 
+## Transpilation With Babel - COMPATABILITY
 
+```bash
+/*Create a JSON file with details about the project, for the moment fill in name and description*/
+
+npm init
+
+/*Install required packages. The D flag adds babel to the devDependencies in the JSON file created earlier*/
+npm install babel-cli -D
+npm install babel-preset-env -D
+
+/*create a file to specify what javascript needs to be converted*/
+touch .babelrc
+/*opening the file enter the object:
+{
+  "presets": ["env"] 
+}
+env means ES6+*/
+
+/*open project's JSON file and add the following:
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "babel src -d lib"
+}
+*/
+
+/*creates a new ES5 code file by running build with specified parameters
+from the JSON file above*/
+npm run build
+```
+
+The build script in the JSON file instructs:
+
+- `babel` — The Babel command call responsible for transpiling code.
+- `src` — Instructs Babel to transpile all JavaScript code inside the **src** directory.
+- `-d` — Instructs Babel to write the transpiled code to a directory. 
+- `lib` — Babel writes the transpiled code to a directory called `lib`. 
+
+https://caniuse.com/ for general compatibility questions on JS ,CSS ,HTML features
+
+Instructions
+
+1. Initialize your project using `npm init` and create a directory called **src**
+
+2. Install babel dependencies by running
+
+   ```
+   npm install babel-cli -D
+   npm install babel-preset-env -D
+   ```
+
+3. Create a 
+
+   .babelrc
+
+    file inside your project and add the following code inside it:
+
+   ```
+   {
+     "presets": ["env"]
+   }
+   ```
+
+4. Add the following script to your 
+
+   ```
+   scripts
+   ```
+
+    object in 
+
+   package.json
+
+   :
+
+   ```
+   "build": "babel src -d lib"
+   ```
+
+5. Run `npm run build` whenever you want to transpile your code from your **src** to **lib** directories.
 
 
 

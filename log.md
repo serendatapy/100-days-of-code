@@ -178,3 +178,19 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+### Day 21: July 14th, 2020
+
+**Today's Progress**: Studied transpilation and cross browser compatability
+
+**Thoughts: This was probably the last thing I thought I would learn about :D super interesting!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 22: July 15th, 2020
+
+**Today's Progress**: Started to learn about REACT... it's taking ages XD but as everyone says, if it was easy, everyone would do it!
+
+**Thoughts: I just realised now that I forgot to log my progress yesterday... but I did code! It's just not gonna show up in GIT. I'm learning so much at the moment, I really hope that by the time I get to the bootcamp, they will really take me to 100%. In any case being over-prepared certainly can't be a disadvantage. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
