@@ -2938,6 +2938,384 @@ Instructions
 
 
 
+# React
+
+## Get Started
+
+- [ ] Install node js
+- [ ] npx create-react-app
+- [ ] npm start 
+- [ ] Clean up all unnecessary code
+
+## JSX - How is React different from HTML and Javascript
+
+* In react you can just put the HTML inside javascript without having to inject it in any special way
+* The ( ) after the return in a component allows us to indent the code
+* `<></>` Are JSX fragments, which allow us to return multiple HTML elements as 1, which is what we're allowed to do
+* JSX is a little different from HTML. For example with the keyword `class`, we need to use `className`, as `Class` is a reserved word in JS.
+* Another difference, ALL tags have to be Self closed `<input />`or closed on purpose `<input></input>` even when HTML doesn't usually require it.
+* Thanks to react, it's not necessary to do all the JavaScript calls such as getElementById().etc. You can have dynamic HTML off the bat!
+
+
+
+``` java
+//App.js
+import React from 'react';
+
+function App() {
+  return (
+    <>
+      <div>
+        <button>-</button>
+        <span>0</span>
+        <button>+</button>
+      </div>
+    </>
+  )
+}
+
+export default App;
+```
+
+
+
+## Creating a Class Component
+
+```react
+import React, { Component } from 'react'
+
+/*React allows us to write JSX, Component allows us to create a class
+Being a class component, we're able to call render*/
+
+export default class Counter extends Component {
+  render() {
+    return (
+      <>
+        <div>
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+      </>
+    )
+  }
+}
+
+/*Then on App.js, we're able to do this*/
+
+import React from 'react';
+import Counter from './Counter'
+
+function App() {
+  return (
+    <Counter />
+  )
+}
+
+export default App;
+```
+
+
+
+## Using props
+
+``` react
+import React from 'react';
+import Counter from './Counter'
+
+function App() {
+  return (
+    <Counter initialCount={0}/>
+  )
+}
+
+/*Inside the JSX brackets we can pass in values, in this case initialCount.
+By using curly braces, we can pass in javascript*/
+
+export default App;
+
+/*------------------Counter.js-------------------------*/
+
+import React, { Component } from 'react'
+
+/*We can then use the passed in variables using THIS.PROPS.variableWePassedIn
+This gives us access to all variables passed in!*/
+
+export default class Counter extends Component {
+  render() {
+    return (
+      <>
+        <div>
+          <button>-</button>
+          <span>{this.props.initialCount}</span>
+          <button>+</button>
+        </div>
+      </>
+    )
+  }
+}
+```
+
+## States - Make websites Reactive
+
+### Class Components
+
+```react
+/*------------------Counter.js-------------------------*/
+import React, { Component } from 'react'
+
+//React allows us to write JSX, Component allows us to create a class
+
+export default class Counter extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      count: props.initialCount
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <div>
+          <button onClick={()=> this.changeCount(-1)}>-</button>
+          <span>{this.state.count}</span>
+          <button onClick={()=> this.changeCount(+1)}>+</button>
+        </div>
+      </>
+    )
+  }
+
+  changeCount(amount) {
+    this.setState(prevState => { 
+      return {count: this.state.count + amount }
+    })
+    //this.setState({ count: this.state.count + amount })
+  }
+}
+  /*Every single class compoment has a THIS.SETSTATE, which takes an object
+    and the object is going to be added in to the constructor's this.state
+    by using Object.assign behind the scenes. This overwrites ONLY keys passed in
+    
+    However this.setState is an asynchronous function, so if we're
+    changing the same thing twice in 1 call, it won't be done
+    sequentially. 
+
+    To make sure we have a sequential change, we use PREVSTATE function
+    The function version makes sure we're using the previous state
+    If we don't need the previous state, say we want to reset the counter
+    then the non function version is fine. 
+    
+    */
+```
+
+### Functional Components - better alternative to Class Components
+
+```react
+import React, {useState} from 'react'
+
+export default function CounterHooks(/*props*/{initialCount}) {
+
+  const [count, setState] = useState(initialCount)
+  //const [count, setState] = useState(initialCount)
+  /*Potentially could have as many lines as arguments passed, breaking up the assignment and state updates*/
+
+  return (
+    <div>
+          <button onClick ={ ()=> setState(prevCount => prevCount - 1)}>-</button>
+          <span>{/*props.initialCount*/count}</span>
+          <button onClick = {()=> setState(prevCount =>prevCount+ 1)}>+</button>
+    </div>
+  )
+}
+
+
+
+/* state as an object
+return (
+  <div>
+        <button onClick ={
+          ()=> setState(prevState => {
+             return {count: state.count - 1}
+            })}>-</button>
+        <span>{state.count}</span>
+        <button onClick = {()=> setState(prevState => {
+             return {count: state.count + 1}
+            })}>+</button>
+  </div>
+)*/
+
+/*With functional compoments, we have all passed in variables in
+props object, and we can use object deconstruction to get at them
+individually if necessary
+
+Since functional Components CAN'T have states, we call in useState
+function as a hook, to allow us to have state functionality.
+
+useState function takes in our initial state, in this case
+{count: initialCount} returns our state as an array
+
+Deconstructing the array, we have 2 values
+Our state as assigned, in this case its {count: initialCount}
+A function to change that state
+These variables however, could have any other name
+
+useState is really very similar to the constructor this.state =
+
+Hooks really can use ANY kind of data as a state, so instead of using
+an object, we can just use the direct value (in this case the number)
+
+How is the information being saved?
+Hooks rely on you CALLING the HOOKS always in the same order
+This means
+-Cannot call them in Conditionals
+-Cannot call them in Loops
+-Cannot put them in functions
+
+You must call them at the TOP of the hook function (assign them)
+*/
+```
+
+## Context
+
+#### Context in Classes
+
+```react
+/*Usage in CLASS components*/
+
+import React, { useState } from 'react';
+import Counter from './Counter'
+import CounterHooks from './CounterHooks'
+
+export const ThemeContext = React.createContext();
+//consumer = provider
+
+function App() {
+  const [theme, setTheme] = useState('red')
+  return (
+    <ThemeContext.Provider value={{ backgroundColor: theme }}>
+    Counter
+    <Counter initialCount={0}/>
+    Counter Hooks
+    <CounterHooks initialCount={0}/>
+    <button onClick = {()=> setTheme(prevTheme => {
+      return prevTheme === 'red' ? 'blue' : 'red'})}>Toggle Theme</button>
+    </ThemeContext.Provider>
+  )
+}
+
+export default App;
+
+/*
+Themes are a way of setting global variables, something that CAN'T
+be done in react!
+
+This way, all components within a theme, however deeply nested,
+will have access to those variables.
+
+Everything within ThemeContext will have access to values provided
+*/
+
+/*---------------------------Counter.js------------------*/
+import React, { Component } from 'react'
+import {ThemeContext} from './App'
+
+//React allows us to write JSX, Component allows us to create a class
+
+export default class Counter extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      count: props.initialCount
+    }
+  }
+
+  render() {
+    return (
+      <ThemeContext.Consumer>
+        {style => (
+
+          <div>
+            <button style = {style} onClick={() => this.changeCount(-1)}>-</button>
+            <span>{this.state.count}</span>
+            <button style = {style} onClick={() => this.changeCount(+1)}>+</button>
+          </div>
+        )}
+
+
+
+      </ThemeContext.Consumer>
+
+    )
+  }
+
+  changeCount(amount) {
+    this.setState(prevState => {
+      return { count: this.state.count + amount }
+    })
+    //this.setState({ count: this.state.count + amount })
+  }
+}
+  /*
+  ThemeContext needs to be imported with { } because it isn't a default export
+
+  ThemeContext needs to have a function in it, within which our JSX will be rendered.
+
+  The function has parenthesis instead of curly brackets, because the parenthesis tell
+  the code to return back to the function
+
+  Once setup, we have access to the style variable in all the code, it works like this
+  1. Style(css) is set to {style} value, which is the default we put in useState
+  2. When the button is pressed in App.js, it uses setTheme to change the style
+  and this style is then propagated in all compoments that consume it.
+  */
+```
+
+### Context in Function Components with Hooks
+
+```react
+//App.js stays the same as above!
+
+import React, {useState, useContext} from 'react'
+import {ThemeContext} from './App'
+
+export default function CounterHooks(/*props*/{initialCount}) {
+
+  const [count, setCount] = useState(initialCount)
+  const style = useContext(ThemeContext)
+  //const [count, setState] = useState(initialCount)
+  /*Potentially could have as many lines as arguments passed, breaking up the assignment and state updates*/
+
+  return (
+    <div>
+          <button style = {style} onClick ={ ()=> setCount(prevCount => prevCount - 1)}>-</button>
+          <span>{/*props.initialCount*/count}</span>
+          <button style = {style} onClick = {()=> setCount(prevCount =>prevCount+ 1)}>+</button>
+    </div>
+  )
+}
+
+
+/*
+For hooks it's much easier
+Import ThemeContext
+create a hook const style =... this gives us access to the theme
+Use variable to change styles (in this case)
+
+EASY!!
+
+One more note: Since the counters are the children of App.js, when
+the toggle theme button is pressed, not only App.js is re-rendered
+but also ALL it's children.
+*/
+```
+
+
+
+
+
 # Advanced CSS
 
 ### Universal Reset (lowest specificy)

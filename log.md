@@ -194,3 +194,10 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+### Day 23: July 16th, 2020
+
+**Today's Progress**: Continued learning about react, functional components, class components, states and hooks. It's a lot of stuff!
+
+**Thoughts: The course by Kyle is really Jammed packed with info, such that even a 10 minute video takes me about 30-40 minutes to complete due to having to pause and go back! I hope when I come out the other side I can actually use react, because at the moment I'm understading concepts and coding along, but not doing a lot of thinking by myself. I just realised I lost my codecademy streak. Was too imersed in doing react completly forgot about practicing. Going to do that now!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
