@@ -201,3 +201,11 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: The course by Kyle is really Jammed packed with info, such that even a 10 minute video takes me about 30-40 minutes to complete due to having to pause and go back! I hope when I come out the other side I can actually use react, because at the moment I'm understading concepts and coding along, but not doing a lot of thinking by myself. I just realised I lost my codecademy streak. Was too imersed in doing react completly forgot about practicing. Going to do that now!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 24: July 17th, 2020
+
+**Today's Progress**: Went back to finish a DOM project on codeacademy. I'm really glad I did because I was beginning to forget vanilla javascript. 
+
+**Thoughts: I think I'm going to have to continue learning java as I learn react to help my brain remember what I've done and distinguish clearly between react and javascript. I can't imagine I was thinking of Learning React and Typescript all in one week!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
