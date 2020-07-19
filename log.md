@@ -219,3 +219,11 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: It's a particular day today. I used a lot of my study time to try to create a CV but didn't manage (old systems didn't work) I'm going to have to create a new one from scratch! Also today I'll be seeing my colleagues for what should be a kind of goodbye party...I'm a little anxious and sad, and excited all at the same time!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 26: July 19th, 2020
+
+**Today's Progress**: I didn't manage to spend much time with coding, but managed to allow myself to enjoy my family. Did practice on older topics on codecademy today.  
+
+**Thoughts: I was happy to allow myself to enjoy my family today, don't get much chance to nowadays
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
