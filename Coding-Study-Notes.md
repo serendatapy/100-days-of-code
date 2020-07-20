@@ -3189,7 +3189,7 @@ import Counter from './Counter'
 import CounterHooks from './CounterHooks'
 
 export const ThemeContext = React.createContext();
-//consumer = provider
+//Context contains 2 elements: consumer = provider
 
 function App() {
   const [theme, setTheme] = useState('red')
@@ -3217,7 +3217,7 @@ will have access to those variables.
 Everything within ThemeContext will have access to values provided
 */
 
-/*---------------------------Counter.js------------------*/
+/*---------------------------Counter.js--------------------------------*/
 import React, { Component } from 'react'
 import {ThemeContext} from './App'
 
@@ -3233,7 +3233,7 @@ export default class Counter extends Component {
   }
 
   render() {
-    return (
+    return ( //Consumer has to have a function within it
       <ThemeContext.Consumer>
         {style => (
 

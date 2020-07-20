@@ -227,3 +227,11 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: I was happy to allow myself to enjoy my family today, don't get much chance to nowadays
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 27: July 20th, 2020
+
+**Today's Progress**: I continued to work on the javascript DOM project. I'm quite happy I'm managing to find my own solutions to a lot of the things that need to get done without the guidance. I also tried to get back into React, did a quick deployment in netlify.  
+
+**Thoughts: I didn't do as much progress I usually do, only about 2/3 hours today. It was partly due to the fact that yesterday's drinking made my brain really fuzzy, and I couldn't concentrate on deep details. It was really strange to see my brain limited so much by drinking, I'll certainly be more careful in the future. I also spent a lot of the time writing a goodbye letter to my school! Way too long! I hope it has a good result at least. :) 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
