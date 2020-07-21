@@ -235,3 +235,13 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: I didn't do as much progress I usually do, only about 2/3 hours today. It was partly due to the fact that yesterday's drinking made my brain really fuzzy, and I couldn't concentrate on deep details. It was really strange to see my brain limited so much by drinking, I'll certainly be more careful in the future. I also spent a lot of the time writing a goodbye letter to my school! Way too long! I hope it has a good result at least. :) 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 28: July 21th, 2020
+
+**Today's Progress**: I continued to work on the react course, slowly I'm understanding things but still don't feel at all ready to implement a react app on my own yet. 
+
+
+
+**Thoughts: I got more stuff done today, getting back on track :) I really like react, it seems easy enough! I still don't understand much though, and haven't had any Ah Ha moments yet! 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
