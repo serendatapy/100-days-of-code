@@ -3567,23 +3567,66 @@ No- The value becomes the initial value(for example padding becomes 0px)
 
 
 
-# Before Learning React
+# Algorithms and Data Structures
 
-JavaScript concepts that helps to know when starting with React: 
+## The big O
 
-- [x] ES6 classes
-- [x]  Arrow functions
-- [x] Let/const 
-- [ ] Spread/Rest operators 
-- [ ] Destructuring 
-- [x] Map
-- [x] Reduce
-- [x] Filter 
-- [x] Ternary operator 
-- [x] Import and Export statements 
-- [x] AJAX
-- [x] Functions 
-- [ ] High order functions
+It's all about calculating `TIME` and `SPACE` requirements. 
+
+More Efficient
+
+1. Constant        O(1)
+2. Logarithmic   O(log n)
+
+3. Linear             O(n)
+4. Quadric          O(n log n)
+5. Linear * log   O(n*n)
+6. exponential  O(2^n)
+
+Less efficient
+
+So, How does the **input size** affect *THIS* specific line?
+
+1. Drop Lower order terms
+
+```javascript
+var length = function (arr) {
+    let counter = 0;         // O(1) O(1)- constant space and time,no increment over time
+    for (let i=0; i<arr.length; i++){ //O(n) O(n) - will run n times proportional to the input
+        counter++;
+    }
+    return counter;
+}
+
+//To calculate the O value, the calculation could be:
+O(1)+O(n)...
+//But a calculation like this could become very long! So we simplify, keep highest order
+
+//1st DROP LOWEST ORDER TERMS
+O(n) //in this case only this,lower order becomes meaningless compared to higher order
+```
+
+2. Drop constant Terms
+
+```javascript
+var countAndAdd = function(arr){
+    let counter =0;
+    let total =0;
+    for(let i = 0; i < arr.length; i++) { //O(n)
+        counter++;
+    }
+    for (let i = 0; i < arr.length; i++){ //O(n)
+        total += arr[i];
+    }
+    return {counter, total}
+}
+```
+
+O(2n)   => becomes => O(n) (We only care about the order)
+
+In general functions have a range of performance depending on chance, however we always take in consideration the worst case. 
+
+
 
 -----------------------------------------------------------------------------------------
 

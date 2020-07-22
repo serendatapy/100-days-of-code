@@ -245,3 +245,13 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: I got more stuff done today, getting back on track :) I really like react, it seems easy enough! I still don't understand much though, and haven't had any Ah Ha moments yet! 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 29: July 22th, 2020
+
+**Today's Progress**: I continued to work on the react course, slowly I'm understanding things but still don't feel at all ready to implement a react app on my own yet. Everything is actually the same as yesterday in this respect! Yesterday evening I also started Aaron's Algorithm course. 
+
+
+
+**Thoughts: I'm quite happy about my progress, but I still feel far from understanding react in a production level. For sure I think I will do the Codecademy react course as a follow up to drill down the concepts in a more practical way, as at the moment I'm coding along a lot. For today I'm done with react in any case, I'm not sure what I'll work on this afternoon or evening, however I want to write my log now when possible, to avoid forgetting to do it!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
