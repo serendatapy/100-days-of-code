@@ -255,3 +255,24 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 **Thoughts: I'm quite happy about my progress, but I still feel far from understanding react in a production level. For sure I think I will do the Codecademy react course as a follow up to drill down the concepts in a more practical way, as at the moment I'm coding along a lot. For today I'm done with react in any case, I'm not sure what I'll work on this afternoon or evening, however I want to write my log now when possible, to avoid forgetting to do it!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 30: July 22th, 2020
+
+**Today's Progress**: Yesterday evening I started working on the first Algorithm, find the first unique character. I think I did come up with some resource intensive nested loop solution, though I was really happy to learn that objects can be used as hashmaps, and that can be a much faster way of accessing information!  
+
+
+
+**Thoughts: I'm excited to carry on with the algorithms course, and learning about data structures. This morning I couldn't resist and I bought another course on udemy. OMG when will I have time to complete all these courses I have pending! I got a course on machine learning with javascript, it looks amazing! Now I have a quizzilion things to do though
+
+* Advanced Css course
+* javascript the weird parts
+* machine learning with javascript
+* codeacademy web developer
+* typescript course
+* react course (3/4 done with this one)
+* Algorithms and Datastructures course + hackreactor + leetcode!!
+
+That's really plenty enough for the month and a half I've got left before starting the bootcamp. Who knows how far I'll get!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](
+

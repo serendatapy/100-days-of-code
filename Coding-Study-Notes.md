@@ -3626,6 +3626,47 @@ O(2n)   => becomes => O(n) (We only care about the order)
 
 In general functions have a range of performance depending on chance, however we always take in consideration the worst case. 
 
+### Find First Unique Character - The Hash Table
+
+LeetCode problem # 387
+
+Definition: Given a string, find the first non repeating character in it and return it's index. If it doesn't exist return -1.
+
+Assumptions 
+
+1. Will always be a string of characters (no capitals or numbers)
+2. output will be a number or -1
+3. edge cases - could have an empty string or no unique characters.
+
+Scaffolding
+
+* A character appears one or more time
+* if it appears only once, it's unique - this means checking that there isn't another in all the string 
+  * Checking could be done with a loop - from left to right. 
+    * However in a case like 'acac' I'd be checking twice or more times a and c
+      * could keep track of characters that have already been checked and skip those
+        * where would these unique characters be kept and checked? in another loop?
+        * In this case the check would be like this, initialize L1
+          * check if character is in duplicate characters array
+          * if it is, skip
+          * if it isn't check the rest of the string for duplicates
+          * if there isn't, return index exit program
+          * if there is duplicate, store in duplicates array, move onto next letter
+          * (some time could be saved by eliminating duplicate elements from rest of array)
+          * if it's the end of the string, return -1
+  * Checking could be done with a loop and a **hash table**
+    * for each character we come across we store it in an object & keep count of them
+      * check if it's in the table, add to counter, else add new key value pair
+    * by the end of the array, we loop again to identify first key
+      * it's index could be found by searching through the array again, and the first we find that matches an object with value 1 return that index. 
+    * else return -1
+
+
+
+
+
+
+
 
 
 -----------------------------------------------------------------------------------------
