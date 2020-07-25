@@ -3626,7 +3626,7 @@ O(2n)   => becomes => O(n) (We only care about the order)
 
 In general functions have a range of performance depending on chance, however we always take in consideration the worst case. 
 
-### Find First Unique Character - The Hash Table
+### Find First Unique Character #387 - The Hash Table
 
 LeetCode problem # 387
 
@@ -3657,9 +3657,66 @@ Scaffolding
   * Checking could be done with a loop and a **hash table**
     * for each character we come across we store it in an object & keep count of them
       * check if it's in the table, add to counter, else add new key value pair
-    * by the end of the array, we loop again to identify first key
+    * by the end of the array, we loop a
+    * 
+    * gain to identify first key
       * it's index could be found by searching through the array again, and the first we find that matches an object with value 1 return that index. 
     * else return -1
+
+```javascript
+var firstUniqChar = function(s) {
+    let hashTable = {};
+    
+    for(let char of s){ //O(n)
+        if(!hashTable[char]) {
+            hashTable[char] = 1
+        }    
+        else {
+            hashTable[char] += 1
+        }  
+    }
+    
+    for(let i =0; i < s.length; i++){ //O(n)
+        if(hashTable[s[i]] == 1) {
+            return i
+        }        
+    }
+    return -1    
+}
+
+/* Time Complexity
+For this algorithm we have O(2n) which becomes O(n), the bigger the string the longer
+the processing
+*/
+/*Hash table operations are all O(1) constant, as they happen sequentially, and this is discarded from calculation because of O(n) being higher order*/
+
+/*Space Complexity
+The space complexity is O(64) if there were lower case and upper case keys, this reduces to O(1) constant
+*/
+
+/*Cleaner Solution*/
+var firstUniqChar = function(s) {       
+    for(let i = 0; i < s.length; i++){
+        if(s.indexOf(s[i]) == s.lastIndexOf(s[i])) {
+              return i
+        }
+    }
+    return -1
+}
+
+/*Time Complexity
+For this we are running 2 index operations O(2n) for every element O(2n)*n
+Simplified become O(n)*n,
+So the complexity is O(n^2) quadratic time!
+*/
+
+/*Space Complexity
+In this case we don't store anything so we have O(1) constant space
+*/
+
+/*Though much cleaner and readable, the hashmap is more efficient for the time complexity*/
+
+```
 
 
 

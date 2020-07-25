@@ -274,5 +274,25 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 
 That's really plenty enough for the month and a half I've got left before starting the bootcamp. Who knows how far I'll get!
 
-**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 31: July 23th, 2020
+
+**Today's Progress**: Today I practiced everything a little and spent time updating my CV, it's really the most difficult thing! I studied React, Codeacademy DOM and Algorithms. 
+
+
+
+**Thoughts: I'm quite enjoying the Algorithms course because I'm learning how to organize data and solve problems, and think about time and space complexity. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 32: July 24th, 2020
+
+**Today's Progress**: Today I haven't done anything yet, though I hope I will be able to do some revision on codeacademy at least.
+
+
+
+**Thoughts: I think it's probably better I start reporting what I did the day before, the morning after, because sometimes I can forget to report! At least if I do it first thing in the morning it should work out well. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
