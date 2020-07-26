@@ -296,3 +296,27 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+
+
+### Day 33: July 25th, 2020
+
+**Today's Progress**: I took a break in general, did a little practice on code academy.
+
+
+
+**Thoughts: I think I've lost a day's log somewhere :/
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+### Day 34: July 26th, 2020
+
+**Today's Progress**: Finshed the javascript DOM project and continued work on react. Hopefully I'll get a chance to do some algorithm this evening
+
+
+
+**Thoughts: I have a headache, perhaps a cold, not able to concentrate so well but pushing on!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
