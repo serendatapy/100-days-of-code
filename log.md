@@ -320,3 +320,13 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+### Day 34: July 27th, 2020
+
+**Today's Progress**: Today I have a fever from yesterday, only managed to do a few codecademy exercises. I don't know if I'll have the strength to do much else. 
+
+
+
+**Thoughts: I'm quite knocked out, I'm not counting this as another day of code, but I did want to show up!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
