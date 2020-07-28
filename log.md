@@ -330,3 +330,13 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+### Day 35: July 28th, 2020
+
+**Today's Progress**: Today I hope to be able to finish my react course.
+
+
+
+**Thoughts:  I feel stronger now and ready to learn, but at the same time feel quite demoralised and wonder if I'll ever be able to become a software developer. It still seems like such a long way to go! This react thing is really beating down on my morale! :) it's dragging on a bit. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
