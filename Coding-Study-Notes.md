@@ -2940,7 +2940,7 @@ Instructions
 
 # React
 
-## Get Started
+## Get Started - boiler plate
 
 - [ ] Install node js
 - [ ] npx create-react-app
@@ -2949,12 +2949,13 @@ Instructions
 
 ## JSX - How is React different from HTML and Javascript
 
-* In react you can just put the HTML inside javascript without having to inject it in any special way
-* The ( ) after the return in a component allows us to indent the code
-* `<></>` Are JSX fragments, which allow us to return multiple HTML elements as 1, which is what we're allowed to do
-* JSX is a little different from HTML. For example with the keyword `class`, we need to use `className`, as `Class` is a reserved word in JS.
-* Another difference, ALL tags have to be Self closed `<input />`or closed on purpose `<input></input>` even when HTML doesn't usually require it.
-* Thanks to react, it's not necessary to do all the JavaScript calls such as getElementById().etc. You can have dynamic HTML off the bat!
+* In react you can just put the HTML inside JavaScript without having to inject it in any special way. It is considered JSX
+* To insert JavaScript inside JSX you need { } and everything within is considered JavaScript. One can pass in variables, functions, change attributes. NOT CONDITIONAL STATEMENTS HOWEVER.
+* When there are multiple lines of JSX, ( ) allows us to indent the code
+* `<></>` Are JSX fragments, which allow us to return multiple HTML elements as 1, which is what we're allowed to do. Alternatively if appropiate can also use a `<div></div>`
+* JSX is a little different from HTML. For example with the keyword `class`, we need to use `className`, as `Class` is a reserved word in JS. Also html eventListeners, such as mouseover, onclick, become camel cased mouseOver, onClick, etc. [React event Listeners](https://reactjs.org/docs/events.html#mouse-events)
+* Another difference, ALL tags have to be Self closed `<input />`or closed on purpose `<input></input>` even when HTML doesn't usually require it. for example `<img>` or `<br>` tag would need to be `<img/>` and `<br/>`
+* [Extra Resources](https://reactjs.org/docs/jsx-in-depth.html)
 
 
 
@@ -2976,6 +2977,74 @@ function App() {
 
 export default App;
 ```
+
+## JSX Conditionals
+
+Method 1: Put JSX inside if statement
+
+```react
+if (user.age >= drinkingAge) {
+  message = (
+    <h1>
+      Hey, check out this alcoholic beverage!
+    </h1>
+  );
+} else {
+  message = (
+    <h1>
+      Hey, check out these earrings I got at Claire's!
+    </h1>
+  );
+}
+
+ReactDOM.render(
+  message, 
+  document.getElementById('app')
+);
+```
+
+Method 2: Use a ternary operator
+
+```react
+function coinToss () {
+  // Randomly return either 'heads' or 'tails'.
+  return Math.random() < 0.5 ? 'heads' : 'tails';
+}
+
+const pics = {
+  kitty: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg',
+  doggy: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg'
+};
+
+const img = <img src={pics[coinToss() == 'heads'? 'kitty' : 'doggy']} />;
+```
+
+Method 3: use && 
+
+```react
+const judgmental = Math.random() < 0.5;
+
+const favoriteFoods = (
+  <div>
+    <h1>My Favorite Foods</h1>
+    <ul>
+      <li>Sushi Burrito</li>
+      <li>Rhubarb Pie</li>
+      { !judgmental && <li>Nacho Cheez Straight Out The Jar</li> }
+      <li>Broiled Grapefruit</li>
+    </ul>
+  </div>
+);
+
+ReactDOM.render(
+	favoriteFoods, 
+	document.getElementById('app')
+);
+```
+
+When first part is truthy, second part renders
+
+
 
 
 

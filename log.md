@@ -340,3 +340,17 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+
+
+### Day 36: July 29th, 2020
+
+**Today's Progress**: I managed to finish the react course and do some on codeacademy
+
+
+
+**Thoughts:  Though I don't fully understand react yet I understand how my self esteem at the moment is connected to how much I manage to study each day. Yikes. I can also see however that If I keep up the pace I will inevitably learn a lot in the 5 months I got left before starting the job search!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
