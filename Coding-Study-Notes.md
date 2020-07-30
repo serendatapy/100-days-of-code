@@ -2961,7 +2961,7 @@ Instructions
 
 ``` java
 //App.js
-import React from 'react';
+import React from 'react'; //this is a library that interacts only with react
 
 function App() {
   return (

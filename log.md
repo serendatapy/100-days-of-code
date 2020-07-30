@@ -354,3 +354,15 @@ That's really plenty enough for the month and a half I've got left before starti
 
 
 
+### Day 37: July 30th, 2020
+
+**Today's Progress**: I'm continuing on react today, and I will also do some CSS
+
+**Thoughts:  Doing the second more in depth course on react is helping me a lot put the pieces together and understand really what was going on, but I have to do it together with my react crash course, that though lighter, was actually more focused on modern react only. This way I'll come out with a good grasp hopefully of both reach with classes and react with hooks! I do feel it a bit useless learning react with classes, as I now know hooks are so much better, but my objective should be breath of knowledge rather than optimal I believe.
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+
+
