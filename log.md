@@ -236,7 +236,7 @@ On the brighter side, sending messages of encouragement on twitter is really gre
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
-### Day 28: July 21th, 2020
+### Day 28: July 21st, 2020
 
 **Today's Progress**: I continued to work on the react course, slowly I'm understanding things but still don't feel at all ready to implement a react app on my own yet. 
 
@@ -364,11 +364,19 @@ That's really plenty enough for the month and a half I've got left before starti
 
 
 
-### Day 37: July 31th, 2020
+### Day 38: July 31st, 2020
 
-**Today's Progress**: Spent all day trying to get another VM working. Disaster for study. Did a little revision on react and codecademy, but certainly can't count as a day of coding!
+**Today's Progress**: Spent all day trying to get another VM working. Disaster for study. Did a little revision on react and codecademy, and had a revision of css components.
 
 **Thoughts:  I need to learn to stop spending excessive amounts of time on things that will bring about marginal benefits! 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 38: August 1st, 2020
+
+**Today's Progress**: Only a little revision on codecademy, and a little react. Not enough to justify a day of  coding though. 
+
+**Thoughts: This week in general I haven't been very productive, both because of being ill at the beginning of the week has left me with a strange mental fog, with I think is finishing now, and also because it was my last week of work. I wondered today if there is still an identity crisis to come.... :) naah!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
