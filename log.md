@@ -380,3 +380,15 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+
+
+### Day 39: August 2nd, 2020
+
+**Today's Progress**: Went through the react course again and annotated the project I did to help me fully understand how the program works. 
+
+**Thoughts: I'm very tempted to move onto something else but I will try the extension suggestions Kyle gave. I have to think about how I can change the topic so instead of a recipe list it could be the list of something more useful/interesting to me. What is similar to a recipe book? I still wonder whether I'll ever learn react :D but little by little I am making progress. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
