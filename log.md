@@ -392,3 +392,13 @@ That's really plenty enough for the month and a half I've got left before starti
 
 
 
+### Day 40: August 2nd, 2020
+
+**Today's Progress**: Spent the day on React and extra credit. Also spent time setting up linux 20, wondering if it could have a better performance on my machine. Looks good, though not looking forward to setting up the environment again!
+
+**Thoughts:  I'm beginning to feel a little more confident with it. I can see also my confidence is directly proportional to the risks I take to figure out things on my own.  Also my understanding get immediately cemented. Can't wait to start the Netflix Clone project, looks really cool, and not too difficult considering it's all repeating components. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
