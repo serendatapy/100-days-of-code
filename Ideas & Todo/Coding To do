@@ -1,0 +1,61 @@
+Coding To do
+Can also add shadow to button's animations!
+
+
+-ChatBot Box
+-add avatar pictures
+-add animation to the chatbox itself?
+-check semantic html and CSS in chatbox
+-Tidy up CSS according to best practices
+-Make it work with real username and with other people!
+-Make it work! -add the capacity to connect more than one person (with security), and a real bot to converse with!
+
+
+-Unplugged
+-Add animation to the title (and the social buttons?)
+-personalize with other colours?
+-When email is entered, it gives a confimation message and allows a download of itinerary
+-Add booking system with calendar dates
+
+
+-Portfolio website
+ -Tidy up CSS & HTML according to best practices(Urgent)
+ -learn some proper css grid and correct website styles!
+ -get fonts to scale properly on bigger screens (about+contact) 
+ -Use animation properties to get your name and the menu to fly in
+ -Animate web developer text and remove unnecessary css (could put an overlay)
+ -Change background picture to one without other company logos!(or overlay)
+ -add buttons to access both live site and code
+ 
+ -Add way to go back to homepage easily
+ -add possibility of viewing/downloading resume
+ -add contact form and use Web API as in lewagon to handle the information
+ -Could display portfolio projects as a list and allow upvotes that make best projects show first, maybe detect by ip? to stop multiple votes per person
+-by using a gradient could free up text to animate
+
+
+-Wordpress Portfolio
+-Make portfolio with wordpress, implement AMP and speed optimizations?
+-See how to make multisite - implement a woocommerce mock up 
+
+
+
+-Start adding readme files to git projects
+---------------------------------------------------------------------
+-Think about what features could be added to current tutorial projects
+-Write small projects to demostrate feature or concept OR make one project to mash them all!
+-Request and perform code review
+-Recreate a similar project from scratch (refer back to tutorial when necessary)
+
+
+
+
+Project based learning from github!
+https://github.com/tuvtran/project-based-learning
+https://github.com/danistefanovic/build-your-own-x
+----------------------------------------------------------------------------
+Contribute to open source projects
+https://code.publiclab.org/#r=all
+https://github.com/bevacqua/dragula/issues
+https://github.com/d3/d3/issues
+

@@ -1,0 +1,22 @@
+could push elements into an array, then transform array into a string.
+
+Could add brackets at the end of everything { + variable + }
+
+
+----------------------------------------
+Questions
+
+-I have to install npm every time I reboot the computer ?
+-When I do npm install cz, I'm I supposed to do it in the instatags folder or in the pre-course folder?
+-With instatags if I run gulp lint, instead of linting it makes the server run! Is that because it has a gulp file?
+
+-Do the contributions to codeworks show up on github? Will they show up?
+----------------------------
+
+-Underline - is it possible to write some helper functions or will that crash travis? :)
+
+-Apart from studying, is there anything you recommend to start preping for the job search process after bootcamp? How much support will be given?
+
+-Should we start looking into algorithms and doing coding problems?
+
+

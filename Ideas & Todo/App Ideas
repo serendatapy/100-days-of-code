@@ -1,0 +1,15 @@
+App Ideas
+
+-Job Hound - scrapes through job websites for jobs that match your skills to a percentage, provides links to pages. Program also tracks who you've contacted, how you contacted them and what you sent them, if they got back to you or not, what their response was, if you got an interview how things went and personal impressions. It also picks up rating on glassdoor if there is one existing, to provide you quick access to company information that could be useful. 
+
+Class creator - Works somewhat like doodle, takes availabilities for lesson times, and matches them together according to level and availability. Needs a database of students with their levels and availabilities, perhaps makes also a distinction of adults and young learners. Can suggest group times when something is found, keeps track of when contacts were entered and perhaps sends emails out to confirm availabilty and inform the student that the school continues the class matching search, asks if they can update their availability. 
+
+Note Taking app for coders - Can work similarly to the guake app, that with a hotkey, it pops down/up, allows you to take notes in an orderly fashion for later reference. It needs to be on the computer, allowing copy and paste when possible. Ideally it could also provide a javascript/language sandbox where to insert code and see it run, like repl. (?) It would also need a place to keep useful websites in an orderly fashion. The app would allow you to create cards of things you want to remember like flashcard system, so that it can help you remember what you've learned. 
+
+A movie chooser based on streaming services available to you, similar to just watch, but with a playful way of inserting filters, like the github repo where you can combine any kind of tecnologies.
+
+Font picker - an app that changes the font of your website every TOT seconds/minutes so as to help you choose a font. It could use info about fonts that go well together, and there could be some kind of algorithm that chooses cycles through fonts you're likely to like, or perhaps match a keyword you insert.
+
+
+
+

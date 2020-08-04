@@ -392,11 +392,21 @@ That's really plenty enough for the month and a half I've got left before starti
 
 
 
-### Day 40: August 2nd, 2020
+### Day 40: August 3rd, 2020
 
 **Today's Progress**: Spent the day on React and extra credit. Also spent time setting up linux 20, wondering if it could have a better performance on my machine. Looks good, though not looking forward to setting up the environment again!
 
 **Thoughts:  I'm beginning to feel a little more confident with it. I can see also my confidence is directly proportional to the risks I take to figure out things on my own.  Also my understanding get immediately cemented. Can't wait to start the Netflix Clone project, looks really cool, and not too difficult considering it's all repeating components. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+### Day 41: August 4th, 2020
+
+**Today's Progress**: Spent the day on React building the Netflix clone. 
+
+**Thoughts:  Really shocked at how simple a netflix app could be. Sure it's just the front-end, and the API calls are really not very easy to understand at all (poorly documented) but I'm really excited about it! It's about half way there and it's already looking really good. I also started filling in a few things myself when I knew what it could be. I think if I did a few more projects like that things would become even more evident. The video was 3 hours long, but it took me all day! Learned about chaining with ? which looks quite cool. Also used a little bit of emmet. Really need to start spending time on these speed tricks. I'm not sure if I'll get a chance to get through all the codecademy curriculum at this speed however.
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
