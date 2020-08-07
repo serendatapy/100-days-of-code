@@ -412,3 +412,33 @@ That's really plenty enough for the month and a half I've got left before starti
 
 
 
+### Day 4: August 5th, 2020
+
+**Today's Progress**: Finished React Clone and First part of Codecademy React Project
+
+**Thoughts:  I'm a bit lost as to how to proceed now. I really want to move on in the Codecademy work. However I also feel that if I don't polish up the Netflix Clone and make it my own, it will be something I won't be able to put in my project. Instead I really should, and take it to an authentication level. I really want to get started with the Javascript AI course, and I know I really should be doing the javascript the weird parts course and Css and Sass course. OMG, Tecnical KO.
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+### Day 43: August 6th, 2020
+
+**Today's Progress**: Cleaned up Netflix react code, added some fixes to make the experience better. Still work to do. 
+
+**Thoughts:  I have to admit that as soon as I start going out of the rails I'm very tempted to go back, however I would really like to have the netflix clone in my portfolio, which means polishing the product until it's more than portfolio ready. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+### Day 44: August 7th, 2020
+
+**Today's Progress**: I had a good look at the machine learning course. There is a lot of functions to clean up data and some math, not overly complicated, to calculate some things. I haven't quite seen 'learning' take place yet, more like the application of algorithms. Certainly could be a more interesting application than toy problems!
+
+**Thoughts:  Today I'm quite exhausted, I watched the machine learning tutorial but I was really tired, so I'm not sure if I found it quite boring or if I was really exhaused (likely as I've been up since 3 o'clock this morning.)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
