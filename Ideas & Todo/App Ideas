@@ -8,7 +8,7 @@ Note Taking app for coders - Can work similarly to the guake app, that with a ho
 
 A movie chooser based on streaming services available to you, similar to just watch, but with a playful way of inserting filters, like the github repo where you can combine any kind of tecnologies.
 
-Font picker - an app that changes the font of your website every TOT seconds/minutes so as to help you choose a font. It could use info about fonts that go well together, and there could be some kind of algorithm that chooses cycles through fonts you're likely to like, or perhaps match a keyword you insert.
+Font/Color picker - an app/library that changes the font/color of your website every TOT seconds/minutes/Click so as to help you choose a font/color scheme. It could use info about fonts/colours that go well together, and there could be some kind of algorithm that chooses cycles through fonts you're likely to like(from previous choices, or following design patters), or perhaps match a keyword you insert, like a feeling, and returning matches based on that.
 
 
 

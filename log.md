@@ -442,3 +442,13 @@ That's really plenty enough for the month and a half I've got left before starti
 
 
 
+### Day 45: August 8th, 2020
+
+**Today's Progress**: Continued Work ok React Classes
+
+**Thoughts:  I have doubts whether continuing work on React classes is actually helpful or not. On some aspects it's helping me understand more about the basics of react. On the other hand, hooks just seems to work a lot better without a lot of the complications. Can't imagine using react Classes. However I'm sure I could NEED to update old react code, and in that case a knowledge in it could make me a better react developer overall. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
