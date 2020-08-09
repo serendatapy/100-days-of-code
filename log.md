@@ -412,7 +412,7 @@ That's really plenty enough for the month and a half I've got left before starti
 
 
 
-### Day 4: August 5th, 2020
+### Day 42: August 5th, 2020
 
 **Today's Progress**: Finished React Clone and First part of Codecademy React Project
 
@@ -447,6 +447,16 @@ That's really plenty enough for the month and a half I've got left before starti
 **Today's Progress**: Continued Work ok React Classes
 
 **Thoughts:  I have doubts whether continuing work on React classes is actually helpful or not. On some aspects it's helping me understand more about the basics of react. On the other hand, hooks just seems to work a lot better without a lot of the complications. Can't imagine using react Classes. However I'm sure I could NEED to update old react code, and in that case a knowledge in it could make me a better react developer overall. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+### Day 46: August 9th, 2020
+
+**Today's Progress**: Continued Work ok React Classes on Codecademy and polishing Netflix Clone. 
+
+**Thoughts:  I don't really have difficulties on Codecademy, however today I made no progress on the Netflix clone enhancement. I spent, perhaps 4 hours trying to figure out how to get the movies to scroll on desktop, trying different packages. I'm afraid the solution will be a long one in the end. The best solution, I can already see, will be the one to implement arrows, which is how it's implemented on the original site, probably to avoid accidental clicking of movies. When I spend so much time though I do wonder if it's worth fixing at all!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
