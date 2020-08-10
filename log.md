@@ -460,5 +460,13 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+### Day 47: August 10th, 2020
+
+**Today's Progress**: Made progress just in codecademy today. 
+
+**Thoughts:  I think I'm coming to grips with something, but at the same time I still get quite lost when the components become many. Classes in react are quite complex with the fact they need to bind and use this, so much more than with hooks and usestates which simplified the situation tremendously. I'm pushing through, but I always wonder if it's worthwhile considering I'm probably just going to use modern React. It's hard to allow myself to accept that to know something well you need to know all the ins and outs. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
 
 
