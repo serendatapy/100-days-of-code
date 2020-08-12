@@ -470,3 +470,18 @@ That's really plenty enough for the month and a half I've got left before starti
 
 
 
+### Day 48: August 11th, 2020 - 40 Days to Bootcamp
+
+**Today's Progress**: Continued studying React. 
+
+**Thoughts: Really it's quite a big topic! I can't imagine how I thought to learn everything so quickly, I must've been mad. Hope Leo doesn't have a problem with the fact that I wasn't able to start on his project at all. After learning react I would still need to learn typescript and the ui.js of microsoft, it's really a lot! At the moment I'd rather finish the codecademy course that will at least give me an overview of full stack development, including server stuff, before deep diving into it in the bootcamp. Looking at the bootcamp's programme, it seems unlikely that I would've learned react in 3 days! And angular in 3 days!? how would that even be possible, I must absolutely brush up on it. It's true that if I used just modern react, everything is much simpler, and at the moment I feel I'm going quite into depth of react with codecademy. Oh...I hope I'm going the right way, I often wonder!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 49: August 12th, 2020 - 39 Days to Bootcamp
+
+**Today's Progress**: Continued studying React.
+
+**Thoughts: I've reached the final project of React. Can't wait to finish and start on Node.js and backend work. At the moment I'm quite confident I might be able to finish everything before the bootcamp if I manage to maintain this speed...I hope! I'm gonna do something else now to get away from react. I think the final project is gonna be a long one, but looks exciting! It's doing spotify, so I guess if I make also the spotify clone afterwards it might actually give me a good all round understanding of react with and without hooks. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
