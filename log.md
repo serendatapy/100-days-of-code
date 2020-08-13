@@ -485,3 +485,12 @@ That's really plenty enough for the month and a half I've got left before starti
 **Thoughts: I've reached the final project of React. Can't wait to finish and start on Node.js and backend work. At the moment I'm quite confident I might be able to finish everything before the bootcamp if I manage to maintain this speed...I hope! I'm gonna do something else now to get away from react. I think the final project is gonna be a long one, but looks exciting! It's doing spotify, so I guess if I make also the spotify clone afterwards it might actually give me a good all round understanding of react with and without hooks. 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 50: August 13th, 2020 - 38 Days to Bootcamp
+
+**Today's Progress**:  Did another problem on leetcode using pointers
+
+**Thoughts:  I quite enjoy doing 'toy' problems when I'm too tired to study they're quite interesting.
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+

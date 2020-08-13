@@ -3789,6 +3789,95 @@ In this case we don't store anything so we have O(1) constant space
 
 
 
+### Group Anagrams  #49  - HashTable
+
+Given an array of strings, group anagrams together.
+
+```javascript
+var groupAnagrams = function(strs) { 
+        let hash = {};
+        
+    for(const str of strs){
+            const sortedStr = str.split('').sort().join('');
+            sortedStr in hash ? hash[sortedStr].push(str) : hash[sortedStr] = [str];
+        }
+        return Object.values(hash);
+    }
+
+/*Time Complexity
+For this we are running 3 operations 3n per word O(3n)*n + O(n) + 0(1)
+This simplifies to O(n)*n = O(n^2) quadratic time! (wrong)
+sorting algorithm is n log n, so it's (n*(m log m))
+*/
+
+/*Space Complexity
+In this case we store the hash table so we have O(n) + O(1) for sorted constant space
+which become O(n) space
+*/
+
+```
+
+### Palindrome #125 - Pointers
+
+```javascript
+var isPalindrome = function(s) {
+    s = s.toLowerCase().replace(/[^a-z0-9]/g,'');
+    let reverse ='';
+    for(let i = (s.length-1); i > -1 ; i--){
+            reverse += s[i]
+        }
+    return reverse == s
+};
+
+/*Time Complexity
+For this we are running 3 opetarions so O(3n)
+This simplifies to O(n)
+*/
+
+/*Space Complexity
+Here we store 1 variable so O(1) for constant space
+*/
+
+var isPalindrome = function(s) {
+    s = s.toLowerCase().replace(/[^a-z0-9]/g,'');
+    return s.split('').reverse().join('') == s;
+};
+
+/*Time Complexity
+For this we are running 5 opetarions so O(5n)
+This simplifies to O(n)
+*/
+
+/*Space Complexity
+Here we store 1 temporary variable so O(n) linear space
+*/
+
+/*POINTER METHOD, OPTIMIZES SPACE*/
+var isPalindrome = function(s) {
+    const s = s.toLowerCase().replace(/[^a-z0-9]/g,'');
+    let left =0;
+    let right= s.length-1;
+    while(left < right){
+       if(s[left] !== s[right)) return false;
+        left++;
+        right--;
+       }
+    return true;
+};
+
+/*Time Complexity
+This runs a bit faster because although we have a loop, it runs only to the middle
+O(n/2) which still simplifies to O(n) linear time
+*/
+
+/*Space Complexity
+Here we store 2 variables so O(2)
+which simplifies to O(1) constant space
+*/
+```
+
+
+
 
 
 
