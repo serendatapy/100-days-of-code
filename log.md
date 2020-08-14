@@ -494,3 +494,13 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+
+
+### Day 51: August 14th, 2020 - 37 Days to Bootcamp
+
+**Today's Progress**:  Node.js Intro
+
+**Thoughts:  with driving my mum around england I'm quite struggling to keep up with the 100 days of code. I'm going to take a break, but I think I'm at least going to start doing something!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
