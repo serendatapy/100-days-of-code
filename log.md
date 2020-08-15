@@ -504,3 +504,11 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+### Day 51: August 15th, 2020 - 36 Days to Bootcamp
+
+**Today's Progress**:  Revision of Codecademy and pseudo code for algorithm questions
+
+**Thoughts: Can't count today as a coding day! But Here I am doing what I can!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+

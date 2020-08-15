@@ -3876,7 +3876,34 @@ which simplifies to O(1) constant space
 */
 ```
 
+### Valid Parentheses #20 - Pointers
 
+Given a string containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
+
+An input string is valid if:
+
+1. Open brackets must be closed by the same type of brackets.
+2. Open brackets must be closed in the correct order.
+
+Note that an empty string is also considered valid.
+
+
+
+```javascript
+/*
+Loop through each element
+if first elements is a ] } ) then return false
+
+If first element is ( [ { check if the next CLOSING element is the same type
+if there is another opening element, search for its closing tag first
+i.e '(' -> next CLOSING element must be ')', any other closing (]) element returns false
+unless there has been a corresponding opening element '{[]}'
+(this could be done by temporarily storing openings in an array, and when a closing is found, compare with last element of that array, if it matches correctly, pop elements)
+
+if it's true, pop both elements from string/array
+restart until all elements are finished '' return true
+*/
+```
 
 
 
