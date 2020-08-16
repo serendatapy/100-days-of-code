@@ -512,3 +512,13 @@ That's really plenty enough for the month and a half I've got left before starti
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+
+
+### Day 52: August 16th, 2020 - 35 Days to Bootcamp
+
+**Today's Progress**:  Started node.js & lodash library re-writing. Finished algorithms
+
+**Thoughts: I always question if what I'm doing is the best I can do in this moment. Perhaps I need a mentor? I like coding however :)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
