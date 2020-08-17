@@ -3876,7 +3876,7 @@ which simplifies to O(1) constant space
 */
 ```
 
-### Valid Parentheses #20 - Pointers
+### Valid Parentheses #20 - Pointers - STACK
 
 Given a string containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
 
@@ -3889,19 +3889,69 @@ Note that an empty string is also considered valid.
 
 
 
+INPUT
+String with parenthesis
+OUTPUT
+Boolean
+
+Edge Cases
+" " empty string - returns true
+Assumptions
+No characters except parenthesis
+
+#### Simplify Complex Problems - start with simplest possible example
+
+Essentially, we're always checking if the bracket we most recently opened is closed correctly.
+
+
+
+
+
 ```javascript
 /*
-Loop through each element
-if first elements is a ] } ) then return false
+if next characted is an opening parenthesis, PUSH into stack array
+if it's a closing parenthesis check stack
+if closing matches last element of stack, POP & continue
+else return false
+if when string is finished stack is empty return true
+else return false
+*/
 
-If first element is ( [ { check if the next CLOSING element is the same type
-if there is another opening element, search for its closing tag first
-i.e '(' -> next CLOSING element must be ')', any other closing (]) element returns false
-unless there has been a corresponding opening element '{[]}'
-(this could be done by temporarily storing openings in an array, and when a closing is found, compare with last element of that array, if it matches correctly, pop elements)
+var isValid = function(s) {
+    let stack = [];
+    
+    for(par of s){
+        if(par === '(' || par === '{' || par === '[') stack.push(par);
+        if(par == ')' && stack.pop() != '(' ) return false;
+        else if(par == '}' && stack.pop() != '{') return false;
+        else if(par == ']' && stack.pop() != '[') return false;
+    }
+    
+    return stack.length == 0
+};
 
-if it's true, pop both elements from string/array
-restart until all elements are finished '' return true
+/*More elegant*/
+var isValid = function(s) {
+    let stack = [];
+    const pairs = {
+        '(':')',
+        '{':'}',
+        '[':']'            
+    }  
+    
+    for(par of s){
+        if(par in pairs) stack.push(par);
+        else if(pairs[stack.pop()] !== par) return false  
+    }
+    return stack.length == 0
+};
+
+/*Time Complexity
+we have a loop O(n) linear time
+*/
+
+/*Space Complexity
+We have a stack, O(n) (worst case scenario we have only opening parenthesis)
 */
 ```
 
