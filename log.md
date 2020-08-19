@@ -539,7 +539,15 @@ able to refactor it, to make it more efficient/readable. I met quite a few 'clas
 
 **Today's Progress**:  Revisiting Underline Codeworks coursework
 
-**Thoughts: Studying without a regular routine and on holiday is really exhausting. Was so tempted to just go to bed but gather up the corage to sit here for at least an hour looking at code.
+**Thoughts: Studying without a regular routine and on holiday is really exhausting. Was so tempted to just go to bed but gather up the courage to sit here for at least an hour looking at code.
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 55: August 19th, 2020 - 32 Days to Bootcamp
+
+**Today's Progress**:  Revisiting Underline Codeworks coursework
+
+**Thoughts: I had the super session today, and spoke to some classmates. Since they're all working on underline I decided to dedicate my time to cleaning up and refactoring my underline code, it appears there was quite a bit of polishing to do! It's motivating also because I should be doing some code comparing soon, and I want to be prepared for that. I hope I manage to remember everything I left off in Codecademy. 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
