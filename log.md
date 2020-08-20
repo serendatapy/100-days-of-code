@@ -551,3 +551,10 @@ able to refactor it, to make it more efficient/readable. I met quite a few 'clas
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
+### Day 56: August 20th, 2020 - 31 Days to Bootcamp
+
+**Today's Progress**:  Revisiting Underline Codeworks coursework
+
+**Thoughts: It's amazing how much I'm learning through refactoring code, explaining what I've done(to classmates) and applying new methods, I'm glad I had so much time to do the pre-course so that I'm able to really savour it now. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
