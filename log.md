@@ -558,3 +558,11 @@ able to refactor it, to make it more efficient/readable. I met quite a few 'clas
 **Thoughts: It's amazing how much I'm learning through refactoring code, explaining what I've done(to classmates) and applying new methods, I'm glad I had so much time to do the pre-course so that I'm able to really savour it now. 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 57: August 21th, 2020 - 30 Days to Bootcamp
+
+**Today's Progress**:  Did Javascript the Weird Parts Course
+
+**Thoughts: Today I flew back to Italy from England, though it was a long journey, I was really chuffed that I managed to do more than half of Javascript the weird parts course. Fascinating!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
