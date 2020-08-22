@@ -566,3 +566,11 @@ able to refactor it, to make it more efficient/readable. I met quite a few 'clas
 **Thoughts: Today I flew back to Italy from England, though it was a long journey, I was really chuffed that I managed to do more than half of Javascript the weird parts course. Fascinating!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 58: August 22th, 2020 - 29 Days to Bootcamp
+
+**Today's Progress**:  Revisiting Underline Codeworks coursework
+
+**Thoughts: It's quite satisfying learning a new trick, and seeing that it can be applied everywhere to make code simpler!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
