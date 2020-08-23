@@ -574,3 +574,11 @@ able to refactor it, to make it more efficient/readable. I met quite a few 'clas
 **Thoughts: It's quite satisfying learning a new trick, and seeing that it can be applied everywhere to make code simpler!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 59: August 23th, 2020 - 28 Days to Bootcamp
+
+**Today's Progress**:  Revisiting Underline Codeworks coursework
+
+**Thoughts: When my students asked me if doing something is helpful, I remember giving them a little direction, but ultimately telling them that anything they do will always be helpful, because it's another contact they have with the language, and any contact adds. I hope I was right. I'm spending a lot of time polishing underline, and I feel I'm grasping a lot of new things, and gaining an ever deeper understanding of what I've done. But since I'm not coding a lot, just adding and removing bits of code, I wonder if I'm spending my time in the most productive way.
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
