@@ -590,3 +590,12 @@ able to refactor it, to make it more efficient/readable. I met quite a few 'clas
 **Thoughts: It's amazing how much extra work I could do on top of the completed coursework, in terms of refactoring and doing extra credit tasks, still not sure how much longer it will take to finish that part, but I begin to see the end of the tunnel, so at this point I think I will go back to working on react and node.
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 61: August 25th, 2020 - 26 Days to Bootcamp
+
+**Today's Progress**:  Revisited underline and worked on Lodash library
+
+**Thoughts: I have to believe that taking care of the little road I see ahead of me WILL take me to where I want to go...Perhaps I should spend a little
+more time thinking about where I want to go :)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
