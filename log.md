@@ -599,3 +599,11 @@ able to refactor it, to make it more efficient/readable. I met quite a few 'clas
 more time thinking about where I want to go :)
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 62: August 26th, 2020 - 25 Days to Bootcamp
+
+**Today's Progress**:  Did a bit more Javascript the weird parts, super session, finished lodash library 
+
+**Thoughts: Spent a lot of time trying to install ubuntu on my PC, dualboot is not as simple as it used to be. I still haven't managed to get it to work. I hope all my efforts are not wasted. I think working on the pc will be advantageous to working on the laptop, it will also give me a chance to practice the pull push flow a bit more. Certainly having 2 PCs/screens is better than one :)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
