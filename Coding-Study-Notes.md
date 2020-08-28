@@ -3957,9 +3957,172 @@ We have a stack, O(n) (worst case scenario we have only opening parenthesis)
 
 
 
+# NODE
+
+[Cheatsheet](https://www.codecademy.com/learn/paths/web-development/tracks/javascript-back-end-development/modules/introduction-to-node-js/cheatsheet)
+
+When you install Node, it comes with a built-in JavaScript REPL. You can access the REPL by typing the command `node` (with nothing after it) into the terminal and hitting enter. A `>` character will show up in the terminal indicating the REPL is running  and prompting your input. The Node REPL will evaluate your input line by line. 
+
+By default, you indicate the input is ready for eval when you hit enter. If you’d like to type multiple lines and then have them evaluated at once you can type `.editor` while in the REPL. Once in “editor” mode, you can type CONTROL D when you’re ready for the input to be evaluated. Each session of the  REPL has a single shared memory; you can access any variables or  functions you define until you exit the REPL.
 
 
 
+Node has a global `process` object with useful methods and information about the current process.
+
+[documentation on the `process` object](https://nodejs.org/api/process.html) 
+
+[Node Modules documentation](https://nodejs.org/api/modules.html#modules_modules)
+
+### Event driven architecture (eventEmitter)
+
+```javascript
+// Here we require in the 'events' module and save a reference to it in an events variable
+let events = require('events');
+
+let listenerCallback = (data) => {
+    console.log('Celebrate ' + data);
+}
+
+let myEmitter = new events.EventEmitter();
+myEmitter.on('celebration', listenerCallback);
+myEmitter.emit('celebration', 'ContiNode!')
+```
+
+### User Input
+
+```javascript
+//app.js
+let {testNumber} = require('./game.js');
+
+process.stdout.write("I'm thinking of a number from 1 through 10. What do you think it is? \n(Write \"quit\" to give up.)\n\nIs the number ... ");
+
+let playGame = (userInput) => {
+  let input = userInput.toString().trim();
+	testNumber(input);
+};
+
+process.stdin.on('data',playGame);
+
+//game.js
+let secretValue = Math.floor(1+Math.random()*10).toString();
+
+let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
+module.exports = {
+  testNumber: (input) => {
+   if (input === 'quit') {
+    process.stdout.write('Ok. Bye!\n')
+    process.exit();
+  }
+  if (!numbers.includes(input)) {
+    process.stdout.write('Choose a number from 1 through 10!\nIs the number ... ')
+  } else if (input === secretValue) {
+    process.stdout.write('Woah you got it! Are you psychic? See you later!\n')
+    process.exit();
+  } else {
+    process.stdout.write("Nope. Guess again!\nIs the number ... ");
+  }
+  }
+}
+```
+
+
+
+
+
+
+
+```javascript
+const readline = require('readline'); // use of Node modules
+const fs = require('fs');
+
+const myInterface = readline.createInterface({ //allows system to read 1 line at time
+  input: fs.createReadStream('shoppingList.txt')
+});
+
+const fileStream = fs.createWriteStream('shoppingResults.txt'); //allows writing a line
+
+function transformData(line){
+  fileStream.write(`They were out of: ${line}\n`); //makes read line a written line
+}
+
+myInterface.on('line',transformData); //listener that activates when line is read
+```
+
+### Run a small server
+
+```javascript
+//app.js
+
+const http = require('http');
+let {requestListener} = require('./callbackFile.js');
+const PORT = process.env.PORT || 4001;
+const server = http.createServer(requestListener);
+server.listen(PORT)
+
+//callbackFile.js
+const fs = require('fs');
+
+module.exports = {
+  requestListener: (req, res) => {
+  fs.readFile('./myWebsite.html',  'utf-8', (err, data) => {
+    if (err){
+      res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(`${err}`);
+    res.end();
+    } else {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    res.end(); 
+    }
+  })
+}
+}
+
+//myWebsite.html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+</head>
+
+<body>
+    <h1>I'm hosting this website with my own Node web server</h1>
+    <h2>Pretty exciting stuff...</h2>              
+</body>
+
+</html>
+```
+
+
+
+#### Review
+
+Awesome work! You’ve learned a lot about Node.js including:
+
+- Node.js is a JavaScript *runtime*, an environment that allows us to execute our JavaScript code by converting it into something a computer can understand.
+- REPLs are processes that **r**ead, **e**valuate, **p**rint, and repeat (**l**oop), and Node.js comes with its own REPL we can access in our terminal with the `node` command.
+- We run JavaScript programs with Node in the terminal by typing `node` followed by the file name (if we’re in the same directory) or the absolute path of the file. 
+- Code can be organized into separate files, modules, and combined through *requiring* them where needed using the `require()` function.
+- In addition to *core modules*, modules included within the environment to efficiently perform common tasks, we can also create our own modules using `module.exports` and the `require()` function. 
+- We can access NPM, a registry of  hundreds of thousands of packages of re-usable code from other  developers, directly through our terminal.
+- Node has an event-driven architecture.
+- We can make our own instances of the `EventEmitter` class and we can subscribe to listen for named events with the `.on()` method and emit events with the `.emit()` method.
+- Node uses an event loop which  enables asynchronous actions to be handled in a non-blocking way by  adding callback functions to a queue of tasks to be executed when the  callstack is empty. 
+- In order to handle errors during  asynchronous operations, provided callback functions are expected to  have an error as their first parameter.
+- Node allows for both *output*, data/feedback to a user provided by a computer, and *input* data/feedback to the computer provided by the user.
+- The Node `fs` core module is an API for interacting with the **f**ile **s**ystem.
+- *Streams* allow us to read or write data piece by piece instead of all at once. 
+- The Node `http` core module allows for easy creation of *web servers*, computer processes that listen for requests from clients and return responses.
+
+Woah, that was a lot… And there’s  even more to Node that we didn’t cover in this lesson, but don’t panic!  Learning Node isn’t about memorizing every aspect of the environment.  The best way to get comfortable with Node is just to practice making  things in it. Your imagination is the limit! If you haven’t already, [download Node on your local machine](https://www.codecademy.com/articles/setting-up-node-locally). You can start by recreating some of the programs you built in this  lesson— put your own spin on a guessing game, for example. If you’re  eager to build web application back-ends, we recommend you start [learning the awesome Express.js](https://www.codecademy.com/learn/learn-express) web framework. 
+
+Great work! We’re excited to see what you build! 
 
 -----------------------------------------------------------------------------------------
 

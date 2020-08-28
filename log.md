@@ -607,3 +607,19 @@ more time thinking about where I want to go :)
 **Thoughts: Spent a lot of time trying to install ubuntu on my PC, dualboot is not as simple as it used to be. I still haven't managed to get it to work. I hope all my efforts are not wasted. I think working on the pc will be advantageous to working on the laptop, it will also give me a chance to practice the pull push flow a bit more. Certainly having 2 PCs/screens is better than one :)
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 62: August 27th, 2020 - 24 Days to Bootcamp
+
+**Today's Progress**:  I didn't manage to do much at all, apart from intall linux on my PC on dual boot. In the end I managed :) bloody nvidia graphics cards drive me crazy!
+
+**Thoughts: Can't count today as a coding day, hope I manage a bit more tomorrow!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 63: August 28th, 2020 - 23 Days to Bootcamp
+
+**Today's Progress**: Done some study on Node.js, hopefully later I'll get a chance to look at react again and algorithms which I've kinda abandoned for a while. 
+
+**Thoughts: I really didn't understand much at all about node.js, hope I get a bit more practice on it
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
