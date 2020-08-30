@@ -623,3 +623,19 @@ more time thinking about where I want to go :)
 **Thoughts: I really didn't understand much at all about node.js, hope I get a bit more practice on it
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 63: August 29th, 2020 - 22 Days to Bootcamp
+
+**Today's Progress**: Didn't manage to do anything except a light revision, my sister is here!
+
+**Thoughts: I've had a lot of trouble studying lately with all that's been going on in my life. Today after 36 years I've met my sister for the first time!!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 64: August 30th, 2020 - 21 Days to Bootcamp
+
+**Today's Progress**: Studying REST. 
+
+**Thoughts: Today my sister has left late in the afternoon, it's been nice having her around, but it is an awful period as I can't take much time off, I need to study as much as I can. Though I have 21 days left, I believe they're gonna be more like 15 for all the things I have to do. I hope I do manage to finish all the things I want to do in this time!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
