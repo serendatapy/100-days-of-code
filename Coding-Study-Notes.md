@@ -4124,6 +4124,248 @@ Woah, that was a lot… And there’s  even more to Node that we didn’t cover 
 
 Great work! We’re excited to see what you build! 
 
+
+
+# CRUD
+
+### CRUD Practice Answers
+
+1) Create
+
+**Route**: POST /classes
+
+**Effect on Database**: Adds the class provided in the request body to the database
+
+**Response Body**: `{ "class": The Newly-Created Class }`
+
+**Success Response Code**: 201
+
+```javascript
+POST www.musclecademy.com/classes
+ Body -
+ {
+    "class": {
+    "id": 1    
+    "name": “Pure Strength”,
+    “trainer”: “Bicep Bob”,
+    "duration": 1.5
+   }
+ }
+ 
+ Response 201
+Body -
+{
+    "class": {
+    "id": 1    
+    "name": “Pure Strength”,
+    “trainer”: “Bicep Bob”,
+    "duration": 1.5
+   }
+ }
+```
+
+
+
+2) Read (All Classes)
+
+**Route**: GET /classes
+
+**Effect on Database**: None
+
+**Response Body**: `{ "classes": [ Array of All Saved Classess ] }`
+
+**Success Response Code**: 200
+
+3) Read (One Class)
+
+**Route**: GET /classes/:id
+
+**Effect on Database**: None
+
+**Response Body**: `{ "class": The class with the specified ID }`
+
+**Success Response Code**: 200
+
+```javascript
+GET www.musclecademy.com/classes/1
+ 
+Response 200
+
+Body -
+{
+    "class": {
+    "id": 1    
+    "name": “Pure Strength”,
+    “trainer”: “Bicep Bob”,
+    "duration": 1.5
+   }
+ }
+```
+
+
+
+4) Update
+
+**Route**: PUT /classes/:id
+
+**Effect on Database**: Updates the class with the specified ID to have the class information provided in the request body
+
+**Response Body**: `{ "class": The updated class now saved in the database }`
+
+**Success Response Code**: 200
+
+
+
+```javascript
+ PUT www.musclecademy.com/classes/1
+ 
+{
+    "class": {
+    "id": 1    
+    "name": “Strength”,
+    “trainer”: “Bob”,
+    "duration": 1.5
+   }
+ }
+ 
+ Reponse: 200
+```
+
+
+
+5) Delete
+
+**Route**: DELETE /classes/:id
+
+**Effect on Database**: Removes the class with the specified ID from the database
+
+**Response Body**: None
+
+**Success Response Code**: 204
+
+```javascript
+DELETE
+Route: DELETE /classes/:id
+Effect on Database: Removes the class with the specified ID from the database
+Response Body: None
+Success Response Code: 204
+DELETE www.musclecademy.com/classes/1
+ 
+Response: 204(NO CONTENT)
+```
+
+# REST
+
+## Practice with REST
+
+Let’s imagine we are building a  photo-collection site for a different want to make an API to keep track  of users, venues, and photos of those venues. This site has an `index.html` and a `style.css`. Each user has a username and a password. Each photo has a venue and an  owner (i.e. the user who took the picture). Each venue has a name and  street address. Can you design a REST system that would accommodate:
+
+- storing users, photos, and venues
+- accessing venues and accessing certain photos of a certain venue 
+
+Start by writing out:
+
+- what kinds of requests we would want to make
+- what responses the server should return
+- what the `content-type` of each response should be
+
+
+
+## Possible Solution - Models
+
+```
+{
+  “user”: {
+    "id": <Integer>,
+    “username”: <String>,
+    “password”:  <String>
+  }
+}
+{
+  “photo”: {
+    "id": <Integer>,
+    “venue_id”: <Integer>,
+    “author_id”: <Integer>
+  }
+}
+{
+  “venue”: {
+    "id": <Integer>,
+    “name”: <String>,
+    “address”: <String>
+  }
+}
+```
+
+## Possible Solution - Requests/Responses
+
+#### GET Requests
+
+Request- `GET /index.html` Accept: `text/html` Response- 200 (OK) Content-type: `text/html`
+
+Request- `GET /style.css` Accept: `text/css` Response- 200 (OK) Content-type: `text/css`
+
+Request- `GET /venues` Accept:`application/json` Response- 200 (OK) Content-type: `application/json`
+
+Request- `GET /venues/:id` Accept: `application/json` Response- 200 (OK) Content-type: `application/json`
+
+Request- `GET /venues/:id/photos/:id` Accept: `application/json` Response- 200 (OK) Content-type: `image/png`
+
+#### POST Requests
+
+Request- `POST /users` Response- 201 (CREATED) Content-type: `application/json`
+
+Request- `POST /venues` Response- 201 (CREATED) Content-type: `application/json`
+
+Request- `POST /venues/:id/photos` Response- 201 (CREATED) Content-type: `application/json`
+
+#### PUT Requests
+
+Request- `PUT /users/:id` Response- 200 (OK)
+
+Request- `PUT /venues/:id` Response- 200 (OK)
+
+Request- `PUT /venues/:id/photos/:id` Response- 200 (OK)
+
+#### DELETE Requests
+
+Request- `DELETE /venues/:id` Response- 204 (NO CONTENT)
+
+Request- `DELETE /venues/:id/photos/:id` Response- 204 (NO CONTENT)
+
+
+
+# Node Express Module
+
+```javascript
+const express = require('express'); //imports module
+const app = express(); //creates an express instance
+const { seedElements } = require('./utils');
+
+// Serves Express Yourself website
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001; //set up a port number
+// Use static server to serve the Express Yourself Website
+app.use(express.static('public'));
+
+const expressions = [];
+seedElements(expressions, 'expressions');
+
+// Get all expressions - deal with get requests
+app.get('/expressions', (req, res, next) => {
+  // console.log(req);
+});
+
+app.listen(PORT, () => { //start up server
+  console.log(`Listening on port ${PORT}`);
+});
+```
+
+
+
+
+
 -----------------------------------------------------------------------------------------
 
 ## Further Resouces
