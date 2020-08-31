@@ -639,3 +639,11 @@ more time thinking about where I want to go :)
 **Thoughts: Today my sister has left late in the afternoon, it's been nice having her around, but it is an awful period as I can't take much time off, I need to study as much as I can. Though I have 21 days left, I believe they're gonna be more like 15 for all the things I have to do. I hope I do manage to finish all the things I want to do in this time!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 65: August 31th, 2020 - 20 Days to Bootcamp
+
+**Today's Progress**: Studied Rest + express, algorithms, weird javascript, Regex
+
+**Thoughts: I like doing a lot of little things rather than big things and forget a lot! At the same time I like finishing things quickly...dilema! I hope I can keep up with this rhythm and get everything done!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

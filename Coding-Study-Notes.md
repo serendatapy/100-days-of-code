@@ -3955,7 +3955,66 @@ We have a stack, O(n) (worst case scenario we have only opening parenthesis)
 */
 ```
 
+### Search Insert Position #35 - Binary Search
 
+Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+Assumptions
+You may assume no duplicates in the array.
+
+Edge Cases (none in this problem)
+duplicates
+empty array
+
+Input: array of numbers and target number
+Output: Index position of target number or where number would go
+
+```javascript
+//Naive Solution
+var searchInsert = function(nums, target) {    
+    for(let i=0;i<nums.length;i++){
+        if(target <= nums[i]) return i;
+    }
+    return nums.length   
+};
+/*
+Time complexity of O(n) - worst case scenario, loop through all array
+*/
+
+
+var searchInsert = function(nums, target) {
+    
+    let lo = 0;
+    let hi = nums.length -1;
+    
+    while(lo <= hi){
+          let mid = Math.floor((lo+hi)/2);
+          let midVal = nums[mid];
+          if (target === midVal) return mid;
+          else target > midVal ? lo = mid + 1 : hi = mid - 1;
+    }
+    return lo;
+};
+/*There is a strange case when all are equal to 0, where low
+must cross with high, because we're always rounding down, and we need to return index 0 if number is lower than all available values, however we return index 1 if value is between first and second
+[1,4,5,6,8]
+lo=0
+hi=0
+mid=0
+target=3 target>midVal -> lo = 0+1 > return 1
+*/
+
+/*Time Complexity
+In this case because we're always cutting in half, over time the bigger the array is, the less resources will increase to cut it.
+so time complexity is O(log n)
+*/
+
+/*Space Complexity
+In both cases space doesn't increase so it's linear time O(1)
+*/
+
+
+```
 
 # NODE
 

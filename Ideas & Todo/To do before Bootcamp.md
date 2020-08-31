@@ -1,15 +1,12 @@
 Once a day
 
 - [x] Regex
-- [ ] Algorithms
+- [x] Algorithms
 - [ ] Eloquent
 - [x] Codecademy
-- [ ] Linux
-- [ ] Weird Javascript
-- [ ] CSS LevelUp
+- [x] Weird Javascript
 - [ ] VsCode Trick (+extra credit)
-
-
+- [ ] CSS LevelUp
 
 # Essential
 
@@ -63,7 +60,7 @@ Once a day
 
 - [ ] Finish - One Problem a day- [Algorithms Course](https://course.interviewespresso.com/)
 
-  - [ ] 5
+  - [x] 5
   - [ ] 6
   - [ ] 7
   - [ ] 8
@@ -82,7 +79,7 @@ Once a day
 
 - [ ] Finish Javascript the weird Parts (3h left)
 
-  - [ ] 55-60
+  - [x] 55-60
   - [ ] 61-65
   - [ ] 66-70
   - [ ] 71-75
