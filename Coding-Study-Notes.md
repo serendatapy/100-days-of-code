@@ -4016,6 +4016,51 @@ In both cases space doesn't increase so it's linear time O(1)
 
 ```
 
+### Rotate Image #48 - Matrix 
+
+You are given an *n* x *n* 2D `matrix` representing an image, rotate the image by 90 degrees (clockwise).
+
+You have to rotate the image [**in-place**](https://en.wikipedia.org/wiki/In-place_algorithm), which means you have to modify the input 2D matrix directly. **DO NOT** allocate another 2D matrix and do the rotation.
+
+Assumptions
+only numbers in arrays
+
+Edge Cases (none in this problem)
+
+
+Input: array of arrays
+Output: none, original array is checked for mutations
+
+
+
+By visually playing with the problem, one can see that if the array is mirrored, half of the components end up where they're supposed to be, but they are mirrored, so to finish putting them in the right place, one can flip the coordinates so that 0,1 becomes 1,0 
+
+```javascript
+var rotate = function(matrix) {
+    matrix.reverse();    
+for(let row = 0; row < matrix.length; row++){
+        for(let col = 0; col < row; col++){
+            let temp = matrix[row][col];
+            matrix[row][col] = matrix[col][row];
+            matrix[col][row] = temp;
+        }
+    }
+};
+
+/*Time Complexity
+here there is a loop in a loop, so it would be n*n however this second loop is half of the first so it would be (reverse + half traversal) n + (n^2)/2, which simplifies to O(n^2) quadratic time
+*/
+
+/*Space Complexity
+Space doesn't increase so it's linear space O(1)
+*/
+```
+
+
+
+
+
+
 # NODE
 
 [Cheatsheet](https://www.codecademy.com/learn/paths/web-development/tracks/javascript-back-end-development/modules/introduction-to-node-js/cheatsheet)

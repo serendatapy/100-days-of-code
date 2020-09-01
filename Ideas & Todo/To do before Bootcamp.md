@@ -3,10 +3,10 @@ Once a day
 - [x] Regex
 - [x] Algorithms
 - [ ] Eloquent
-- [x] Codecademy
-- [x] Weird Javascript
-- [ ] VsCode Trick (+extra credit)
-- [ ] CSS LevelUp
+- [ ] Codecademy
+- [ ] Weird Javascript
+- [x] VsCode Trick (+extra credit)
+- [x] CSS LevelUp
 
 # Essential
 

@@ -647,3 +647,11 @@ more time thinking about where I want to go :)
 **Thoughts: I like doing a lot of little things rather than big things and forget a lot! At the same time I like finishing things quickly...dilema! I hope I can keep up with this rhythm and get everything done!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 66: September 1st, 2020 - 19 Days to Bootcamp
+
+**Today's Progress**: Vs code trick and CSS, algorithms, weird javascript, Regex
+
+**Thoughts: Reasonably productive :) I have to optimize my diet I think, and definitely remove distractions! Had a lot of messages today from sister, ex boss, classmates, and had to help everyone in one way or another!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
