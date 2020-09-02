@@ -655,3 +655,11 @@ more time thinking about where I want to go :)
 **Thoughts: Reasonably productive :) I have to optimize my diet I think, and definitely remove distractions! Had a lot of messages today from sister, ex boss, classmates, and had to help everyone in one way or another!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 67: September 2nd, 2020 - 18 Days to Bootcamp
+
+**Today's Progress**: algorithms, weird javascript, Regex
+
+**Thoughts: didn't get much done, spent the morning helping a classmate which was fun though :) certainly at this point don't see a better way to spend my time than to meet people!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

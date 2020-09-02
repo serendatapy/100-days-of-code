@@ -4058,6 +4058,61 @@ Space doesn't increase so it's linear space O(1)
 
 
 
+## Two Sum #1 - Naive & Hash 
+
+Given an array of integers `nums` and and integer `target`, return *the indices of the two numbers such that they add up to `target`*.
+
+You may assume that each input would have ***exactly\* one solution**, and you may not use the *same* element twice.
+
+You can return the answer in any order.
+
+```javascript
+
+var twoSum = function(nums, target) {
+    for(let i = 0; i < nums.length; i++){
+        let currentVal = nums[i]
+        for(let j = i+1; j < nums.length; j++){
+           if(currentVal+nums[j] === target) {
+               return [i,j]
+           }
+        }
+    }   
+};
+
+/*Time Complexity
+here there is a loop in a loop, so O(n^2) quadratic time
+*/
+
+/*Space Complexity
+Space doesn't increase so it's constant space O(1)
+*/
+
+
+var twoSum = function(nums, target) {
+    let hash = {}
+    for(let i = 0; i < nums.length; i++){
+        const num = nums[i];
+        const want = target - num;
+        if(want in hash) {
+            const leftIndex = hash[want];
+            return [leftIndex, i];
+        } else hash[num] = i;
+    }
+};
+
+/*Time Complexity
+here there is a loop so O(n) linear time
+*/
+
+/*Space Complexity
+Space increases with hash table so O(n) linear
+*/
+```
+
+
+
+
+
 
 
 

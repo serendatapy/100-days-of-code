@@ -4,9 +4,9 @@ Once a day
 - [x] Algorithms
 - [ ] Eloquent
 - [ ] Codecademy
-- [ ] Weird Javascript
-- [x] VsCode Trick (+extra credit)
-- [x] CSS LevelUp
+- [x] Weird Javascript
+- [ ] VsCode Trick (+extra credit)
+- [ ] CSS LevelUp
 
 # Essential
 
@@ -61,8 +61,8 @@ Once a day
 - [ ] Finish - One Problem a day- [Algorithms Course](https://course.interviewespresso.com/)
 
   - [x] 5
-  - [ ] 6
-  - [ ] 7
+  - [x] 6
+  - [x] 7
   - [ ] 8
   - [ ] 9
   - [ ] 10
