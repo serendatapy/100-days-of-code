@@ -663,3 +663,11 @@ more time thinking about where I want to go :)
 **Thoughts: didn't get much done, spent the morning helping a classmate which was fun though :) certainly at this point don't see a better way to spend my time than to meet people!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 68: September 3nd, 2020 - 17 Days to Bootcamp
+
+**Today's Progress**: express.js,javascript the weird parts
+
+**Thoughts: Today I spent most of my day helping my classmates!! I really like it, however I hope it won't get in the way of reaching my goals, I do however learn from them :)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

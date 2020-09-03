@@ -4283,6 +4283,140 @@ Woah, that was a lot… And there’s  even more to Node that we didn’t cover 
 
 Great work! We’re excited to see what you build! 
 
+## Express: Starting a Server
+
+```javascript
+// Import the express library
+const express = require('express');
+// Instantiate the app 
+const app = express();
+/*This can be used to start a server and specify behaviour. The purpose of a server is to listen for requests, perform whatever action is required to satisfy the request, and then return a response. */
+
+
+/*In order for our server to start responding, we have to tell the server where to listen for new requests by providing a port number argument to a method called app.listen()*/
+const PORT = process.env.PORT || 4001;
+
+app.listen(PORT, () => {
+  console.log(`The server is listening on port ${PORT}`);
+});
+/*The second argument is a callback function that will be called once the server is running and ready to receive responses.*/
+
+```
+
+
+
+#### [Writing A Route](https://expressjs.com/en/guide/routing.html#route-parameters)
+
+Express tries to match requests by route, meaning that if we send a request to `<server address>:<port number>/api-endpoint`, the Express server will search through any registered routes in order and try to match `/api-endpoint`.
+
+Express searches through routes in the order that they are registered in your code. The first one that is matched will be used, and its callback will be called.
+
+```javascript
+const express = require('express');
+const app = express();
+const { seedElements } = require('./utils');
+const expressions = [];
+seedElements(expressions, 'expressions');
+
+const PORT = process.env.PORT || 4001;
+
+// Use static server to serve the Express Yourself Website
+app.use(express.static('public'));
+
+/*To tell our server how to deal with any given request, we register a series of routes. Routes define the control flow for requests based on the request’s path and HTTP verb.
+
+For example, if your server receives a GET request at ‘/monsters’, we will use a route to define the appropriate functionality for that HTTP verb (GET) and path (/monsters). 
+
+The path is the part of a request URL after the hostname and port number, so in a request to localhost:4001/monsters, the path is /monsters
+*/
+
+// Get all expressions
+app.get('/expressions', (req, res, next) => {
+  //console.log(req);
+  res.send(expressions); //this will match all,and send back the array
+});
+/*Express servers send responses using the .send() method on the response object. .send() will take any input and include it in the response body.
+
+In addition to .send(), .json() can be used to explicitly send JSON-formatted responses. .json() sends any JavaScript object passed into it.*/
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
+
+```
+
+
+
+#### Getting A single Expression
+
+Routes become much more powerful when they can be used dynamically. Express servers provide this functionality with named *route parameters*. Parameters are route path segments that begin with `:` in their Express route definitions. They act as [wildcards](https://expressjs.com/en/guide/routing.html#route-parameters), matching any text at that path segment. For example `/monsters/:id` will match both`/monsters/1` and `/monsters/45`.
+
+```javascript
+// '' Same code as above ''
+/*Expressions array
+[ { id: 1, emoji: '😀', name: 'happy' },
+  { id: 2, emoji: '😎', name: 'shades' },
+  { id: 3, emoji: '😴', name: 'sleepy' } ]
+ */
+
+
+app.get('/expressions', (req, res, next) => {
+  res.send(expressions);
+});
+/*after the ':' wildcard, the name you put will become the object key of the request parameter, and the input value its value. In Code below
+req.params {id:1} so req.params.id === 1. The function is a specially written one for this purpose.*/
+
+app.get('/expressions/:id', (req, res, next) => {
+  const foundExpression = getElementById(req.params.id, expressions);
+  res.send(foundExpression);
+});
+
+/*SETTING STATUS CODES*/
+app.get('/expressions/:id', (req, res, next) => {
+  console.log('REQ.PARAMS:',req.params);
+  //console.log('Expressions:',expressions);
+  const foundExpression = getElementById(req.params.id, expressions);
+  if(foundExpression) res.send(foundExpression);
+  else res.status(404).send('Expression not found');
+});
+
+```
+
+Route parameters will match anything in their specific part of the path, so a route matching `/monsters/:name` would match all the following request paths:
+
+```
+/monsters/hydra
+/monsters/jörmungandr
+/monsters/manticore
+/monsters/123
+```
+
+### PUT, POST and DELETE
+
+ Express provides methods for each one: `app.put()`, `app.post()`, and `app.delete()`
+
+#### PUT
+
+`PUT` requests are used  for updating existing resources. In our Express Yourself machine, a PUT  request will be used to update the name or emoji of an expression  already saved in our database. 
+
+[Query strings](https://en.wikipedia.org/wiki/Query_string) appear at the end of the path in URLs, and they are indicated with a `?` character. For instance, in `/monsters/1?name=chimera&age=1`, the query string is `name=chimera&age=1` and the path is `/monsters/1/`
+
+Query strings do not count as part  of the route path. Instead, the Express server parses them into a  JavaScript object and attaches it to the request body as the value of `req.query`. The `key: value` relationship is indicated by the `=` character in a query string, and key-value pairs are separated by `&`. In the above example route, the `req.query` object would be `{ name: 'chimera', age: '1' }`.
+
+```javascript
+app.put('/expressions/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    updateElement(req.params.id, req.query, expressions);
+    res.send(expressions[expressionIndex]);
+  } else {
+    res.status(404).send();
+  }
+});
+```
+
+When updating, many servers will send back the updated resource after  the updates are applied so that the client has the exact same version of the resource as the server and database.
+
 
 
 # CRUD

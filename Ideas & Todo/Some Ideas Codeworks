@@ -18,5 +18,26 @@ Questions
 -Apart from studying, is there anything you recommend to start preping for the job search process after bootcamp? How much support will be given?
 
 -Should we start looking into algorithms and doing coding problems?
+--------------------------------------
+
+Why when you return the newArr.push(array[0]) it returns 1, instead doing it the long way returns ['a']
+
+function first(array, n) {
+  console.log('Starting')
+     if (!Array.isArray(array)) {
+      return [];
+    } else if (typeof n != 'number' || n < 1) {
+      console.log('invalid number',array[0])
+      var newarr = [] ;
+      newarr.push(array[0])
+      console.log(newarr)
+      return newarr;
+    } else if (n > array.length) {
+      return array;
+    } else {
+      return array.slice(0, n);
+    }
+}
+
 
 
