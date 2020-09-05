@@ -4056,9 +4056,7 @@ Space doesn't increase so it's linear space O(1)
 */
 ```
 
-
-
-## Two Sum #1 - Naive & Hash 
+### Two Sum #1 - Naive & Hash 
 
 Given an array of integers `nums` and and integer `target`, return *the indices of the two numbers such that they add up to `target`*.
 
@@ -4109,9 +4107,145 @@ Space increases with hash table so O(n) linear
 */
 ```
 
+### Three Sum #15 - Naive & Hash (NEEDS STUDY)
+
+Given an array `nums` of *n* integers, are there elements *a*, *b*, *c* in `nums` such that *a* + *b* + *c* = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Notice that the solution set must not contain duplicate triplets. [order doesn't matter]
+
+Edge Cases
+
+-no combination of numbers make a triplet - return []
+
+Assumptions
+
+-input CAN have duplicates
+-output triplets must be unique(combination)
+-triplet order doesn't matter
+
+```javascript
+/*Naive Solution
+triple loop where as in previous problem, one hold first number, combines with a second, checks if adding a third will make 0
+three pointer solution. This will go on until there are only 3 numbers left, then stop
+the positive combinations can be sorted and stored in a hash table so any non unique results will be overwritten
+finally the hash table values are turned into an array
+THIS IS NOT OPTIMAL WHATSOEVER n * n * n worse than quadratic time!
+*/
+
+/*
+Here we still use 3 pointers but because we sort the array we can use a single loop to traverse the values intelligently
+create a variable to store results
+sort the array in acending order
+
+For every number in the array (if the number is not a duplicate of the last)
+   while left and right pointer don't cross
+     check if current value is 0 and store it
+     	move pointers to next valid position (to avoid duplicates) [-1,-1,-1,-1,-1,-1] should return [[-1,-1,-1]] only
+     else if total > 0 (number is too high)
+     	move right to the left
+     else (total < 0 too low)
+     	move left to the right
+*/
+
+var threeSum = function(nums) {
+    const output = [];
+    nums.sort((a,b) => a - b);
+    
+    for (let i = 0; i < nums.length - 2; i++) {
+        let left = i + 1;
+        let right = nums.length - 1;
+        if( i > 0 && nums[i] === nums[i-1]) continue;
+        
+        while(left < right) {
+            let total = nums[i] + nums[left] + nums[right];
+            
+            if(total === 0) {
+                output.push([nums[i], nums[left], nums[right]]);
+                while(left < right && nums[right - 1] === nums[right]) {
+                    right--;
+                }
+                while(left < right && nums[left + 1]  === nums[left]) {
+                    left++;
+                }
+                right--;
+                left++;                
+            } else if (total > 0) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+    }
+    return output;
+}
+
+/*Time Complexity
+we have a loop O(n) linear time n(log n) + n*n
+this simplifies to O(n^n)
+*/
+
+/*Space Complexity
+Constant space O(1) 
+*/
+```
+
+## Linked Lists
+
+A linked list is a node sitting somewhere in memory with a value and a pointer to the next node, if there is one(if none 'next' is null). 
+In JavaScript this works through **' = '** assignment because when you assign an object to another, **it's by reference, and not by value** (meaning that essentially you're storing the memory location rather than a copy)
+
+```javascript
+class ListNode {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+/*Create a Node*/
+const node = new ListNode(1);
+console.log(node); 
+//ListNode { value: 1, next: null }
+
+/*Link a Node*/
+node.next = new ListNode(2);
+console.log(node); 
+//ListNode { value: 1, next: ListNode {value: 2, next:null } }
+
+/*Add a head Node*/
+const head = new ListNode(0);
+head.next = node;
+console.log(node); 
+//ListNode { value: 1, next: null }
+
+/*--------------------------------------------
+Alternative Functional Classes - work the same
+----------------------------------------------*/    
+    function ListNode(value){
+    	this.value = value;
+    	this.next = null;
+	}
+
+const node = new ListNode(3);
+/*---------------------------------
+Traversing a Linked list
+----------------------------------*/
+let on = head;
+while (on !== null) {
+    console.log(on.val);//work to do
+    on = on.next; //next element
+}
+
+```
 
 
 
+
+
+
+
+
+# 
 
 
 
@@ -4184,8 +4318,6 @@ module.exports = {
   }
 }
 ```
-
-
 
 
 
@@ -4295,7 +4427,6 @@ const app = express();
 
 /*In order for our server to start responding, we have to tell the server where to listen for new requests by providing a port number argument to a method called app.listen()*/
 const PORT = process.env.PORT || 4001;
-
 app.listen(PORT, () => {
   console.log(`The server is listening on port ${PORT}`);
 });
@@ -4318,6 +4449,12 @@ const { seedElements } = require('./utils');
 const expressions = [];
 seedElements(expressions, 'expressions');
 
+/*Expressions array
+[ { id: 1, emoji: '😀', name: 'happy' },
+  { id: 2, emoji: '😎', name: 'shades' },
+  { id: 3, emoji: '😴', name: 'sleepy' } ]
+ */
+
 const PORT = process.env.PORT || 4001;
 
 // Use static server to serve the Express Yourself Website
@@ -4330,10 +4467,9 @@ For example, if your server receives a GET request at ‘/monsters’, we will u
 The path is the part of a request URL after the hostname and port number, so in a request to localhost:4001/monsters, the path is /monsters
 */
 
-// Get all expressions
+// this will match all expressions,and
 app.get('/expressions', (req, res, next) => {
-  //console.log(req);
-  res.send(expressions); //this will match all,and send back the array
+  res.send(expressions); // send back the array
 });
 /*Express servers send responses using the .send() method on the response object. .send() will take any input and include it in the response body.
 
@@ -4347,7 +4483,7 @@ app.listen(PORT, () => {
 
 
 
-#### Getting A single Expression
+#### GET : Getting A single Expression : wildcards
 
 Routes become much more powerful when they can be used dynamically. Express servers provide this functionality with named *route parameters*. Parameters are route path segments that begin with `:` in their Express route definitions. They act as [wildcards](https://expressjs.com/en/guide/routing.html#route-parameters), matching any text at that path segment. For example `/monsters/:id` will match both`/monsters/1` and `/monsters/45`.
 
@@ -4358,23 +4494,19 @@ Routes become much more powerful when they can be used dynamically. Express serv
   { id: 2, emoji: '😎', name: 'shades' },
   { id: 3, emoji: '😴', name: 'sleepy' } ]
  */
-
-
 app.get('/expressions', (req, res, next) => {
   res.send(expressions);
 });
-/*after the ':' wildcard, the name you put will become the object key of the request parameter, and the input value its value. In Code below
-req.params {id:1} so req.params.id === 1. The function is a specially written one for this purpose.*/
 
+/*after the ':' wildcard, the name you put will become the object key of the request parameter(req.params), and the input value its value('id'). In Code below
+req.params {id:1} so req.params.id === 1. Function 'getElementByIf' is a specially written one for this exercise.*/
 app.get('/expressions/:id', (req, res, next) => {
   const foundExpression = getElementById(req.params.id, expressions);
-  res.send(foundExpression);
+  res.send(foundExpression); //sends the found object
 });
 
-/*SETTING STATUS CODES*/
+/*extension - SETTING STATUS CODES - these are needed to deal with invalid requests*/
 app.get('/expressions/:id', (req, res, next) => {
-  console.log('REQ.PARAMS:',req.params);
-  //console.log('Expressions:',expressions);
   const foundExpression = getElementById(req.params.id, expressions);
   if(foundExpression) res.send(foundExpression);
   else res.status(404).send('Expression not found');
@@ -4382,7 +4514,7 @@ app.get('/expressions/:id', (req, res, next) => {
 
 ```
 
-Route parameters will match anything in their specific part of the path, so a route matching `/monsters/:name` would match all the following request paths:
+Route parameters will match anything in their specific part of the path, so a **route matching** `/monsters/:name` would match all the following request paths:
 
 ```
 /monsters/hydra
@@ -4397,13 +4529,105 @@ Route parameters will match anything in their specific part of the path, so a ro
 
 #### PUT
 
-`PUT` requests are used  for updating existing resources. In our Express Yourself machine, a PUT  request will be used to update the name or emoji of an expression  already saved in our database. 
+`PUT` requests are used  for **updating** existing resources. In our Express Yourself machine, a PUT  request will be used to update the name or emoji of an expression  already saved in our database. 
 
-[Query strings](https://en.wikipedia.org/wiki/Query_string) appear at the end of the path in URLs, and they are indicated with a `?` character. For instance, in `/monsters/1?name=chimera&age=1`, the query string is `name=chimera&age=1` and the path is `/monsters/1/`
+[Query strings](https://en.wikipedia.org/wiki/Query_string) **appear at the end of the path in URLs**, and they are indicated with a `?` character. For instance, in `/monsters/1?name=chimera&age=1`, the query string is `name=chimera&age=1` and the path is `/monsters/1/`
 
-Query strings do not count as part  of the route path. Instead, the Express server parses them into a  JavaScript object and attaches it to the request body as the value of `req.query`. The `key: value` relationship is indicated by the `=` character in a query string, and key-value pairs are separated by `&`. In the above example route, the `req.query` object would be `{ name: 'chimera', age: '1' }`.
+Query strings **do not count as part  of the route path**. Instead, the Express server parses them into a  JavaScript object and attaches it to the request body as the value of `req.query`. The **key: value** relationship is indicated by the **=** character in a query string, and **key-value pairs are separated by &**  . In the above example route, the `req.query` object would be `{ name: 'chimera', age: '1' }`.
+
+updateElement function is a special function written for this exercise.
 
 ```javascript
+app.put('/expressions/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) { // if something is found
+    updateElement(req.params.id, req.query, expressions); //update values
+    res.send(expressions[expressionIndex]); //send updated object back as feedback
+  } else {
+    res.status(404).send('Expression not found');
+  }
+});
+```
+
+When updating, many servers will send back the updated resource after  the updates are applied so that the client has the exact same version of the resource as the server and database.
+
+#### POST
+
+It should send back the new element with a 201 status code if it is  valid, and it should send a 400 status code if the object is not valid. createElement function is a helper function created specially for this exercise.
+
+```javascript
+/*Addedd to above code*/
+
+app.post('/expressions', (req, res, next) => {
+  /*Check if received expression is valid*/
+  const receivedExpression = createElement('expressions', req.query);
+  /*Deal with valid expression, return 201 + new expression*/
+    if (receivedExpression) {
+    expressions.push(receivedExpression);
+    res.status(201).send(receivedExpression);
+  } else { //deal with invalid expression
+    res.status(400).send();
+  }
+});
+```
+
+#### DELETE
+
+`DELETE` is the HTTP method verb used to delete resources. Because `DELETE` routes delete currently existing data, their paths should usually end  with a route parameter to indicate which resource to delete.
+
+Express uses `.delete()` as its method for `DELETE` requests.
+
+Servers often send a 204 No Content status code if deletion occurs without error. 
+
+```javascript
+/*Addedd to above code*/
+app.delete('/expressions/:id',(req,res,next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if(expressionIndex != -1){
+    expressions.splice(expressionIndex,1)
+    res.status(204).send(`id: ${expressionIndex}`)
+
+  }else res.status(404).send('Expression not found!')
+})
+```
+
+#### Fully Operational : CRUD API
+
+Putting all the code together!
+
+```javascript
+//app.js
+const express = require('express');
+const app = express();
+
+// Serves Express Yourself website
+app.use(express.static('public'));
+
+const { getElementById, getIndexById, updateElement,
+        seedElements, createElement } = require('./utils');
+
+const expressions = [];
+seedElements(expressions, 'expressions');
+const animals = [];
+seedElements(animals, 'animals');
+
+const PORT = process.env.PORT || 4001;
+// Use static server to serve the Express Yourself Website
+app.use(express.static('public'));
+
+app.get('/expressions', (req, res, next) => {
+  res.send(expressions);
+});
+
+app.get('/expressions/:id', (req, res, next) => {
+  const foundExpression = getElementById(req.params.id, expressions);
+  if (foundExpression) {
+    res.send(foundExpression);
+  } else {
+    res.status(404).send();
+  }
+});
+
 app.put('/expressions/:id', (req, res, next) => {
   const expressionIndex = getIndexById(req.params.id, expressions);
   if (expressionIndex !== -1) {
@@ -4413,9 +4637,35 @@ app.put('/expressions/:id', (req, res, next) => {
     res.status(404).send();
   }
 });
+
+app.post('/expressions', (req, res, next) => {
+  const receivedExpression = createElement('expressions', req.query);
+  if (receivedExpression) {
+    expressions.push(receivedExpression);
+    res.status(201).send(receivedExpression);
+  } else {
+    res.status(400).send();
+  }
+});
+
+app.delete('/expressions/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    expressions.splice(expressionIndex, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send();
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`); 
+});
+
+
 ```
 
-When updating, many servers will send back the updated resource after  the updates are applied so that the client has the exact same version of the resource as the server and database.
+
 
 
 

@@ -664,10 +664,26 @@ more time thinking about where I want to go :)
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
-### Day 68: September 3nd, 2020 - 17 Days to Bootcamp
+### Day 68: September 3rd, 2020 - 17 Days to Bootcamp
 
 **Today's Progress**: express.js,javascript the weird parts
 
 **Thoughts: Today I spent most of my day helping my classmates!! I really like it, however I hope it won't get in the way of reaching my goals, I do however learn from them :)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 69: September 4th, 2020 - 16 Days to Bootcamp
+
+**Today's Progress**: everything!
+
+**Thoughts: Today I managed to use pomodoro tecnique and do a little progress on all aspects I want to work on. The question as to what I should be focusing on remains. I'm very tempted to deepdive into CSS and HTML for looks, but at the same time I really have no idea about servers or testing, as well as needing some brush up on react and to discover Angular, so perhaps in this case it might be better to have breath rather than depth, so as to have some concept of everything before begining my bootcamp. In the end everyone enjoyed the questions I posted! I didn't expect it, it was all quiet for days and suddenly everyone sprang up! Critical mass and perseverance!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 70: September 5th, 2020 - 15 Days to Bootcamp
+
+**Today's Progress**: Regex, weird javascript, express, algorithms
+
+**Thoughts: I'm taking half a day off perhaps! Not sure how good it is for me to work on these things everyday! Maybe I'm going crazy XD I do love it, kinda addicted to it actually. I really feel how important taking short breaks is, my body thanks me for it. 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
