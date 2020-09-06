@@ -4210,13 +4210,13 @@ console.log(node);
 /*Link a Node*/
 node.next = new ListNode(2);
 console.log(node); 
-//ListNode { value: 1, next: ListNode {value: 2, next:null } }
+//ListNode { value: 2, next: ListNode {value: 2, next:null } }
 
-/*Add a head Node*/
+/*Add a head Node (can add nodes to both ends)*/
 const head = new ListNode(0);
 head.next = node;
 console.log(node); 
-//ListNode { value: 1, next: null }
+//ListNode { value: 3, next: null }
 
 /*--------------------------------------------
 Alternative Functional Classes - work the same
@@ -4226,26 +4226,86 @@ Alternative Functional Classes - work the same
     	this.next = null;
 	}
 
-const node = new ListNode(3);
+const node = new ListNode(3); //...etc
 /*---------------------------------
 Traversing a Linked list
 ----------------------------------*/
 let on = head;
-while (on !== null) {
+while (on !== null) { //while it's not tail node
     console.log(on.val);//work to do
-    on = on.next; //next element
+    on = on.next; //next node
 }
 
 ```
 
 
 
+### Delete Nth Node from End # 19
+
+Given a linked list, remove the *n*-th node from the end of list and return its head.
+
+**Example:**
+
+```
+Given linked list: 1->2->3->4->5, and n = 2.
+
+After removing the second node from the end, the linked list becomes 1->2->3->5.
+```
+
+**Note:**
+
+Given *n* will always be valid.
+
+**Follow up:**
+
+Could you do this in one pass?
+
+```javascript
+function ListNode(val, next) {
+      this.val = (val===undefined ? 0 : val)
+      this.next = (next===undefined ? null : next)
+  }
+
+var removeNthFromEnd = function(head, n) {
+    //1.Measure length + compute left index
+    let on = head;
+    let length = 0; //initialize to 1??
+    while(on){ // !== null
+        length++
+        on = on.next;
+    }
+    let leftIndex = length - n; //- 1; //-1 is to normalize to zero indexing
+    console.log(leftIndex, length, n)
+    if(leftIndex === 0) return head.next;
+    
+    //2.Point around to delete node
+    on = head;
+    
+    /*decrease leftIndex until it's 1 (countdown), when it's one
+    instead of zero, we're 1 behind the node we want to delete. This
+    is the node we need to modify*/
+    
+    while(leftIndex-- > 1){
+        on = on.next;
+    }
+    on.next = on.next.next; //set to point around
+    return head
+    //3.Handle head deleted (if index is 0 above)
+    
+};
 
 
 
+/*Time Complexity
+here there is 2 loops in sequence so 2n or O(n) linear time
+*/
 
+/*Space Complexity
+We have a few pointers O(3) which is O(1) constant space
+*/
+```
 
-# 
+### 
 
 
 
@@ -4664,6 +4724,181 @@ app.listen(PORT, () => {
 
 
 ```
+
+### Routers - Code Refactored 
+
+We use routers to **Modularize** the code into separate files, each one that deals with a separate route. For that it's sufficient to use `require` and `export`.
+
+```javascript
+//------------------app.js---------------------------
+
+//------SERVER SETUP---------------
+const express = require('express');
+const app = express();
+
+const PORT = process.env.PORT || 4001;
+// Use static server to serve the Express Yourself Website
+app.use(express.static('public'));
+
+//-----------ROUTER SETUP---------------
+
+// Import and mount the expressionsRouter
+const expressionsRouter = require('./expressions.js');
+app.use('/expressions', expressionsRouter);
+/*app.use mounts the base address onto the router, 
+then all calls will have this as will have it as default*/
+
+// Import and mount the animalRouter
+const animalsRouter = require('./animals.js');
+app.use('/animals', animalsRouter);
+
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on ${PORT}`);
+});
+
+
+//------------------expressions.js----------------------
+const express = require('express'); //necessary to create ROUTER
+
+const { getElementById, getIndexById, updateElement,
+  seedElements, createElement } = require('./utils'); //utilities needed
+
+let expressions = []; //DATA setup
+seedElements(expressions, 'expressions');
+
+expressionsRouter = express.Router(); // ROUTER creation
+
+//ROUTES - Base address already inclued (/expressions)
+// Get all expressions
+expressionsRouter.get('/', (req, res, next) => {
+  res.send(expressions);
+});
+
+// Get a single expression
+expressionsRouter.get('/:id', (req, res, next) => {
+  const foundExpression = getElementById(req.params.id, expressions);
+  if (foundExpression) {
+    res.send(foundExpression);
+  } else {
+    res.status(404).send();
+  }
+});
+
+// Update an expression
+expressionsRouter.put('/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    updateElement(req.params.id, req.query, expressions);
+    res.send(expressions[expressionIndex]);
+  } else {
+    res.status(404).send();
+  }
+});
+
+// Create an expression
+expressionsRouter.post('/', (req, res, next) => {
+  const receivedExpression = createElement('expressions', req.query);
+  if (receivedExpression) {
+    expressions.push(receivedExpression);
+    res.status(201).send(receivedExpression);
+  } else {
+    res.status(400).send();
+  }
+});
+
+// Delete an expression
+expressionsRouter.delete('/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    expressions.splice(expressionIndex, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send();
+  }
+});
+
+module.exports = expressionsRouter;
+
+
+
+//--------------------animals.js-------------------
+
+const express = require('express'); //needed to create ROUTER
+
+//UTILS setup
+const {getElementById, getIndexById, updateElement,
+  seedElements, createElement} = require('./utils');
+
+//DATA setup
+let animals = [];
+seedElements(animals, 'animals');
+
+animalsRouter = express.Router(); //Router create
+module.exports = animalsRouter;
+
+//ROUTES - Base address already inclued (/animals)
+
+// Get all animals
+animalsRouter.get('/', (req, res, next) => {
+  res.send(animals);
+});
+
+// Get a single animal
+animalsRouter.get('/:id', (req, res, next) => {
+  const animal = getElementById(req.params.id, animals);
+  if (animal) {
+    res.send(animal);
+  } else {
+    res.status(404).send();
+  }
+});
+
+// Create an animal
+animalsRouter.post('/', (req, res, next) => {
+  const receivedAnimal = createElement('animals', req.query);
+  if (receivedAnimal) {
+    animals.push(receivedAnimal);
+    res.status(201).send(receivedAnimal);
+  } else {
+    res.status(400).send();
+  }
+});
+
+// Update an animal
+animalsRouter.put('/:id', (req, res, next) => {
+  const animalIndex = getIndexById(req.params.id, animals);
+  if (animalIndex !== -1) {
+    updateElement(req.params.id, req.query, animals);
+    res.send(animals[animalIndex]);
+  } else {
+    res.status(404).send();
+  }
+});
+
+// Delete a single animal
+animalsRouter.delete('/:id', (req, res, next) => {
+  const animalIndex = getIndexById(req.params.id, animals);
+  if (animalIndex !== -1) {
+    animals.splice(animalIndex, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send();
+  }
+});
+```
+
+
+
+### Questions to Answer
+
+* What is `next` in the callback for?
+* What do the  `res` and `req` values contain exactly?
+* http://expressjs.com/en/api.html#req.params
+* http://expressjs.com/en/api.html#req.query
+* https://discuss.codecademy.com/t/are-there-naming-conventions-on-router-files/388390
+* https://discuss.codecademy.com/t/is-it-common-practice-to-have-a-file-for-each-type-of-route/387833
+* https://discuss.codecademy.com/t/why-do-i-need-to-write-request-method-handlers-before-app-listen/405642
 
 
 

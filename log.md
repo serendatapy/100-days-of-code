@@ -687,3 +687,11 @@ more time thinking about where I want to go :)
 **Thoughts: I'm taking half a day off perhaps! Not sure how good it is for me to work on these things everyday! Maybe I'm going crazy XD I do love it, kinda addicted to it actually. I really feel how important taking short breaks is, my body thanks me for it. 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 71: September 6th, 2020 - 14 Days to Bootcamp
+
+**Today's Progress**: Regex, express, algorithms
+
+**Thoughts: I'm beginning to understand express and node a very little bit I think, also today I started linked lists and I'm quite intimidated :O help! 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

@@ -3,8 +3,8 @@ Once a day
 - [x] Regex
 - [x] Algorithms
 - [ ] Eloquent
-- [x] Codecademy
-- [x] Weird Javascript
+- [ ] Codecademy
+- [ ] Weird Javascript
 - [ ] VsCode Trick (+extra credit) - reduce to reuse predicate instead of flag
 - [ ] CSS LevelUp
 
@@ -82,9 +82,9 @@ Once a day
   - [x] 55-60
   - [x] 61-65
   - [x] 66-70
-  - [ ] 71-75
+  - [x] 71-75
   - [ ] 76-80
-  - [ ] 80-85
+  - [x] 80-85
 
 - [ ] Finish [Advanced CSS course ](https://www.udemy.com/course/advanced-css-and-sass/learn/lecture/8312878#content) 
 
