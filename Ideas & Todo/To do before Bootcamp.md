@@ -1,10 +1,10 @@
 Once a day
 
 - [x] Regex
-- [x] Algorithms
+- [ ] Algorithms
 - [ ] Eloquent
-- [ ] Codecademy
-- [ ] Weird Javascript
+- [x] Codecademy
+- [x] Weird Javascript
 - [ ] VsCode Trick (+extra credit) - reduce to reuse predicate instead of flag
 - [ ] CSS LevelUp
 

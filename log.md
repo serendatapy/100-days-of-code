@@ -695,3 +695,11 @@ more time thinking about where I want to go :)
 **Thoughts: I'm beginning to understand express and node a very little bit I think, also today I started linked lists and I'm quite intimidated :O help! 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 72: September 7th, 2020 - 13 Days to Bootcamp
+
+**Today's Progress**: Regex, express, weird javascript
+
+**Thoughts: Not so productive codewise, but I met up with a classmate to talk about code and helped others. Also I got some errands done, which was necessary! I just heard today that we'd be coding on sundays too, yikes!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
