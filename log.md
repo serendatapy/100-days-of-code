@@ -703,3 +703,11 @@ more time thinking about where I want to go :)
 **Thoughts: Not so productive codewise, but I met up with a classmate to talk about code and helped others. Also I got some errands done, which was necessary! I just heard today that we'd be coding on sundays too, yikes!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 73: September 8th, 2020 - 12 Days to Bootcamp
+
+**Today's Progress**: Regex, express, weird javascript
+
+**Thoughts: It's been a slow day with work, I need to use pomodoro also to avoid having breaks that extend too long! xD Pushing on with express, I hope it will all be worth it in the end. Very tempted to carry on working with React technologies though, I think I will include it in my study list now that I've finished weird javascript. Or shall I do AI?
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

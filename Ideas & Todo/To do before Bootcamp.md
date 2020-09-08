@@ -4,7 +4,7 @@ Once a day
 - [ ] Algorithms
 - [ ] Eloquent
 - [x] Codecademy
-- [x] Weird Javascript
+- [x] Weird Javascript (DONE)
 - [ ] VsCode Trick (+extra credit) - reduce to reuse predicate instead of flag
 - [ ] CSS LevelUp
 
