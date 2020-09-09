@@ -711,3 +711,11 @@ more time thinking about where I want to go :)
 **Thoughts: It's been a slow day with work, I need to use pomodoro also to avoid having breaks that extend too long! xD Pushing on with express, I hope it will all be worth it in the end. Very tempted to carry on working with React technologies though, I think I will include it in my study list now that I've finished weird javascript. Or shall I do AI?
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 74: September 9th, 2020 - 11 Days to Bootcamp
+
+**Today's Progress**: Regex, express, React+Gatsby
+
+**Thoughts: I managed to take breaks and control their length, so I got a lot of little things done today. I hope I'll still be able to do more studying, but tomorrow I have to do exams so I want to practice that so I don't flop! I started doing some work on React again. I'm happy about that because I think it does look like a fun tool to make websites!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

@@ -20,6 +20,18 @@ Questions
 -Should we start looking into algorithms and doing coding problems?
 --------------------------------------
 
+
+-----------------------
+Why in this loop, the number is subtracted after the evaluation, shouldn't it be subtracted before?
+
+let lI = 3;
+
+while (lI-- > 1){
+  console.log(lI > 1);
+  console.log (lI);
+}
+---------------------
+
 Why when you return the newArr.push(array[0]) it returns 1, instead doing it the long way returns ['a']
 
 function first(array, n) {

@@ -4192,9 +4192,12 @@ Constant space O(1)
 ## Linked Lists
 
 A linked list is a node sitting somewhere in memory with a value and a pointer to the next node, if there is one(if none 'next' is null). 
-In JavaScript this works through **' = '** assignment because when you assign an object to another, **it's by reference, and not by value** (meaning that essentially you're storing the memory location rather than a copy)
+In JavaScript this works through **' = '** assignment because when you assign an object to another, **it's by reference, and not by value** (meaning that essentially you're storing the memory location rather than a copy). 
 
 ```javascript
+/*A single linked list can only be traversed in one direction, 
+because it has referece only to the next object and not the last*/
+
 class ListNode {
     constructor(value) {
         this.value = value;
@@ -4242,7 +4245,7 @@ while (on !== null) { //while it's not tail node
 
 ### Delete Nth Node from End # 19
 
-Given a linked list, remove the *n*-th node from the end of list and return its head.
+Given a linked list, **remove the *n*-th node from the end** of list and **return its head**.
 
 **Example:**
 
@@ -4265,36 +4268,42 @@ function ListNode(val, next) {
       this.val = (val===undefined ? 0 : val)
       this.next = (next===undefined ? null : next)
   }
-
+/*
+1.Measure length + compute left index
+2.Point around to delete node
+3.Handle head deleted (if index is 0 above)
+*/
 var removeNthFromEnd = function(head, n) {
     //1.Measure length + compute left index
-    let on = head;
-    let length = 0; //initialize to 1??
+    let on = head; //start on first element of the linked list
+    let length = 0; //or 1?
     while(on){ // !== null
         length++
         on = on.next;
     }
-    let leftIndex = length - n; //- 1; //-1 is to normalize to zero indexing
+    //This will indicate the element BEFORE the one that needs deleting
+    let leftIndex = length - n; //(1->2->3->4->5), n = 2) 5 - 2 = 3
     console.log(leftIndex, length, n)
-    if(leftIndex === 0) return head.next;
+    
+    //if delete head, return the next element as head
+    if(leftIndex === 0) return head.next; 
     
     //2.Point around to delete node
-    on = head;
+    on = head; // reset to head to restart the loop
     
-    /*decrease leftIndex until it's 1 (countdown), when it's one
-    instead of zero, we're 1 behind the node we want to delete. This
-    is the node we need to modify*/
-    
-    while(leftIndex-- > 1){
+    /*Loop again, decreasing leftIndex until === 1 (countdown), when it's one 
+    we're 1 behind the node we want to delete. This
+    is the node we need to modify, to point AROUND*/
+    while(leftIndex > 1){
+        leftIndex--;
         on = on.next;
     }
-    on.next = on.next.next; //set to point around
-    return head
-    //3.Handle head deleted (if index is 0 above)
+    //set to point AROUND the node (it's like deleting it)
+    on.next = on.next.next;
     
+    //return altered version of head (linked list)
+    return head
 };
-
-
 
 /*Time Complexity
 here there is 2 loops in sequence so 2n or O(n) linear time
@@ -4475,7 +4484,7 @@ Woah, that was a lot… And there’s  even more to Node that we didn’t cover 
 
 Great work! We’re excited to see what you build! 
 
-## Express: Starting a Server
+## [Express](https://expressjs.com/en/api.html): Starting a Server
 
 ```javascript
 // Import the express library
@@ -4918,6 +4927,8 @@ const jellybeanBag = {
   }
 };
 
+/*----------------CRUD METHODS--------------------------*/
+
 app.get('/beans/', (req, res, next) => {
   console.log('GET Request Received');
   res.send(jellybeanBag);
@@ -4927,7 +4938,8 @@ app.get('/beans/', (req, res, next) => {
 app.post('/beans/', (req, res, next) => {
   console.log('POST Request Received');
   let queryData = '';
-  req.on('data', (data) => {
+  //req.on helps put http request together into a single string  
+  req.on('data', (data) =>
     queryData += data;
   });
 
@@ -5014,7 +5026,11 @@ app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
-/*------------------REFACTORING--------------------------*/
+
+
+/*-----------------------------------------------------*/
+/*------------------REFACTORING------------------------*/
+/*------------------------------------------------------*/
 
 const express = require('express');
 const app = express();
@@ -5023,7 +5039,7 @@ app.use(express.static('public'));
 
 const PORT = process.env.PORT || 4001;
 
-//data for testing
+//-------DATA for testing------
 const jellybeanBag = {
   mystery: {
     number: 4
@@ -5041,6 +5057,7 @@ const jellybeanBag = {
     number: 1
   }
 };
+/*-------------------IMPLEMENTATION OF MIDDLEWARE----------------------*/
 
 // Logging Middleware - console.logs type of request received
 app.use((req, res, next) => {
@@ -5062,7 +5079,7 @@ app.use('/beans/:beanName',(req, res, next)=>{
   req.beanName = beanName;
   next();
 })
-
+/*For these routes that share functionality, req.on is implemented here*/
 app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
   let bodyData = '';
   req.on('data', (data) => {
@@ -5075,6 +5092,8 @@ app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
     next();
   });
 });
+
+/*----------------CRUD METHODS--------------------------*/
 
 app.get('/beans/', (req, res, next) => {
   res.send(jellybeanBag);
@@ -5137,6 +5156,365 @@ app.put('/beans/:beanName/name', (req, res, next) => {
   req.bean = null;
   res.send(jellybeanBag[newName]);
   console.log('Response Sent');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+#### Refactoring app.use with functions as parameters
+
+```javascript
+const express = require('express');
+const app = express();
+
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001;
+
+const jellybeanBag = {
+  mystery: {
+    number: 4
+  },
+  lemon: {
+    number: 5
+  },
+  rootBeer: {
+    number: 25
+  },
+  cherry: {
+    number: 3
+  },
+  licorice: {
+    number: 1
+  }
+};
+
+// Logging Middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} Request Received`);
+  next();
+});
+
+app.use('/beans/:beanName', (req, res, next) => {
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    console.log('Response Sent');
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  req.bean = jellybeanBag[beanName];
+  req.beanName = beanName;
+  next();
+});
+
+/* By REFACTORING this app.use into a function, we can pass function bodyParser directly as an argument in post methods for example.
+
+app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
+  let bodyData = '';
+  req.on('data', (data) => {
+    bodyData += data;
+  });
+  req.on('end', () => {
+    if (bodyData) {
+      req.body = JSON.parse(bodyData);
+    }
+    next();
+  });
+});*/
+
+const bodyParser = (req, res, next) => {
+  let bodyData = '';
+  req.on('data', (data) => {
+    bodyData += data;
+  });
+  req.on('end', () => {
+    if (bodyData) {
+      req.body = JSON.parse(bodyData);
+    }
+    next();
+  });
+}
+
+
+app.get('/beans/', (req, res, next) => {
+  res.send(jellybeanBag);
+  console.log('Response Sent');
+});
+
+app.post('/beans/', bodyParser,(req, res, next) => {
+  const body = req.body;
+  const beanName = body.name;
+  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+    return res.status(400).send('Bean with that name already exists!');
+  }
+  const numberOfBeans = Number(body.number) || 0;
+  jellybeanBag[beanName] = {
+    number: numberOfBeans
+  };
+  res.send(jellybeanBag[beanName]);
+  console.log('Response Sent');
+});
+
+app.get('/beans/:beanName', (req, res, next) => {
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/add', bodyParser, (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  req.bean.number += numberOfBeans;
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/remove', bodyParser, (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  if (req.bean.number < numberOfBeans) {
+    return res.status(400).send('Not enough beans in the jar to remove!');
+  }
+  req.bean.number -= numberOfBeans;
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.delete('/beans/:beanName', (req, res, next) => {
+  const beanName = req.beanName;
+  jellybeanBag[beanName] = null;
+  res.status(204).send();
+  console.log('Response Sent');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+#### Refactoring with [Morgan](https://github.com/expressjs/morgan#api) (logger)
+
+```javascript
+const express = require('express');
+const app = express();
+const morgan = require('morgan')
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001;
+
+const jellybeanBag = {
+  mystery: {
+    number: 4
+  },
+  lemon: {
+    number: 5
+  },
+  rootBeer: {
+    number: 25
+  },
+  cherry: {
+    number: 3
+  },
+  licorice: {
+    number: 1
+  }
+};
+
+const bodyParser = (req, res, next) => {
+  let queryData = '';
+  req.on('data', (data) => {
+    data = data.toString();
+    queryData += data;
+  });
+  req.on('end', () => {
+    if (queryData) {
+      req.body = JSON.parse(queryData);
+    }
+    next();
+  });
+};
+
+// Logging Middleware
+/*Using Morgan we can get rid of a lot of repetitive console logs!*/
+app.use(morgan('tiny'));
+
+/*app.use((req, res, next) => {
+console.log(`${req.method} Request Received`);
+  next();
+});
+//console.log('Response Sent');
+*/
+
+app.use('/beans/:beanName', (req, res, next) => {
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    //console.log('Response Sent');
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  req.bean = jellybeanBag[beanName];
+  req.beanName = beanName;
+  next();
+});
+
+app.get('/beans/', (req, res, next) => {
+  res.send(jellybeanBag);
+  //console.log('Response Sent');
+});
+
+app.post('/beans/', bodyParser, (req, res, next) => {
+  const body = req.body;
+  const beanName = body.name;
+  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+    return res.status(400).send('Bag with that name already exists!');
+  }
+  const numberOfBeans = Number(body.number) || 0;
+  jellybeanBag[beanName] = {
+    number: numberOfBeans
+  };
+  res.send(jellybeanBag[beanName]);
+  //console.log('Response Sent');
+});
+
+app.get('/beans/:beanName', (req, res, next) => {
+  res.send(req.bean);
+  //console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/add', bodyParser, (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  req.bean.number += numberOfBeans;
+  res.send(req.bean);
+  //console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/remove', bodyParser, (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  if (req.bean.number < numberOfBeans) {
+    return res.status(400).send('Not enough beans in the jar to remove!');
+  }
+  req.bean.number -= numberOfBeans;
+  res.send(req.bean);
+  //console.log('Response Sent');
+});
+
+app.delete('/beans/:beanName', (req, res, next) => {
+  const beanName = req.beanName;
+  jellybeanBag[beanName] = null;
+  res.status(204).send();
+  //console.log('Response Sent');
+});
+
+app.put('/beans/:beanName/name', bodyParser, (req, res, next) => {
+  const beanName = req.beanName;
+  const newName = req.body.name;
+  jellybeanBag[newName] = req.bean;
+  jellybeanBag[beanName] = null;
+  res.send(jellybeanBag[newName]);
+  //console.log('Response Sent');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+#### Refactoring with [bodyParser](https://github.com/expressjs/body-parser#body-parser)
+
+```javascript
+const express = require('express');
+const app = express();
+const morgan = require('morgan');
+const bodyParser = require('body-parser')
+
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001;
+
+const jellybeanBag = {
+  mystery: {
+    number: 4
+  },
+  lemon: {
+    number: 5
+  },
+  rootBeer: {
+    number: 25
+  },
+  cherry: {
+    number: 3
+  },
+  licorice: {
+    number: 1
+  }
+};
+
+/*const bodyParser = (req, res, next) => {
+  let queryData = '';
+  req.on('data', (data) => {
+    data = data.toString();
+    queryData += data;
+  });
+  req.on('end', () => {
+    if (queryData) {
+      req.body = JSON.parse(queryData);
+    }
+    next();
+  });
+};*/
+
+// Logging Middleware
+app.use(morgan('dev'));
+/*This allows us to remove our own implementation of body parser, and also remove the call to the function in the arguments. bodyParser attaches automatically body to req obj*/
+app.use(bodyParser.json());
+
+app.use('/beans/:beanName', (req, res, next) => {
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  req.bean = jellybeanBag[beanName];
+  req.beanName = beanName;
+  next();
+});
+
+app.get('/beans/', (req, res, next) => {
+  res.send(jellybeanBag);
+});
+
+app.post('/beans/', (req, res, next) => {
+  const body = req.body;
+  const beanName = body.name;
+  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+    return res.status(400).send('Bean with that name already exists!');
+  }
+  const numberOfBeans = Number(body.number) || 0;
+  jellybeanBag[beanName] = {
+    number: numberOfBeans
+  };
+  res.send(jellybeanBag[beanName]);
+});
+
+app.get('/beans/:beanName', (req, res, next) => {
+  res.send(req.bean);
+});
+
+app.post('/beans/:beanName/add',  (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  req.bean.number += numberOfBeans;
+  res.send(req.bean);
+});
+
+app.post('/beans/:beanName/remove',  (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  if (req.bean.number < numberOfBeans) {
+    return res.status(400).send('Not enough beans in the jar to remove!');
+  }
+  req.bean.number -= numberOfBeans;
+  res.send(req.bean);
+});
+
+app.delete('/beans/:beanName', (req, res, next) => {
+  const beanName = req.beanName;
+  jellybeanBag[beanName] = null;
+  res.status(204).send();
 });
 
 app.listen(PORT, () => {

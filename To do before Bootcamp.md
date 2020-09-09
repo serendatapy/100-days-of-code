@@ -1,12 +1,10 @@
 Once a day
 
 - [x] Regex
-- [ ] Algorithms
-- [ ] Eloquent
+- [x] Algorithms
 - [x] Codecademy
-- [x] Weird Javascript (DONE)
-- [ ] VsCode Trick (+extra credit) - reduce to reuse predicate instead of flag
-- [ ] CSS LevelUp
+- [ ] React Stack VsCode Trick (+extra credit) 
+- [ ] CSS LevelUp  Eloquent
 
 # Essential
 
@@ -27,7 +25,7 @@ Once a day
     - [ ] Chapter 8
     - [ ] Chapter 9
     - [ ] Chapter 10
-  - [ ] Become Editor [Guru](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+  - [x] Become Editor [Guru](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
   - [x] Once a day [Regex](https://regexone.com/)
   - [ ] Linux [Tutorial](https://ryanstutorials.net/linuxtutorial/)
   - [ ] Finally [Getit](https://www.atlassian.com/git)
@@ -77,13 +75,13 @@ Once a day
   - [ ] 19
   - [ ] 20
 
-- [ ] Finish Javascript the weird Parts (3h left)
+- [x] Finish Javascript the weird Parts (3h left)
 
   - [x] 55-60
   - [x] 61-65
   - [x] 66-70
   - [x] 71-75
-  - [ ] 76-80
+  - [x] 76-80
   - [x] 80-85
 
 - [ ] Finish [Advanced CSS course ](https://www.udemy.com/course/advanced-css-and-sass/learn/lecture/8312878#content) 
