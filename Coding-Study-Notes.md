@@ -4016,6 +4016,309 @@ In both cases space doesn't increase so it's linear time O(1)
 
 ```
 
+### Rotate Image #48 - Matrix 
+
+You are given an *n* x *n* 2D `matrix` representing an image, rotate the image by 90 degrees (clockwise).
+
+You have to rotate the image [**in-place**](https://en.wikipedia.org/wiki/In-place_algorithm), which means you have to modify the input 2D matrix directly. **DO NOT** allocate another 2D matrix and do the rotation.
+
+Assumptions
+only numbers in arrays
+
+Edge Cases (none in this problem)
+
+
+Input: array of arrays
+Output: none, original array is checked for mutations
+
+
+
+By visually playing with the problem, one can see that if the array is mirrored, half of the components end up where they're supposed to be, but they are mirrored, so to finish putting them in the right place, one can flip the coordinates so that 0,1 becomes 1,0 
+
+```javascript
+var rotate = function(matrix) {
+    matrix.reverse();    
+for(let row = 0; row < matrix.length; row++){
+        for(let col = 0; col < row; col++){
+            let temp = matrix[row][col];
+            matrix[row][col] = matrix[col][row];
+            matrix[col][row] = temp;
+        }
+    }
+};
+
+/*Time Complexity
+here there is a loop in a loop, so it would be n*n however this second loop is half of the first so it would be (reverse + half traversal) n + (n^2)/2, which simplifies to O(n^2) quadratic time
+*/
+
+/*Space Complexity
+Space doesn't increase so it's linear space O(1)
+*/
+```
+
+### Two Sum #1 - Naive & Hash 
+
+Given an array of integers `nums` and and integer `target`, return *the indices of the two numbers such that they add up to `target`*.
+
+You may assume that each input would have ***exactly\* one solution**, and you may not use the *same* element twice.
+
+You can return the answer in any order.
+
+```javascript
+
+var twoSum = function(nums, target) {
+    for(let i = 0; i < nums.length; i++){
+        let currentVal = nums[i]
+        for(let j = i+1; j < nums.length; j++){
+           if(currentVal+nums[j] === target) {
+               return [i,j]
+           }
+        }
+    }   
+};
+
+/*Time Complexity
+here there is a loop in a loop, so O(n^2) quadratic time
+*/
+
+/*Space Complexity
+Space doesn't increase so it's constant space O(1)
+*/
+
+
+var twoSum = function(nums, target) {
+    let hash = {}
+    for(let i = 0; i < nums.length; i++){
+        const num = nums[i];
+        const want = target - num;
+        if(want in hash) {
+            const leftIndex = hash[want];
+            return [leftIndex, i];
+        } else hash[num] = i;
+    }
+};
+
+/*Time Complexity
+here there is a loop so O(n) linear time
+*/
+
+/*Space Complexity
+Space increases with hash table so O(n) linear
+*/
+```
+
+### Three Sum #15 - Naive & Hash (NEEDS STUDY)
+
+Given an array `nums` of *n* integers, are there elements *a*, *b*, *c* in `nums` such that *a* + *b* + *c* = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Notice that the solution set must not contain duplicate triplets. [order doesn't matter]
+
+Edge Cases
+
+-no combination of numbers make a triplet - return []
+
+Assumptions
+
+-input CAN have duplicates
+-output triplets must be unique(combination)
+-triplet order doesn't matter
+
+```javascript
+/*Naive Solution
+triple loop where as in previous problem, one hold first number, combines with a second, checks if adding a third will make 0
+three pointer solution. This will go on until there are only 3 numbers left, then stop
+the positive combinations can be sorted and stored in a hash table so any non unique results will be overwritten
+finally the hash table values are turned into an array
+THIS IS NOT OPTIMAL WHATSOEVER n * n * n worse than quadratic time!
+*/
+
+/*
+Here we still use 3 pointers but because we sort the array we can use a single loop to traverse the values intelligently
+create a variable to store results
+sort the array in acending order
+
+For every number in the array (if the number is not a duplicate of the last)
+   while left and right pointer don't cross
+     check if current value is 0 and store it
+     	move pointers to next valid position (to avoid duplicates) [-1,-1,-1,-1,-1,-1] should return [[-1,-1,-1]] only
+     else if total > 0 (number is too high)
+     	move right to the left
+     else (total < 0 too low)
+     	move left to the right
+*/
+
+var threeSum = function(nums) {
+    const output = [];
+    nums.sort((a,b) => a - b);
+    
+    for (let i = 0; i < nums.length - 2; i++) {
+        let left = i + 1;
+        let right = nums.length - 1;
+        if( i > 0 && nums[i] === nums[i-1]) continue;
+        
+        while(left < right) {
+            let total = nums[i] + nums[left] + nums[right];
+            
+            if(total === 0) {
+                output.push([nums[i], nums[left], nums[right]]);
+                while(left < right && nums[right - 1] === nums[right]) {
+                    right--;
+                }
+                while(left < right && nums[left + 1]  === nums[left]) {
+                    left++;
+                }
+                right--;
+                left++;                
+            } else if (total > 0) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+    }
+    return output;
+}
+
+/*Time Complexity
+we have a loop O(n) linear time n(log n) + n*n
+this simplifies to O(n^n)
+*/
+
+/*Space Complexity
+Constant space O(1) 
+*/
+```
+
+## Linked Lists
+
+A linked list is a node sitting somewhere in memory with a value and a pointer to the next node, if there is one(if none 'next' is null). 
+In JavaScript this works through **' = '** assignment because when you assign an object to another, **it's by reference, and not by value** (meaning that essentially you're storing the memory location rather than a copy). 
+
+```javascript
+/*A single linked list can only be traversed in one direction, 
+because it has referece only to the next object and not the last*/
+
+class ListNode {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+/*Create a Node*/
+const node = new ListNode(1);
+console.log(node); 
+//ListNode { value: 1, next: null }
+
+/*Link a Node*/
+node.next = new ListNode(2);
+console.log(node); 
+//ListNode { value: 2, next: ListNode {value: 2, next:null } }
+
+/*Add a head Node (can add nodes to both ends)*/
+const head = new ListNode(0);
+head.next = node;
+console.log(node); 
+//ListNode { value: 3, next: null }
+
+/*--------------------------------------------
+Alternative Functional Classes - work the same
+----------------------------------------------*/    
+    function ListNode(value){
+    	this.value = value;
+    	this.next = null;
+	}
+
+const node = new ListNode(3); //...etc
+/*---------------------------------
+Traversing a Linked list
+----------------------------------*/
+let on = head;
+while (on !== null) { //while it's not tail node
+    console.log(on.val);//work to do
+    on = on.next; //next node
+}
+
+```
+
+
+
+### Delete Nth Node from End # 19
+
+Given a linked list, **remove the *n*-th node from the end** of list and **return its head**.
+
+**Example:**
+
+```
+Given linked list: 1->2->3->4->5, and n = 2.
+
+After removing the second node from the end, the linked list becomes 1->2->3->5.
+```
+
+**Note:**
+
+Given *n* will always be valid.
+
+**Follow up:**
+
+Could you do this in one pass?
+
+```javascript
+function ListNode(val, next) {
+      this.val = (val===undefined ? 0 : val)
+      this.next = (next===undefined ? null : next)
+  }
+/*
+1.Measure length + compute left index
+2.Point around to delete node
+3.Handle head deleted (if index is 0 above)
+*/
+var removeNthFromEnd = function(head, n) {
+    //1.Measure length + compute left index
+    let on = head; //start on first element of the linked list
+    let length = 0; //or 1?
+    while(on){ // !== null
+        length++
+        on = on.next;
+    }
+    //This will indicate the element BEFORE the one that needs deleting
+    let leftIndex = length - n; //(1->2->3->4->5), n = 2) 5 - 2 = 3
+    console.log(leftIndex, length, n)
+    
+    //if delete head, return the next element as head
+    if(leftIndex === 0) return head.next; 
+    
+    //2.Point around to delete node
+    on = head; // reset to head to restart the loop
+    
+    /*Loop again, decreasing leftIndex until === 1 (countdown), when it's one 
+    we're 1 behind the node we want to delete. This
+    is the node we need to modify, to point AROUND*/
+    while(leftIndex > 1){
+        leftIndex--;
+        on = on.next;
+    }
+    //set to point AROUND the node (it's like deleting it)
+    on.next = on.next.next;
+    
+    //return altered version of head (linked list)
+    return head
+};
+
+/*Time Complexity
+here there is 2 loops in sequence so 2n or O(n) linear time
+*/
+
+/*Space Complexity
+We have a few pointers O(3) which is O(1) constant space
+*/
+```
+
+### 
+
+
+
+
 # NODE
 
 [Cheatsheet](https://www.codecademy.com/learn/paths/web-development/tracks/javascript-back-end-development/modules/introduction-to-node-js/cheatsheet)
@@ -4084,8 +4387,6 @@ module.exports = {
   }
 }
 ```
-
-
 
 
 
@@ -4182,6 +4483,1062 @@ Awesome work! You’ve learned a lot about Node.js including:
 Woah, that was a lot… And there’s  even more to Node that we didn’t cover in this lesson, but don’t panic!  Learning Node isn’t about memorizing every aspect of the environment.  The best way to get comfortable with Node is just to practice making  things in it. Your imagination is the limit! If you haven’t already, [download Node on your local machine](https://www.codecademy.com/articles/setting-up-node-locally). You can start by recreating some of the programs you built in this  lesson— put your own spin on a guessing game, for example. If you’re  eager to build web application back-ends, we recommend you start [learning the awesome Express.js](https://www.codecademy.com/learn/learn-express) web framework. 
 
 Great work! We’re excited to see what you build! 
+
+## [Express](https://expressjs.com/en/api.html): Starting a Server
+
+```javascript
+// Import the express library
+const express = require('express');
+// Instantiate the app 
+const app = express();
+/*This can be used to start a server and specify behaviour. The purpose of a server is to listen for requests, perform whatever action is required to satisfy the request, and then return a response. */
+
+
+/*In order for our server to start responding, we have to tell the server where to listen for new requests by providing a port number argument to a method called app.listen()*/
+const PORT = process.env.PORT || 4001;
+app.listen(PORT, () => {
+  console.log(`The server is listening on port ${PORT}`);
+});
+/*The second argument is a callback function that will be called once the server is running and ready to receive responses.*/
+
+```
+
+
+
+#### [Writing A Route](https://expressjs.com/en/guide/routing.html#route-parameters)
+
+Express tries to match requests by route, meaning that if we send a request to `<server address>:<port number>/api-endpoint`, the Express server will search through any registered routes in order and try to match `/api-endpoint`.
+
+Express searches through routes in the order that they are registered in your code. The first one that is matched will be used, and its callback will be called.
+
+```javascript
+const express = require('express');
+const app = express();
+const { seedElements } = require('./utils');
+const expressions = [];
+seedElements(expressions, 'expressions');
+
+/*Expressions array
+[ { id: 1, emoji: '😀', name: 'happy' },
+  { id: 2, emoji: '😎', name: 'shades' },
+  { id: 3, emoji: '😴', name: 'sleepy' } ]
+ */
+
+const PORT = process.env.PORT || 4001;
+
+// Use static server to serve the Express Yourself Website
+app.use(express.static('public'));
+
+/*To tell our server how to deal with any given request, we register a series of routes. Routes define the control flow for requests based on the request’s path and HTTP verb.
+
+For example, if your server receives a GET request at ‘/monsters’, we will use a route to define the appropriate functionality for that HTTP verb (GET) and path (/monsters). 
+
+The path is the part of a request URL after the hostname and port number, so in a request to localhost:4001/monsters, the path is /monsters
+*/
+
+// this will match all expressions,and
+app.get('/expressions', (req, res, next) => {
+  res.send(expressions); // send back the array
+});
+/*Express servers send responses using the .send() method on the response object. .send() will take any input and include it in the response body.
+
+In addition to .send(), .json() can be used to explicitly send JSON-formatted responses. .json() sends any JavaScript object passed into it.*/
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
+
+```
+
+
+
+#### GET : Getting A single Expression : wildcards
+
+Routes become much more powerful when they can be used dynamically. Express servers provide this functionality with named *route parameters*. Parameters are route path segments that begin with `:` in their Express route definitions. They act as [wildcards](https://expressjs.com/en/guide/routing.html#route-parameters), matching any text at that path segment. For example `/monsters/:id` will match both`/monsters/1` and `/monsters/45`.
+
+```javascript
+// '' Same code as above ''
+/*Expressions array
+[ { id: 1, emoji: '😀', name: 'happy' },
+  { id: 2, emoji: '😎', name: 'shades' },
+  { id: 3, emoji: '😴', name: 'sleepy' } ]
+ */
+app.get('/expressions', (req, res, next) => {
+  res.send(expressions);
+});
+
+/*after the ':' wildcard, the name you put will become the object key of the request parameter(req.params), and the input value its value('id'). In Code below
+req.params {id:1} so req.params.id === 1. Function 'getElementByIf' is a specially written one for this exercise.*/
+app.get('/expressions/:id', (req, res, next) => {
+  const foundExpression = getElementById(req.params.id, expressions);
+  res.send(foundExpression); //sends the found object
+});
+
+/*extension - SETTING STATUS CODES - these are needed to deal with invalid requests*/
+app.get('/expressions/:id', (req, res, next) => {
+  const foundExpression = getElementById(req.params.id, expressions);
+  if(foundExpression) res.send(foundExpression);
+  else res.status(404).send('Expression not found');
+});
+
+```
+
+Route parameters will match anything in their specific part of the path, so a **route matching** `/monsters/:name` would match all the following request paths:
+
+```
+/monsters/hydra
+/monsters/jörmungandr
+/monsters/manticore
+/monsters/123
+```
+
+### PUT, POST and DELETE
+
+ Express provides methods for each one: `app.put()`, `app.post()`, and `app.delete()`
+
+#### PUT
+
+`PUT` requests are used  for **updating** existing resources. In our Express Yourself machine, a PUT  request will be used to update the name or emoji of an expression  already saved in our database. 
+
+[Query strings](https://en.wikipedia.org/wiki/Query_string) **appear at the end of the path in URLs**, and they are indicated with a `?` character. For instance, in `/monsters/1?name=chimera&age=1`, the query string is `name=chimera&age=1` and the path is `/monsters/1/`
+
+Query strings **do not count as part  of the route path**. Instead, the Express server parses them into a  JavaScript object and attaches it to the request body as the value of `req.query`. The **key: value** relationship is indicated by the **=** character in a query string, and **key-value pairs are separated by &**  . In the above example route, the `req.query` object would be `{ name: 'chimera', age: '1' }`.
+
+updateElement function is a special function written for this exercise.
+
+```javascript
+app.put('/expressions/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) { // if something is found
+    updateElement(req.params.id, req.query, expressions); //update values
+    res.send(expressions[expressionIndex]); //send updated object back as feedback
+  } else {
+    res.status(404).send('Expression not found');
+  }
+});
+```
+
+When updating, many servers will send back the updated resource after  the updates are applied so that the client has the exact same version of the resource as the server and database.
+
+#### POST
+
+It should send back the new element with a 201 status code if it is  valid, and it should send a 400 status code if the object is not valid. createElement function is a helper function created specially for this exercise.
+
+```javascript
+/*Addedd to above code*/
+
+app.post('/expressions', (req, res, next) => {
+  /*Check if received expression is valid*/
+  const receivedExpression = createElement('expressions', req.query);
+  /*Deal with valid expression, return 201 + new expression*/
+    if (receivedExpression) {
+    expressions.push(receivedExpression);
+    res.status(201).send(receivedExpression);
+  } else { //deal with invalid expression
+    res.status(400).send();
+  }
+});
+```
+
+#### DELETE
+
+`DELETE` is the HTTP method verb used to delete resources. Because `DELETE` routes delete currently existing data, their paths should usually end  with a route parameter to indicate which resource to delete.
+
+Express uses `.delete()` as its method for `DELETE` requests.
+
+Servers often send a 204 No Content status code if deletion occurs without error. 
+
+```javascript
+/*Addedd to above code*/
+app.delete('/expressions/:id',(req,res,next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if(expressionIndex != -1){
+    expressions.splice(expressionIndex,1)
+    res.status(204).send(`id: ${expressionIndex}`)
+
+  }else res.status(404).send('Expression not found!')
+})
+```
+
+#### Fully Operational : CRUD API
+
+Putting all the code together!
+
+```javascript
+//app.js
+const express = require('express');
+const app = express();
+
+// Serves Express Yourself website
+app.use(express.static('public'));
+
+const { getElementById, getIndexById, updateElement,
+        seedElements, createElement } = require('./utils');
+
+const expressions = [];
+seedElements(expressions, 'expressions');
+const animals = [];
+seedElements(animals, 'animals');
+
+const PORT = process.env.PORT || 4001;
+// Use static server to serve the Express Yourself Website
+app.use(express.static('public'));
+
+app.get('/expressions', (req, res, next) => {
+  res.send(expressions);
+});
+
+app.get('/expressions/:id', (req, res, next) => {
+  const foundExpression = getElementById(req.params.id, expressions);
+  if (foundExpression) {
+    res.send(foundExpression);
+  } else {
+    res.status(404).send();
+  }
+});
+
+app.put('/expressions/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    updateElement(req.params.id, req.query, expressions);
+    res.send(expressions[expressionIndex]);
+  } else {
+    res.status(404).send();
+  }
+});
+
+app.post('/expressions', (req, res, next) => {
+  const receivedExpression = createElement('expressions', req.query);
+  if (receivedExpression) {
+    expressions.push(receivedExpression);
+    res.status(201).send(receivedExpression);
+  } else {
+    res.status(400).send();
+  }
+});
+
+app.delete('/expressions/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    expressions.splice(expressionIndex, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send();
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`); 
+});
+
+
+```
+
+### Routers - Code Refactored 
+
+We use routers to **Modularize** the code into separate files, each one that deals with a separate route. For that it's sufficient to use `require` and `export`.
+
+```javascript
+//------------------app.js---------------------------
+
+//------SERVER SETUP---------------
+const express = require('express');
+const app = express();
+
+const PORT = process.env.PORT || 4001;
+// Use static server to serve the Express Yourself Website
+app.use(express.static('public'));
+
+//-----------ROUTER SETUP---------------
+
+// Import and mount the expressionsRouter
+const expressionsRouter = require('./expressions.js');
+app.use('/expressions', expressionsRouter);
+/*app.use mounts the base address onto the router, 
+then all calls will have this as will have it as default*/
+
+// Import and mount the animalRouter
+const animalsRouter = require('./animals.js');
+app.use('/animals', animalsRouter);
+
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on ${PORT}`);
+});
+
+
+//------------------expressions.js----------------------
+const express = require('express'); //necessary to create ROUTER
+
+const { getElementById, getIndexById, updateElement,
+  seedElements, createElement } = require('./utils'); //utilities needed
+
+let expressions = []; //DATA setup
+seedElements(expressions, 'expressions');
+
+expressionsRouter = express.Router(); // ROUTER creation
+
+//ROUTES - Base address already inclued (/expressions)
+// Get all expressions
+expressionsRouter.get('/', (req, res, next) => {
+  res.send(expressions);
+});
+
+// Get a single expression
+expressionsRouter.get('/:id', (req, res, next) => {
+  const foundExpression = getElementById(req.params.id, expressions);
+  if (foundExpression) {
+    res.send(foundExpression);
+  } else {
+    res.status(404).send();
+  }
+});
+
+// Update an expression
+expressionsRouter.put('/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    updateElement(req.params.id, req.query, expressions);
+    res.send(expressions[expressionIndex]);
+  } else {
+    res.status(404).send();
+  }
+});
+
+// Create an expression
+expressionsRouter.post('/', (req, res, next) => {
+  const receivedExpression = createElement('expressions', req.query);
+  if (receivedExpression) {
+    expressions.push(receivedExpression);
+    res.status(201).send(receivedExpression);
+  } else {
+    res.status(400).send();
+  }
+});
+
+// Delete an expression
+expressionsRouter.delete('/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1) {
+    expressions.splice(expressionIndex, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send();
+  }
+});
+
+module.exports = expressionsRouter;
+
+
+
+//--------------------animals.js-------------------
+
+const express = require('express'); //needed to create ROUTER
+
+//UTILS setup
+const {getElementById, getIndexById, updateElement,
+  seedElements, createElement} = require('./utils');
+
+//DATA setup
+let animals = [];
+seedElements(animals, 'animals');
+
+animalsRouter = express.Router(); //Router create
+module.exports = animalsRouter;
+
+//ROUTES - Base address already inclued (/animals)
+
+// Get all animals
+animalsRouter.get('/', (req, res, next) => {
+  res.send(animals);
+});
+
+// Get a single animal
+animalsRouter.get('/:id', (req, res, next) => {
+  const animal = getElementById(req.params.id, animals);
+  if (animal) {
+    res.send(animal);
+  } else {
+    res.status(404).send();
+  }
+});
+
+// Create an animal
+animalsRouter.post('/', (req, res, next) => {
+  const receivedAnimal = createElement('animals', req.query);
+  if (receivedAnimal) {
+    animals.push(receivedAnimal);
+    res.status(201).send(receivedAnimal);
+  } else {
+    res.status(400).send();
+  }
+});
+
+// Update an animal
+animalsRouter.put('/:id', (req, res, next) => {
+  const animalIndex = getIndexById(req.params.id, animals);
+  if (animalIndex !== -1) {
+    updateElement(req.params.id, req.query, animals);
+    res.send(animals[animalIndex]);
+  } else {
+    res.status(404).send();
+  }
+});
+
+// Delete a single animal
+animalsRouter.delete('/:id', (req, res, next) => {
+  const animalIndex = getIndexById(req.params.id, animals);
+  if (animalIndex !== -1) {
+    animals.splice(animalIndex, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send();
+  }
+});
+```
+
+
+
+### Middleware - Refactoring
+
+```javascript
+const express = require('express');
+const app = express();
+
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001;
+
+const jellybeanBag = {
+  mystery: {
+    number: 4
+  },
+  lemon: {
+    number: 5
+  },
+  rootBeer: {
+    number: 25
+  },
+  cherry: {
+    number: 3
+  },
+  licorice: {
+    number: 1
+  }
+};
+
+/*----------------CRUD METHODS--------------------------*/
+
+app.get('/beans/', (req, res, next) => {
+  console.log('GET Request Received');
+  res.send(jellybeanBag);
+  console.log('Response Sent');
+});
+
+app.post('/beans/', (req, res, next) => {
+  console.log('POST Request Received');
+  let queryData = '';
+  //req.on helps put http request together into a single string  
+  req.on('data', (data) =>
+    queryData += data;
+  });
+
+  req.on('end', () => {
+    const body = JSON.parse(queryData);
+    const beanName = body.name;
+    if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+      return res.status(400).send('Bean with that name already exists!');
+    }
+    const numberOfBeans = Number(body.number) || 0;
+    jellybeanBag[beanName] = {
+      number: numberOfBeans
+    };
+    res.send(jellybeanBag[beanName]);
+    console.log('Response Sent');
+  });
+});
+
+app.get('/beans/:beanName', (req, res, next) => {
+  console.log('GET Request Received');
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    console.log('Response Sent');
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  res.send(jellybeanBag[beanName]);
+  console.log('Response Sent');
+});
+
+
+app.post('/beans/:beanName/add', (req, res, next) => {
+  console.log('POST Request Received');
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  let queryData = '';
+  req.on('data', (data) => {
+    queryData += data;
+  });
+
+  req.on('end', () => {
+    const numberOfBeans = Number(JSON.parse(queryData).number) || 0;
+    jellybeanBag[beanName].number += numberOfBeans;
+    res.send(jellybeanBag[beanName]);
+    console.log('Response Sent');
+  });
+});
+
+app.post('/beans/:beanName/remove', (req, res, next) => {
+  console.log('POST Request Received');
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  let queryData = '';
+  req.on('data', (data) => {
+    queryData += data;
+  });
+
+  req.on('end', () => {
+    const numberOfBeans = Number(JSON.parse(queryData).number) || 0;
+    if (jellybeanBag[beanName].number < numberOfBeans) {
+      return res.status(400).send('Not enough beans in the jar to remove!');
+    }
+    jellybeanBag[beanName].number -= numberOfBeans;
+    res.send(jellybeanBag[beanName]);
+    console.log('Response Sent');
+  });
+});
+
+app.delete('/beans/:beanName', (req, res, next) => {
+  console.log('DELETE Request Received');
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  jellybeanBag[beanName] = null;
+  res.status(204).send();
+  console.log('Response Sent');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
+
+
+/*-----------------------------------------------------*/
+/*------------------REFACTORING------------------------*/
+/*------------------------------------------------------*/
+
+const express = require('express');
+const app = express();
+
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001;
+
+//-------DATA for testing------
+const jellybeanBag = {
+  mystery: {
+    number: 4
+  },
+  lemon: {
+    number: 5
+  },
+  rootBeer: {
+    number: 25
+  },
+  cherry: {
+    number: 3
+  },
+  licorice: {
+    number: 1
+  }
+};
+/*-------------------IMPLEMENTATION OF MIDDLEWARE----------------------*/
+
+// Logging Middleware - console.logs type of request received
+app.use((req, res, next) => {
+  console.log(`${req.method} Request Received`);
+  next();
+});
+
+/* beanName middleware - does beanName validation. 
+If the beanName doesn't exist, the return statement exits the middleware
+Else it attaches the bean object and beanName to the request, making it
+available to all other routes.*/
+app.use('/beans/:beanName',(req, res, next)=>{
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    console.log('Response Sent');
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  req.bean = jellybeanBag[beanName];
+  req.beanName = beanName;
+  next();
+})
+/*For these routes that share functionality, req.on is implemented here*/
+app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
+  let bodyData = '';
+  req.on('data', (data) => {
+    bodyData += data;
+  });
+  req.on('end', () => {
+    if (bodyData) {
+      req.body = JSON.parse(bodyData);
+    }
+    next();
+  });
+});
+
+/*----------------CRUD METHODS--------------------------*/
+
+app.get('/beans/', (req, res, next) => {
+  res.send(jellybeanBag);
+  console.log('Response Sent');
+});
+
+app.post('/beans/', (req, res, next) => {
+  const body = req.body;
+  const beanName = body.name;
+  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+    return res.status(400).send('Bag with that name already exists!');
+  }
+  const numberOfBeans = Number(body.number) || 0;
+  jellybeanBag[beanName] = {
+    number: numberOfBeans
+  };
+  res.send(jellybeanBag[beanName]);
+  console.log('Response Sent');
+});
+
+app.get('/beans/:beanName', (req, res, next) => {
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/add', (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  req.bean.number += numberOfBeans;
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/remove', (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  if (req.bean.number < numberOfBeans) {
+    return res.status(400).send('Not enough beans in the jar to remove!');
+  }
+  req.bean.number -= numberOfBeans;
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.delete('/beans/:beanName', (req, res, next) => {
+  const beanName = req.params.beanName;
+  if (!req.bean) {
+    return res.status(404).send('Bag with that name does not exist');
+  }
+  req.bean = null;
+  res.status(204).send();
+  console.log('Response Sent');
+});
+
+app.put('/beans/:beanName/name', (req, res, next) => {
+  const beanName = req.params.beanName;
+  if (!req.bean) {
+    return res.status(404).send('Bag with that name does not exist');
+  }
+  const newName = req.body.name;
+  jellybeanBag[newName] = req.bean;
+  req.bean = null;
+  res.send(jellybeanBag[newName]);
+  console.log('Response Sent');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+#### Refactoring app.use with functions as parameters
+
+```javascript
+const express = require('express');
+const app = express();
+
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001;
+
+const jellybeanBag = {
+  mystery: {
+    number: 4
+  },
+  lemon: {
+    number: 5
+  },
+  rootBeer: {
+    number: 25
+  },
+  cherry: {
+    number: 3
+  },
+  licorice: {
+    number: 1
+  }
+};
+
+// Logging Middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} Request Received`);
+  next();
+});
+
+app.use('/beans/:beanName', (req, res, next) => {
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    console.log('Response Sent');
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  req.bean = jellybeanBag[beanName];
+  req.beanName = beanName;
+  next();
+});
+
+/* By REFACTORING this app.use into a function, we can pass function bodyParser directly as an argument in post methods for example.
+
+app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
+  let bodyData = '';
+  req.on('data', (data) => {
+    bodyData += data;
+  });
+  req.on('end', () => {
+    if (bodyData) {
+      req.body = JSON.parse(bodyData);
+    }
+    next();
+  });
+});*/
+
+const bodyParser = (req, res, next) => {
+  let bodyData = '';
+  req.on('data', (data) => {
+    bodyData += data;
+  });
+  req.on('end', () => {
+    if (bodyData) {
+      req.body = JSON.parse(bodyData);
+    }
+    next();
+  });
+}
+
+
+app.get('/beans/', (req, res, next) => {
+  res.send(jellybeanBag);
+  console.log('Response Sent');
+});
+
+app.post('/beans/', bodyParser,(req, res, next) => {
+  const body = req.body;
+  const beanName = body.name;
+  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+    return res.status(400).send('Bean with that name already exists!');
+  }
+  const numberOfBeans = Number(body.number) || 0;
+  jellybeanBag[beanName] = {
+    number: numberOfBeans
+  };
+  res.send(jellybeanBag[beanName]);
+  console.log('Response Sent');
+});
+
+app.get('/beans/:beanName', (req, res, next) => {
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/add', bodyParser, (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  req.bean.number += numberOfBeans;
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/remove', bodyParser, (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  if (req.bean.number < numberOfBeans) {
+    return res.status(400).send('Not enough beans in the jar to remove!');
+  }
+  req.bean.number -= numberOfBeans;
+  res.send(req.bean);
+  console.log('Response Sent');
+});
+
+app.delete('/beans/:beanName', (req, res, next) => {
+  const beanName = req.beanName;
+  jellybeanBag[beanName] = null;
+  res.status(204).send();
+  console.log('Response Sent');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+#### Refactoring with [Morgan](https://github.com/expressjs/morgan#api) (logger)
+
+```javascript
+const express = require('express');
+const app = express();
+const morgan = require('morgan')
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001;
+
+const jellybeanBag = {
+  mystery: {
+    number: 4
+  },
+  lemon: {
+    number: 5
+  },
+  rootBeer: {
+    number: 25
+  },
+  cherry: {
+    number: 3
+  },
+  licorice: {
+    number: 1
+  }
+};
+
+const bodyParser = (req, res, next) => {
+  let queryData = '';
+  req.on('data', (data) => {
+    data = data.toString();
+    queryData += data;
+  });
+  req.on('end', () => {
+    if (queryData) {
+      req.body = JSON.parse(queryData);
+    }
+    next();
+  });
+};
+
+// Logging Middleware
+/*Using Morgan we can get rid of a lot of repetitive console logs!*/
+app.use(morgan('tiny'));
+
+/*app.use((req, res, next) => {
+console.log(`${req.method} Request Received`);
+  next();
+});
+//console.log('Response Sent');
+*/
+
+app.use('/beans/:beanName', (req, res, next) => {
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    //console.log('Response Sent');
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  req.bean = jellybeanBag[beanName];
+  req.beanName = beanName;
+  next();
+});
+
+app.get('/beans/', (req, res, next) => {
+  res.send(jellybeanBag);
+  //console.log('Response Sent');
+});
+
+app.post('/beans/', bodyParser, (req, res, next) => {
+  const body = req.body;
+  const beanName = body.name;
+  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+    return res.status(400).send('Bag with that name already exists!');
+  }
+  const numberOfBeans = Number(body.number) || 0;
+  jellybeanBag[beanName] = {
+    number: numberOfBeans
+  };
+  res.send(jellybeanBag[beanName]);
+  //console.log('Response Sent');
+});
+
+app.get('/beans/:beanName', (req, res, next) => {
+  res.send(req.bean);
+  //console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/add', bodyParser, (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  req.bean.number += numberOfBeans;
+  res.send(req.bean);
+  //console.log('Response Sent');
+});
+
+app.post('/beans/:beanName/remove', bodyParser, (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  if (req.bean.number < numberOfBeans) {
+    return res.status(400).send('Not enough beans in the jar to remove!');
+  }
+  req.bean.number -= numberOfBeans;
+  res.send(req.bean);
+  //console.log('Response Sent');
+});
+
+app.delete('/beans/:beanName', (req, res, next) => {
+  const beanName = req.beanName;
+  jellybeanBag[beanName] = null;
+  res.status(204).send();
+  //console.log('Response Sent');
+});
+
+app.put('/beans/:beanName/name', bodyParser, (req, res, next) => {
+  const beanName = req.beanName;
+  const newName = req.body.name;
+  jellybeanBag[newName] = req.bean;
+  jellybeanBag[beanName] = null;
+  res.send(jellybeanBag[newName]);
+  //console.log('Response Sent');
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+#### Refactoring with [bodyParser](https://github.com/expressjs/body-parser#body-parser)
+
+```javascript
+const express = require('express');
+const app = express();
+const morgan = require('morgan');
+const bodyParser = require('body-parser')
+
+app.use(express.static('public'));
+
+const PORT = process.env.PORT || 4001;
+
+const jellybeanBag = {
+  mystery: {
+    number: 4
+  },
+  lemon: {
+    number: 5
+  },
+  rootBeer: {
+    number: 25
+  },
+  cherry: {
+    number: 3
+  },
+  licorice: {
+    number: 1
+  }
+};
+
+/*const bodyParser = (req, res, next) => {
+  let queryData = '';
+  req.on('data', (data) => {
+    data = data.toString();
+    queryData += data;
+  });
+  req.on('end', () => {
+    if (queryData) {
+      req.body = JSON.parse(queryData);
+    }
+    next();
+  });
+};*/
+
+// Logging Middleware
+app.use(morgan('dev'));
+/*This allows us to remove our own implementation of body parser, and also remove the call to the function in the arguments. bodyParser attaches automatically body to req obj*/
+app.use(bodyParser.json());
+
+app.use('/beans/:beanName', (req, res, next) => {
+  const beanName = req.params.beanName;
+  if (!jellybeanBag[beanName]) {
+    return res.status(404).send('Bean with that name does not exist');
+  }
+  req.bean = jellybeanBag[beanName];
+  req.beanName = beanName;
+  next();
+});
+
+app.get('/beans/', (req, res, next) => {
+  res.send(jellybeanBag);
+});
+
+app.post('/beans/', (req, res, next) => {
+  const body = req.body;
+  const beanName = body.name;
+  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
+    return res.status(400).send('Bean with that name already exists!');
+  }
+  const numberOfBeans = Number(body.number) || 0;
+  jellybeanBag[beanName] = {
+    number: numberOfBeans
+  };
+  res.send(jellybeanBag[beanName]);
+});
+
+app.get('/beans/:beanName', (req, res, next) => {
+  res.send(req.bean);
+});
+
+app.post('/beans/:beanName/add',  (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  req.bean.number += numberOfBeans;
+  res.send(req.bean);
+});
+
+app.post('/beans/:beanName/remove',  (req, res, next) => {
+  const numberOfBeans = Number(req.body.number) || 0;
+  if (req.bean.number < numberOfBeans) {
+    return res.status(400).send('Not enough beans in the jar to remove!');
+  }
+  req.bean.number -= numberOfBeans;
+  res.send(req.bean);
+});
+
+app.delete('/beans/:beanName', (req, res, next) => {
+  const beanName = req.beanName;
+  jellybeanBag[beanName] = null;
+  res.status(204).send();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+
+
+
+
+
+
+
+### Questions to Answer
+
+* What is `next` in the callback for?
+* What do the  `res` and `req` values contain exactly?
+* http://expressjs.com/en/api.html#req.params
+* http://expressjs.com/en/api.html#req.query
+* https://discuss.codecademy.com/t/are-there-naming-conventions-on-router-files/388390
+* https://discuss.codecademy.com/t/is-it-common-practice-to-have-a-file-for-each-type-of-route/387833
+* https://discuss.codecademy.com/t/why-do-i-need-to-write-request-method-handlers-before-app-listen/405642
+
+
 
 
 

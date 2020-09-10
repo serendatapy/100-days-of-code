@@ -2,11 +2,9 @@ Once a day
 
 - [x] Regex
 - [x] Algorithms
-- [ ] Eloquent
 - [x] Codecademy
-- [x] Weird Javascript
-- [ ] VsCode Trick (+extra credit)
-- [ ] CSS LevelUp
+- [ ] React Stack VsCode Trick (+extra credit) 
+- [ ] CSS LevelUp  Eloquent
 
 # Essential
 
@@ -27,8 +25,8 @@ Once a day
     - [ ] Chapter 8
     - [ ] Chapter 9
     - [ ] Chapter 10
-  - [ ] Become Editor [Guru](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
-  - [ ] Once a day [Regex](https://regexone.com/)
+  - [x] Become Editor [Guru](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+  - [x] Once a day [Regex](https://regexone.com/)
   - [ ] Linux [Tutorial](https://ryanstutorials.net/linuxtutorial/)
   - [ ] Finally [Getit](https://www.atlassian.com/git)
     - [ ] Getting started
@@ -61,9 +59,9 @@ Once a day
 - [ ] Finish - One Problem a day- [Algorithms Course](https://course.interviewespresso.com/)
 
   - [x] 5
-  - [ ] 6
-  - [ ] 7
-  - [ ] 8
+  - [x] 6
+  - [x] 7
+  - [x] 8
   - [ ] 9
   - [ ] 10
   - [ ] 11
@@ -77,14 +75,14 @@ Once a day
   - [ ] 19
   - [ ] 20
 
-- [ ] Finish Javascript the weird Parts (3h left)
+- [x] Finish Javascript the weird Parts (3h left)
 
   - [x] 55-60
-  - [ ] 61-65
-  - [ ] 66-70
-  - [ ] 71-75
-  - [ ] 76-80
-  - [ ] 80-85
+  - [x] 61-65
+  - [x] 66-70
+  - [x] 71-75
+  - [x] 76-80
+  - [x] 80-85
 
 - [ ] Finish [Advanced CSS course ](https://www.udemy.com/course/advanced-css-and-sass/learn/lecture/8312878#content) 
 

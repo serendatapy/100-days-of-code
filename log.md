@@ -647,3 +647,75 @@ more time thinking about where I want to go :)
 **Thoughts: I like doing a lot of little things rather than big things and forget a lot! At the same time I like finishing things quickly...dilema! I hope I can keep up with this rhythm and get everything done!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 66: September 1st, 2020 - 19 Days to Bootcamp
+
+**Today's Progress**: Vs code trick and CSS, algorithms, weird javascript, Regex
+
+**Thoughts: Reasonably productive :) I have to optimize my diet I think, and definitely remove distractions! Had a lot of messages today from sister, ex boss, classmates, and had to help everyone in one way or another!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 67: September 2nd, 2020 - 18 Days to Bootcamp
+
+**Today's Progress**: algorithms, weird javascript, Regex
+
+**Thoughts: didn't get much done, spent the morning helping a classmate which was fun though :) certainly at this point don't see a better way to spend my time than to meet people!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 68: September 3rd, 2020 - 17 Days to Bootcamp
+
+**Today's Progress**: express.js,javascript the weird parts
+
+**Thoughts: Today I spent most of my day helping my classmates!! I really like it, however I hope it won't get in the way of reaching my goals, I do however learn from them :)
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 69: September 4th, 2020 - 16 Days to Bootcamp
+
+**Today's Progress**: everything!
+
+**Thoughts: Today I managed to use pomodoro tecnique and do a little progress on all aspects I want to work on. The question as to what I should be focusing on remains. I'm very tempted to deepdive into CSS and HTML for looks, but at the same time I really have no idea about servers or testing, as well as needing some brush up on react and to discover Angular, so perhaps in this case it might be better to have breath rather than depth, so as to have some concept of everything before begining my bootcamp. In the end everyone enjoyed the questions I posted! I didn't expect it, it was all quiet for days and suddenly everyone sprang up! Critical mass and perseverance!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 70: September 5th, 2020 - 15 Days to Bootcamp
+
+**Today's Progress**: Regex, weird javascript, express, algorithms
+
+**Thoughts: I'm taking half a day off perhaps! Not sure how good it is for me to work on these things everyday! Maybe I'm going crazy XD I do love it, kinda addicted to it actually. I really feel how important taking short breaks is, my body thanks me for it. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 71: September 6th, 2020 - 14 Days to Bootcamp
+
+**Today's Progress**: Regex, express, algorithms
+
+**Thoughts: I'm beginning to understand express and node a very little bit I think, also today I started linked lists and I'm quite intimidated :O help! 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 72: September 7th, 2020 - 13 Days to Bootcamp
+
+**Today's Progress**: Regex, express, weird javascript
+
+**Thoughts: Not so productive codewise, but I met up with a classmate to talk about code and helped others. Also I got some errands done, which was necessary! I just heard today that we'd be coding on sundays too, yikes!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 73: September 8th, 2020 - 12 Days to Bootcamp
+
+**Today's Progress**: Regex, express, weird javascript
+
+**Thoughts: It's been a slow day with work, I need to use pomodoro also to avoid having breaks that extend too long! xD Pushing on with express, I hope it will all be worth it in the end. Very tempted to carry on working with React technologies though, I think I will include it in my study list now that I've finished weird javascript. Or shall I do AI?
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 74: September 9th, 2020 - 11 Days to Bootcamp
+
+**Today's Progress**: Regex, express, React+Gatsby
+
+**Thoughts: I managed to take breaks and control their length, so I got a lot of little things done today. I hope I'll still be able to do more studying, but tomorrow I have to do exams so I want to practice that so I don't flop! I started doing some work on React again. I'm happy about that because I think it does look like a fun tool to make websites!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
