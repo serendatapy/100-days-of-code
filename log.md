@@ -719,3 +719,11 @@ more time thinking about where I want to go :)
 **Thoughts: I managed to take breaks and control their length, so I got a lot of little things done today. I hope I'll still be able to do more studying, but tomorrow I have to do exams so I want to practice that so I don't flop! I started doing some work on React again. I'm happy about that because I think it does look like a fun tool to make websites!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 75: September 10th, 2020 - 10 Days to Bootcamp
+
+**Today's Progress**: Regex, express
+
+**Thoughts: Today I didn't manage to do much at school, but it was a day I enjoyed with my ex collegues/friends :) my last 10 days of freedom!
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)

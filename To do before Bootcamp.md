@@ -1,8 +1,8 @@
 Once a day
 
 - [x] Regex
-- [x] Algorithms
-- [x] Codecademy
+- [ ] Algorithms
+- [ ] Codecademy
 - [ ] React Stack VsCode Trick (+extra credit) 
 - [ ] CSS LevelUp  Eloquent
 
