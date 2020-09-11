@@ -727,3 +727,11 @@ more time thinking about where I want to go :)
 **Thoughts: Today I didn't manage to do much at school, but it was a day I enjoyed with my ex collegues/friends :) my last 10 days of freedom!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 75: September 11th, 2020 - 9 Days to Bootcamp
+
+**Today's Progress**: Regex
+
+**Thoughts: Today I spent my time trying to optimize my computer in the best possible way to enable me to work as well as possible during the bootcamp. It took a while because I wasn't sure what the best option was. In the end I'm going to try a dual monitor setup, with laptop upgrades and hope for the best! This day doesn't count as a coding day.
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
