@@ -5633,6 +5633,17 @@ app.listen(PORT, () => {
 });
 ```
 
+with refactoring
+
+```javascript
+const errorhandler = require('errorhandler');
+
+app.use(errorhandler());
+/*app.use((err, req, res, next) => {
+  res.status(500).send(err);
+});*/
+```
+
 
 
 

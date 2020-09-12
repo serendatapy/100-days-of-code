@@ -735,3 +735,20 @@ more time thinking about where I want to go :)
 **Thoughts: Today I spent my time trying to optimize my computer in the best possible way to enable me to work as well as possible during the bootcamp. It took a while because I wasn't sure what the best option was. In the end I'm going to try a dual monitor setup, with laptop upgrades and hope for the best! This day doesn't count as a coding day.
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 76: September 11th, 2020 - 9 Days to Bootcamp
+
+**Today's Progress**: Regex, express
+
+**Thoughts: Today I spent most of my time trying to come up with some ideas about projects I could do with some classmates that were interested in making one! Tomorrow we're meeting for that. One thing we have agreed upon was in making the to do list with pomodoro timer. In the end it is among the 5 recommened projects for beginners, so let's do it!
+-Calculator
+-to do
+-pomodoro
+-wYSIWYG editor
+-Calendar, Weather and time widget
+
+-https://medium.com/free-code-camp/a-coding-project-a-day-for-20-days-5cd4c9383f84
+
+I'm dreading the part where we'll talk about the tecnology stack to use, though I would suggest using things we're supposed to be learning, or are supposed to have learnt. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
