@@ -736,7 +736,7 @@ more time thinking about where I want to go :)
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
-### Day 76: September 11th, 2020 - 9 Days to Bootcamp
+### Day 76: September 12th, 2020 - 8 Days to Bootcamp
 
 **Today's Progress**: Regex, express
 
@@ -749,6 +749,14 @@ more time thinking about where I want to go :)
 
 -https://medium.com/free-code-camp/a-coding-project-a-day-for-20-days-5cd4c9383f84
 
-I'm dreading the part where we'll talk about the tecnology stack to use, though I would suggest using things we're supposed to be learning, or are supposed to have learnt. 
+I'm dreading the part where we'll talk about the technology stack to use, though I would suggest using things we're supposed to be learning, or are supposed to have learnt. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 76: September 13th, 2020 - 7 Days to Bootcamp
+
+**Today's Progress**: Regex + Project Planning
+
+**Thoughts: Today the meeting was quite pleasant, and I think we got quite a nice team together. I need to take a break because I've had a stiff neck again for a few days, but today that I hardly did any programming it got much better. I'd like to rest again and tomorrow I'll get back on the saddle. Also we'll be starting the react project! Didn't do much coding though, so I won't count it. 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
