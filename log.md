@@ -760,3 +760,11 @@ I'm dreading the part where we'll talk about the technology stack to use, though
 **Thoughts: Today the meeting was quite pleasant, and I think we got quite a nice team together. I need to take a break because I've had a stiff neck again for a few days, but today that I hardly did any programming it got much better. I'd like to rest again and tomorrow I'll get back on the saddle. Also we'll be starting the react project! Didn't do much coding though, so I won't count it. 
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 77: September 14th, 2020 - 6 Days to Bootcamp
+
+**Today's Progress**: Git + Project planning
+
+**Thoughts: Today I spent the afternoon revising react and working through git problems with my classmates, it was fun, though I have no more energy to work on anything else at this time. I hope I'll be more productive tomorrow, I'm afraid I'm leaving my serious studying too much. On the other hand, this is also important isn't it?
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
