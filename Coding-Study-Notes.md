@@ -4554,7 +4554,7 @@ app.listen(PORT, () => {
 
 #### GET : Getting A single Expression : wildcards
 
-Routes become much more powerful when they can be used dynamically. Express servers provide this functionality with named *route parameters*. Parameters are route path segments that begin with `:` in their Express route definitions. They act as [wildcards](https://expressjs.com/en/guide/routing.html#route-parameters), matching any text at that path segment. For example `/monsters/:id` will match both`/monsters/1` and `/monsters/45`.
+Routes become much more powerful when they can be used dynamically. Express servers provide this functionality with named *route parameters*. Parameters are route path segments that begin with `:` in their Express route definitions. They act as [wildcards](https://expressjs.com/en/guide/routing.html#route-parameters), matching any text at that path segment. For example `/expressions/:id` will match both`/expressions/1` and `/expressions/45`.
 
 ```javascript
 // '' Same code as above ''
@@ -4563,24 +4563,26 @@ Routes become much more powerful when they can be used dynamically. Express serv
   { id: 2, emoji: '😎', name: 'shades' },
   { id: 3, emoji: '😴', name: 'sleepy' } ]
  */
-app.get('/expressions', (req, res, next) => {
-  res.send(expressions);
-});
 
 /*after the ':' wildcard, the name you put will become the object key of the request parameter(req.params), and the input value its value('id'). In Code below
-req.params {id:1} so req.params.id === 1. Function 'getElementByIf' is a specially written one for this exercise.*/
+req.params {id:1} so req.params.id === 1.*/
 app.get('/expressions/:id', (req, res, next) => {
   const foundExpression = getElementById(req.params.id, expressions);
   res.send(foundExpression); //sends the found object
 });
 
-/*extension - SETTING STATUS CODES - these are needed to deal with invalid requests*/
+/*Note: Function 'getElementByID' is a specially written one for this exercise.*/
+```
+
+##### Setting Status Codes
+
+```javascript
+/*These are needed to deal with invalid requests*/
 app.get('/expressions/:id', (req, res, next) => {
   const foundExpression = getElementById(req.params.id, expressions);
   if(foundExpression) res.send(foundExpression);
   else res.status(404).send('Expression not found');
 });
-
 ```
 
 Route parameters will match anything in their specific part of the path, so a **route matching** `/monsters/:name` would match all the following request paths:
@@ -4596,15 +4598,13 @@ Route parameters will match anything in their specific part of the path, so a **
 
  Express provides methods for each one: `app.put()`, `app.post()`, and `app.delete()`
 
-#### PUT
+#### PUT & Query Strings
 
 `PUT` requests are used  for **updating** existing resources. In our Express Yourself machine, a PUT  request will be used to update the name or emoji of an expression  already saved in our database. 
 
 [Query strings](https://en.wikipedia.org/wiki/Query_string) **appear at the end of the path in URLs**, and they are indicated with a `?` character. For instance, in `/monsters/1?name=chimera&age=1`, the query string is `name=chimera&age=1` and the path is `/monsters/1/`
 
-Query strings **do not count as part  of the route path**. Instead, the Express server parses them into a  JavaScript object and attaches it to the request body as the value of `req.query`. The **key: value** relationship is indicated by the **=** character in a query string, and **key-value pairs are separated by &**  . In the above example route, the `req.query` object would be `{ name: 'chimera', age: '1' }`.
-
-updateElement function is a special function written for this exercise.
+Query strings **do not count as part  of the route path**. Instead, the Express server parses them into a  JavaScript object and attaches it to the request body as the value of `req.query`. The **key: value** relationship is indicated by the **=** character in a query string, and **key-value pairs are separated by &**  . In the above example route, the `req.query` object `/monsters/1?name=chimera&age=1` would be `{ name: 'chimera', age: '1' }`.
 
 ```javascript
 app.put('/expressions/:id', (req, res, next) => {
@@ -4616,13 +4616,15 @@ app.put('/expressions/:id', (req, res, next) => {
     res.status(404).send('Expression not found');
   }
 });
+
+/*Note: updateElement function is a special function written for this exercise.*/
 ```
 
 When updating, many servers will send back the updated resource after  the updates are applied so that the client has the exact same version of the resource as the server and database.
 
 #### POST
 
-It should send back the new element with a 201 status code if it is  valid, and it should send a 400 status code if the object is not valid. createElement function is a helper function created specially for this exercise.
+It should send back the new element with a 201 status code if it is  valid, and it should send a 400 status code if the object is not valid. 
 
 ```javascript
 /*Addedd to above code*/
@@ -4638,6 +4640,8 @@ app.post('/expressions', (req, res, next) => {
     res.status(400).send();
   }
 });
+
+/*Note: createElement function is a helper function created specially for this exercise.*/
 ```
 
 #### DELETE
@@ -4649,11 +4653,10 @@ Express uses `.delete()` as its method for `DELETE` requests.
 Servers often send a 204 No Content status code if deletion occurs without error. 
 
 ```javascript
-/*Addedd to above code*/
 app.delete('/expressions/:id',(req,res,next) => {
   const expressionIndex = getIndexById(req.params.id, expressions);
-  if(expressionIndex != -1){
-    expressions.splice(expressionIndex,1)
+  if(expressionIndex !== -1){
+    expressions.splice(expressionIndex,1) //remove element from array
     res.status(204).send(`id: ${expressionIndex}`)
 
   }else res.status(404).send('Expression not found!')
@@ -4677,8 +4680,6 @@ const { getElementById, getIndexById, updateElement,
 
 const expressions = [];
 seedElements(expressions, 'expressions');
-const animals = [];
-seedElements(animals, 'animals');
 
 const PORT = process.env.PORT || 4001;
 // Use static server to serve the Express Yourself Website
@@ -4730,11 +4731,9 @@ app.delete('/expressions/:id', (req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`); 
 });
-
-
 ```
 
-### Routers - Code Refactored 
+### Routers - Creating Modules - Refactor
 
 We use routers to **Modularize** the code into separate files, each one that deals with a separate route. For that it's sufficient to use `require` and `export`.
 
@@ -4749,22 +4748,29 @@ const PORT = process.env.PORT || 4001;
 // Use static server to serve the Express Yourself Website
 app.use(express.static('public'));
 
-//-----------ROUTER SETUP---------------
+/*-----------ROUTER SETUP---------------
+The router routes are already setup in expressions.js,
+here we only import it, and attach it to the base route
+*/
 
 // Import and mount the expressionsRouter
 const expressionsRouter = require('./expressions.js');
 app.use('/expressions', expressionsRouter);
 /*app.use mounts the base address onto the router, 
-then all calls will have this as will have it as default*/
+then all calls will have this base as default*/
 
 // Import and mount the animalRouter
 const animalsRouter = require('./animals.js');
 app.use('/animals', animalsRouter);
 
 
+
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
 });
+
+
+
 
 
 //------------------expressions.js----------------------
@@ -4773,12 +4779,14 @@ const express = require('express'); //necessary to create ROUTER
 const { getElementById, getIndexById, updateElement,
   seedElements, createElement } = require('./utils'); //utilities needed
 
-let expressions = []; //DATA setup
+/*---------------DATA SETUP--------------------------*/
+let expressions = [];
 seedElements(expressions, 'expressions');
 
-expressionsRouter = express.Router(); // ROUTER creation
+// ROUTER creation
+expressionsRouter = express.Router(); 
 
-//ROUTES - Base address already inclued (/expressions)
+//ROUTES - Base address (/expressions) added in app.js
 // Get all expressions
 expressionsRouter.get('/', (req, res, next) => {
   res.send(expressions);
@@ -4842,11 +4850,11 @@ const {getElementById, getIndexById, updateElement,
 //DATA setup
 let animals = [];
 seedElements(animals, 'animals');
-
-animalsRouter = express.Router(); //Router create
+//Router create
+animalsRouter = express.Router(); 
 module.exports = animalsRouter;
 
-//ROUTES - Base address already inclued (/animals)
+//ROUTES - Base address (/animals) added in app.js
 
 // Get all animals
 animalsRouter.get('/', (req, res, next) => {
@@ -4899,9 +4907,12 @@ animalsRouter.delete('/:id', (req, res, next) => {
 
 
 
-### Middleware - Refactoring
+### Adding Middleware - Refactoring
+
+A couple of methods can be implemented to keep code DRY. One is to group functionality, and another is to import functionality from existing libraries. They can both be implemented simultaneously. 
 
 ```javascript
+/*FULL CODE WITHOUT REFACTORING*/
 const express = require('express');
 const app = express();
 
@@ -5028,44 +5039,27 @@ app.listen(PORT, () => {
 
 
 
+
+```
+
+#### Middleware 1 - Grouping functionality (app.use & functions)
+
+The `app.use` functionality can run before the routes as they're placed further up the file.  
+
+```javascript
 /*-----------------------------------------------------*/
 /*------------------REFACTORING------------------------*/
-/*------------------------------------------------------*/
+/*-----------------------------------------------------*/
 
-const express = require('express');
-const app = express();
-
-app.use(express.static('public'));
-
-const PORT = process.env.PORT || 4001;
-
-//-------DATA for testing------
-const jellybeanBag = {
-  mystery: {
-    number: 4
-  },
-  lemon: {
-    number: 5
-  },
-  rootBeer: {
-    number: 25
-  },
-  cherry: {
-    number: 3
-  },
-  licorice: {
-    number: 1
-  }
-};
 /*-------------------IMPLEMENTATION OF MIDDLEWARE----------------------*/
 
-// Logging Middleware - console.logs type of request received
+// Logging Middleware - to eliminate the console.log 'X Request Received' 
 app.use((req, res, next) => {
   console.log(`${req.method} Request Received`);
   next();
 });
 
-/* beanName middleware - does beanName validation. 
+/* beanName middleware - does beanName validation.
 If the beanName doesn't exist, the return statement exits the middleware
 Else it attaches the bean object and beanName to the request, making it
 available to all other routes.*/
@@ -5079,138 +5073,12 @@ app.use('/beans/:beanName',(req, res, next)=>{
   req.beanName = beanName;
   next();
 })
-/*For these routes that share functionality, req.on is implemented here*/
-app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
-  let bodyData = '';
-  req.on('data', (data) => {
-    bodyData += data;
-  });
-  req.on('end', () => {
-    if (bodyData) {
-      req.body = JSON.parse(bodyData);
-    }
-    next();
-  });
-});
 
-/*----------------CRUD METHODS--------------------------*/
 
-app.get('/beans/', (req, res, next) => {
-  res.send(jellybeanBag);
-  console.log('Response Sent');
-});
+/*For these routes that share functionality, req.on is implemented here
+and passed onto the routes. 
 
-app.post('/beans/', (req, res, next) => {
-  const body = req.body;
-  const beanName = body.name;
-  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
-    return res.status(400).send('Bag with that name already exists!');
-  }
-  const numberOfBeans = Number(body.number) || 0;
-  jellybeanBag[beanName] = {
-    number: numberOfBeans
-  };
-  res.send(jellybeanBag[beanName]);
-  console.log('Response Sent');
-});
-
-app.get('/beans/:beanName', (req, res, next) => {
-  res.send(req.bean);
-  console.log('Response Sent');
-});
-
-app.post('/beans/:beanName/add', (req, res, next) => {
-  const numberOfBeans = Number(req.body.number) || 0;
-  req.bean.number += numberOfBeans;
-  res.send(req.bean);
-  console.log('Response Sent');
-});
-
-app.post('/beans/:beanName/remove', (req, res, next) => {
-  const numberOfBeans = Number(req.body.number) || 0;
-  if (req.bean.number < numberOfBeans) {
-    return res.status(400).send('Not enough beans in the jar to remove!');
-  }
-  req.bean.number -= numberOfBeans;
-  res.send(req.bean);
-  console.log('Response Sent');
-});
-
-app.delete('/beans/:beanName', (req, res, next) => {
-  const beanName = req.params.beanName;
-  if (!req.bean) {
-    return res.status(404).send('Bag with that name does not exist');
-  }
-  req.bean = null;
-  res.status(204).send();
-  console.log('Response Sent');
-});
-
-app.put('/beans/:beanName/name', (req, res, next) => {
-  const beanName = req.params.beanName;
-  if (!req.bean) {
-    return res.status(404).send('Bag with that name does not exist');
-  }
-  const newName = req.body.name;
-  jellybeanBag[newName] = req.bean;
-  req.bean = null;
-  res.send(jellybeanBag[newName]);
-  console.log('Response Sent');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
-```
-
-#### Refactoring app.use with functions as parameters
-
-```javascript
-const express = require('express');
-const app = express();
-
-app.use(express.static('public'));
-
-const PORT = process.env.PORT || 4001;
-
-const jellybeanBag = {
-  mystery: {
-    number: 4
-  },
-  lemon: {
-    number: 5
-  },
-  rootBeer: {
-    number: 25
-  },
-  cherry: {
-    number: 3
-  },
-  licorice: {
-    number: 1
-  }
-};
-
-// Logging Middleware
-app.use((req, res, next) => {
-  console.log(`${req.method} Request Received`);
-  next();
-});
-
-app.use('/beans/:beanName', (req, res, next) => {
-  const beanName = req.params.beanName;
-  if (!jellybeanBag[beanName]) {
-    console.log('Response Sent');
-    return res.status(404).send('Bean with that name does not exist');
-  }
-  req.bean = jellybeanBag[beanName];
-  req.beanName = beanName;
-  next();
-});
-
-/* By REFACTORING this app.use into a function, we can pass function bodyParser directly as an argument in post methods for example.
-
-app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
+app.use(['/beans/', '/beans/:beanName'], (req, res, next) => { //app.use can take an array of paths/expressions!
   let bodyData = '';
   req.on('data', (data) => {
     bodyData += data;
@@ -5223,6 +5091,8 @@ app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
   });
 });*/
 
+/* However, by REFACTORING this app.use into a function, we can pass function 'bodyParser' 
+directly as an argument in post methods for example.*/
 const bodyParser = (req, res, next) => {
   let bodyData = '';
   req.on('data', (data) => {
@@ -5230,20 +5100,25 @@ const bodyParser = (req, res, next) => {
   });
   req.on('end', () => {
     if (bodyData) {
-      req.body = JSON.parse(bodyData);
+      req.body = JSON.parse(bodyData); //adds all data of request to body object
     }
     next();
   });
 }
+/*Note: Req.on is used to combine HTTP requests into a single string.
+Once it's fully received, it attaches the body to request object*/
 
+
+/*--------------------CRUD METHODS--------------------------*/
 
 app.get('/beans/', (req, res, next) => {
   res.send(jellybeanBag);
   console.log('Response Sent');
 });
 
-app.post('/beans/', bodyParser,(req, res, next) => {
-  const body = req.body;
+//function bodyParser is passed and invoked before second callback
+app.post('/beans/', bodyParser,(req, res, next) => { 
+  const body = req.body; //req.body created by bodyParser function
   const beanName = body.name;
   if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
     return res.status(400).send('Bean with that name already exists!');
@@ -5290,239 +5165,9 @@ app.listen(PORT, () => {
 });
 ```
 
-#### Refactoring with [Morgan](https://github.com/expressjs/morgan#api) (logger)
 
-```javascript
-const express = require('express');
-const app = express();
-const morgan = require('morgan')
-app.use(express.static('public'));
 
-const PORT = process.env.PORT || 4001;
-
-const jellybeanBag = {
-  mystery: {
-    number: 4
-  },
-  lemon: {
-    number: 5
-  },
-  rootBeer: {
-    number: 25
-  },
-  cherry: {
-    number: 3
-  },
-  licorice: {
-    number: 1
-  }
-};
-
-const bodyParser = (req, res, next) => {
-  let queryData = '';
-  req.on('data', (data) => {
-    data = data.toString();
-    queryData += data;
-  });
-  req.on('end', () => {
-    if (queryData) {
-      req.body = JSON.parse(queryData);
-    }
-    next();
-  });
-};
-
-// Logging Middleware
-/*Using Morgan we can get rid of a lot of repetitive console logs!*/
-app.use(morgan('tiny'));
-
-/*app.use((req, res, next) => {
-console.log(`${req.method} Request Received`);
-  next();
-});
-//console.log('Response Sent');
-*/
-
-app.use('/beans/:beanName', (req, res, next) => {
-  const beanName = req.params.beanName;
-  if (!jellybeanBag[beanName]) {
-    //console.log('Response Sent');
-    return res.status(404).send('Bean with that name does not exist');
-  }
-  req.bean = jellybeanBag[beanName];
-  req.beanName = beanName;
-  next();
-});
-
-app.get('/beans/', (req, res, next) => {
-  res.send(jellybeanBag);
-  //console.log('Response Sent');
-});
-
-app.post('/beans/', bodyParser, (req, res, next) => {
-  const body = req.body;
-  const beanName = body.name;
-  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
-    return res.status(400).send('Bag with that name already exists!');
-  }
-  const numberOfBeans = Number(body.number) || 0;
-  jellybeanBag[beanName] = {
-    number: numberOfBeans
-  };
-  res.send(jellybeanBag[beanName]);
-  //console.log('Response Sent');
-});
-
-app.get('/beans/:beanName', (req, res, next) => {
-  res.send(req.bean);
-  //console.log('Response Sent');
-});
-
-app.post('/beans/:beanName/add', bodyParser, (req, res, next) => {
-  const numberOfBeans = Number(req.body.number) || 0;
-  req.bean.number += numberOfBeans;
-  res.send(req.bean);
-  //console.log('Response Sent');
-});
-
-app.post('/beans/:beanName/remove', bodyParser, (req, res, next) => {
-  const numberOfBeans = Number(req.body.number) || 0;
-  if (req.bean.number < numberOfBeans) {
-    return res.status(400).send('Not enough beans in the jar to remove!');
-  }
-  req.bean.number -= numberOfBeans;
-  res.send(req.bean);
-  //console.log('Response Sent');
-});
-
-app.delete('/beans/:beanName', (req, res, next) => {
-  const beanName = req.beanName;
-  jellybeanBag[beanName] = null;
-  res.status(204).send();
-  //console.log('Response Sent');
-});
-
-app.put('/beans/:beanName/name', bodyParser, (req, res, next) => {
-  const beanName = req.beanName;
-  const newName = req.body.name;
-  jellybeanBag[newName] = req.bean;
-  jellybeanBag[beanName] = null;
-  res.send(jellybeanBag[newName]);
-  //console.log('Response Sent');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
-```
-
-#### Refactoring with [bodyParser](https://github.com/expressjs/body-parser#body-parser)
-
-```javascript
-const express = require('express');
-const app = express();
-const morgan = require('morgan');
-const bodyParser = require('body-parser')
-
-app.use(express.static('public'));
-
-const PORT = process.env.PORT || 4001;
-
-const jellybeanBag = {
-  mystery: {
-    number: 4
-  },
-  lemon: {
-    number: 5
-  },
-  rootBeer: {
-    number: 25
-  },
-  cherry: {
-    number: 3
-  },
-  licorice: {
-    number: 1
-  }
-};
-
-/*const bodyParser = (req, res, next) => {
-  let queryData = '';
-  req.on('data', (data) => {
-    data = data.toString();
-    queryData += data;
-  });
-  req.on('end', () => {
-    if (queryData) {
-      req.body = JSON.parse(queryData);
-    }
-    next();
-  });
-};*/
-
-// Logging Middleware
-app.use(morgan('dev'));
-/*This allows us to remove our own implementation of body parser, and also remove the call to the function in the arguments. bodyParser attaches automatically body to req obj*/
-app.use(bodyParser.json());
-
-app.use('/beans/:beanName', (req, res, next) => {
-  const beanName = req.params.beanName;
-  if (!jellybeanBag[beanName]) {
-    return res.status(404).send('Bean with that name does not exist');
-  }
-  req.bean = jellybeanBag[beanName];
-  req.beanName = beanName;
-  next();
-});
-
-app.get('/beans/', (req, res, next) => {
-  res.send(jellybeanBag);
-});
-
-app.post('/beans/', (req, res, next) => {
-  const body = req.body;
-  const beanName = body.name;
-  if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
-    return res.status(400).send('Bean with that name already exists!');
-  }
-  const numberOfBeans = Number(body.number) || 0;
-  jellybeanBag[beanName] = {
-    number: numberOfBeans
-  };
-  res.send(jellybeanBag[beanName]);
-});
-
-app.get('/beans/:beanName', (req, res, next) => {
-  res.send(req.bean);
-});
-
-app.post('/beans/:beanName/add',  (req, res, next) => {
-  const numberOfBeans = Number(req.body.number) || 0;
-  req.bean.number += numberOfBeans;
-  res.send(req.bean);
-});
-
-app.post('/beans/:beanName/remove',  (req, res, next) => {
-  const numberOfBeans = Number(req.body.number) || 0;
-  if (req.bean.number < numberOfBeans) {
-    return res.status(400).send('Not enough beans in the jar to remove!');
-  }
-  req.bean.number -= numberOfBeans;
-  res.send(req.bean);
-});
-
-app.delete('/beans/:beanName', (req, res, next) => {
-  const beanName = req.beanName;
-  jellybeanBag[beanName] = null;
-  res.status(204).send();
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
-```
-
-#### Error Handling Middleware
+#### [Middleware](https://expressjs.com/en/resources/middleware.html) 2 - Importing Modules - [Morgan](https://github.com/expressjs/morgan#api), [bodyParser](https://github.com/expressjs/body-parser#body-parser), errorHandler 
 
 ```javascript
 const express = require('express');
@@ -5552,11 +5197,17 @@ const jellybeanBag = {
   }
 };
 
+
+/*-------------------IMPLEMENTATION OF MIDDLEWARE----------------------*/
+
 // Body-parsing Middleware
-app.use(bodyParser.json());
+/*This allows us to remove our own implementation of body parser, and also remove the call to the function in the arguments. bodyParser attaches automatically body to req obj*/
+app.use(bodyParser.json()); //req.body available globally
 
 // Logging Middleware
-if (!process.env.IS_TEST_ENV) {
+//app.use(morgan('tiny'));  ---gets rid of console.log('Response Sent')
+/*Using Morgan we can get rid of a lot of repetitive console logs!*/
+if (!process.env.IS_TEST_ENV) { //check for test environment
   app.use(morgan('dev'));
 }
 
@@ -5572,6 +5223,8 @@ app.use('/beans/:beanName', (req, res, next) => {
   req.beanName = beanName;
   next();
 });
+
+/*----------------------CRUD METHODS--------------------------*/
 
 app.get('/beans/', (req, res, next) => {
   res.send(jellybeanBag);
