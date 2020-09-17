@@ -777,12 +777,22 @@ I'm dreading the part where we'll talk about the technology stack to use, though
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
-### Day 79: September 15th, 2020 - 4 Days to Bootcamp
+### Day 79: September 16th, 2020 - 4 Days to Bootcamp
 
 **Today's Progress**: Git + Project planning + React
 
 **Thoughts: Today I spent the day working on the group react project, and I'm feeling quite happy to have reached the mvp stage. I would like to do more, but I'm SLOWLY realizing that with the little time left I need to try to streamline my life. That means spending time away from the computer, and this is hard because I want to study, and there is SO much left to study, but there is also very little time. 
 In a couple of days I literally will do nothing else. So I need to close as many errands as I can, just to make sure I can be calm during the period where my life will be code, and more code. 
 I do wonder whether I have what it takes, and from the little experience I've had with others, it is very difficult not to compare myself to my classmates. At times I feel great because I know things they don't, and at others I feel terrible because they know much more than I do about some topic or other. Is it something I'll be able to escape?
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+
+
+### Day 79: September 17th, 2020 - 3 Days to Bootcamp
+
+**Today's Progress**: errands
+
+**Thoughts: I didn't do any coding today, but I'm happy to have been able to get some errands out of the way. I think the more errands I get out of the way, the more serene I'll be to do the bootcamp. I spent time also with my friends, as I will do in the next few days. I don't imagine there is a much better way to spend these last 3 days!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
