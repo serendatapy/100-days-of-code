@@ -796,3 +796,11 @@ I do wonder whether I have what it takes, and from the little experience I've ha
 **Thoughts: I didn't do any coding today, but I'm happy to have been able to get some errands out of the way. I think the more errands I get out of the way, the more serene I'll be to do the bootcamp. I spent time also with my friends, as I will do in the next few days. I don't imagine there is a much better way to spend these last 3 days!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 80: September 18th, 2020 - 2 Days to Bootcamp
+
+**Today's Progress**: Code Review
+
+**Thoughts: Today I spoke with a classmate about the code we did in preparation for the bootcamp and also the todo project we started coding together. I hope I'm able to use the project, and I hope I'll be able to become better at communicating with classmates. Certainly running projects in a team has it's advantages and is stimulating, but it's difficult to keep track of the things that are being done by others.
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
