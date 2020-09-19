@@ -804,3 +804,11 @@ I do wonder whether I have what it takes, and from the little experience I've ha
 **Thoughts: Today I spoke with a classmate about the code we did in preparation for the bootcamp and also the todo project we started coding together. I hope I'm able to use the project, and I hope I'll be able to become better at communicating with classmates. Certainly running projects in a team has it's advantages and is stimulating, but it's difficult to keep track of the things that are being done by others.
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 80: September 19th, 2020 - 1 Days to Bootcamp
+
+**Today's Progress**: Errands
+
+**Thoughts: Also today I spent my time seeing friends and trying to tie up loose ends. Of the essentials things I need to still do to streamline my life, there is still quite a few for the time I have left. In any case I'm already feeling more serene about the whole thing on that aspect. I'm also quite anxious to start. I'm happy to be doing the bootcamp, and be able to have someone affirm me as a full stack engineer. "Putting in 110% is an unfair advantage" I don't know why, this phrase that we invented while playing cards against humanity keeps coming back to my head XD
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
