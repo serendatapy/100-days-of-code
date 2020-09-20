@@ -812,3 +812,11 @@ I do wonder whether I have what it takes, and from the little experience I've ha
 **Thoughts: Also today I spent my time seeing friends and trying to tie up loose ends. Of the essentials things I need to still do to streamline my life, there is still quite a few for the time I have left. In any case I'm already feeling more serene about the whole thing on that aspect. I'm also quite anxious to start. I'm happy to be doing the bootcamp, and be able to have someone affirm me as a full stack engineer. "Putting in 110% is an unfair advantage" I don't know why, this phrase that we invented while playing cards against humanity keeps coming back to my head XD
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 80: September 20th, 2020 - 0 Days to Bootcamp
+
+**Today's Progress**: Errands
+
+**Thoughts: All errands have been completed (except tidying up!) I'm excited to start the bootcamp, and truly hope to come out a web developer from the other end, ready to be productive from day one.
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
