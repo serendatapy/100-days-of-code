@@ -820,3 +820,11 @@ I do wonder whether I have what it takes, and from the little experience I've ha
 **Thoughts: All errands have been completed (except tidying up!) I'm excited to start the bootcamp, and truly hope to come out a web developer from the other end, ready to be productive from day one.
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 80: September 21th, 2020 - 1 Day of Bootcamp
+
+**Today's Progress**: Underline Revision
+
+**Thoughts: I imagined a lot worse, but it was indeed a pretty relaxed day, though I'm sure mostly due to the introductions and going over code as a group. From Wednesday we should be starting with our normal rhythm, apparently. They did prepare us mentally well for it, and I'm glad, as otherwise I might have been worried about today's outcome. I didn't feel very productive, so I'm not counting it as a day of code. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
