@@ -821,10 +821,18 @@ I do wonder whether I have what it takes, and from the little experience I've ha
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
 
-### Day 80: September 21th, 2020 - 1 Day of Bootcamp
+### Day 80: September 21st, 2020 - 1st Day of Bootcamp
 
 **Today's Progress**: Underline Revision
 
 **Thoughts: I imagined a lot worse, but it was indeed a pretty relaxed day, though I'm sure mostly due to the introductions and going over code as a group. From Wednesday we should be starting with our normal rhythm, apparently. They did prepare us mentally well for it, and I'm glad, as otherwise I might have been worried about today's outcome. I didn't feel very productive, so I'm not counting it as a day of code. 
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 81: September 22nd, 2020 - 2nd Day of Bootcamp
+
+**Today's Progress**: Underline Revision, React Project & Sass
+
+**Thoughts: Also today with the project we finished early, which gave us a whole half a day off! This was great because we were able to catch up with our tomatracker project, and I learned to use sass, which is actually a way of making css work a lot more like javascript. It makes it potentionally much more maintainable. That project got to what I think is MVP stage now, which I'm happy about. I was surprised to find myself feeling like a bit of an impostor a couple of times when I wasn't so sure about myself or my skills. Then also feeling like a genius during underline exercises, where I was able to replicate the solutions I had already done without looking at my old code. Seems something stuck after all!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
