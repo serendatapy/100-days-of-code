@@ -836,3 +836,11 @@ I do wonder whether I have what it takes, and from the little experience I've ha
 **Thoughts: Also today with the project we finished early, which gave us a whole half a day off! This was great because we were able to catch up with our tomatracker project, and I learned to use sass, which is actually a way of making css work a lot more like javascript. It makes it potentionally much more maintainable. That project got to what I think is MVP stage now, which I'm happy about. I was surprised to find myself feeling like a bit of an impostor a couple of times when I wasn't so sure about myself or my skills. Then also feeling like a genius during underline exercises, where I was able to replicate the solutions I had already done without looking at my old code. Seems something stuck after all!
 
 **Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
+
+### Day 82: November 6th, 2020 - 45th Day of Bootcamp
+
+**Today's Progress**: Project Planning
+
+**Thoughts: It's been quite a ride getting to this point! I stopped writing in my journal, and started writing by hand at night, because I needed to clear my mind without a screen in front of me! There were days specially in the first couple of weeks where I couldn't sit in front of the screen another moment because my neck hurt so much. Luckily after a while it got stronger and now I don't get neck ache anymore. I've just spent a couple of days planning what my next app would be, it's been hard but in the end I've come uo with a useful, perhaps original idea, where I can focus more on the UX and making a mobile app using PWA. It's hard to get back into everything after such a break.  
+
+**Link to work:** [Github Profile](https://github.com/serendatapy) [Codecademy](https://www.codecademy.com/profiles/serendatapy)
